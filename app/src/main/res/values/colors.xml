@@ -1,0 +1,16 @@
+<resources>
+    <color name="ic_launcher_background">#FAF7EF</color>
+    <color name="bg_light">#F7F6F0</color>
+    <color name="text_light">#253B32</color>
+    <color name="primary_light">#789581</color>
+    <color name="secondary_light">#A8C4B5</color>
+    <color name="surface_light">#FFFFFF</color>
+    <color name="muted_light">#77847B</color>
+
+    <color name="bg_dark">#141B19</color>
+    <color name="text_dark">#F1F3EE</color>
+    <color name="primary_dark">#A8CDB5</color>
+    <color name="surface_dark">#202A26</color>
+    <color name="elevated_dark">#29352F</color>
+    <color name="muted_dark">#AAB8AE</color>
+</resources>

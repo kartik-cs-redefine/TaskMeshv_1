@@ -1,0 +1,4391 @@
+{
+  "courseTitle": "One Word Substitution",
+  "totalDays": 59,
+  "totalQuestions": 59,
+  "totalVocabularyEntries": 236,
+  "questions": [
+    {
+      "id": "owsp_s1_q1",
+      "sheet": 1,
+      "questionNumber": 1,
+      "dayNumber": 1,
+      "questionText": "Something that cannot be Read.",
+      "correctOptionLetter": "B",
+      "memoryTip": "Trick: il- + legible = not legible. 'Ineligible' (not eligible) looks similar, so be careful.",
+      "options": [
+        {
+          "id": "owsp_s1_q1_optA",
+          "optionLabel": "(A)",
+          "word": "Ineligible",
+          "partOfSpeech": "adj.",
+          "isCorrect": false,
+          "englishMeaning": "Not qualified or not allowed to be chosen or to take part. He was ineligible to vote because he was only seventeen.",
+          "hindiMeaning": "अयोग्य / पात्रता न रखने वाला",
+          "exampleSentence": "",
+          "hindiTranslation": "",
+          "memoryTip": ""
+        },
+        {
+          "id": "owsp_s1_q1_optB",
+          "optionLabel": "(B)",
+          "word": "Illegible adj.",
+          "partOfSpeech": "",
+          "isCorrect": true,
+          "englishMeaning": "Impossible or very hard to read (handwriting or print that is unclear).",
+          "hindiMeaning": "अपठनीय (जो पढ़ा न जा सक े )",
+          "exampleSentence": "The doctor's handwriting was so illegible that nobody could read the prescription.",
+          "hindiTranslation": "ॉक्टर की लखावट तनी अपठनीय ी क कोर्थ पचार्थ नहिीं पढ़ सका।",
+          "memoryTip": "Trick: il- + legible = not legible. 'Ineligible' (not eligible) looks similar, so be careful."
+        },
+        {
+          "id": "owsp_s1_q1_optC",
+          "optionLabel": "(C)",
+          "word": "Negligible",
+          "partOfSpeech": "adj.",
+          "isCorrect": false,
+          "englishMeaning": "The difference in price between the two phones is negligible.",
+          "hindiMeaning": "नगण्य (तना क क ध्यान देने लायक न हिो)",
+          "exampleSentence": "So small or unimportant that it can be ignored.",
+          "hindiTranslation": "",
+          "memoryTip": ""
+        },
+        {
+          "id": "owsp_s1_q1_optD",
+          "optionLabel": "(D)",
+          "word": "Incorrigible",
+          "partOfSpeech": "adj.",
+          "isCorrect": false,
+          "englishMeaning": "(Of a person) too bad or too set in his ways to be corrected or reformed. He is an incorrigible liar; no amount of advice changes him.",
+          "hindiMeaning": "असुधायर्थ (जसे सुधारा न जा सक े )",
+          "exampleSentence": "",
+          "hindiTranslation": "",
+          "memoryTip": ""
+        }
+      ]
+    },
+    {
+      "id": "owsp_s1_q2",
+      "sheet": 1,
+      "questionNumber": 2,
+      "dayNumber": 2,
+      "questionText": "Malafide case is one.",
+      "correctOptionLetter": "B",
+      "memoryTip": "Mala fide = bad faith (mala = bad). Bona fide = good faith (bona = good).",
+      "options": [
+        {
+          "id": "owsp_s1_q2_optA",
+          "optionLabel": "(A)",
+          "word": "Undertaken in",
+          "partOfSpeech": "",
+          "isCorrect": false,
+          "englishMeaning": "good faith phrase This is called 'Bona fide' - done honestly, with a sincere and genuine intention. It is the OPPOSITE of mala fide. The buyer made a bona fide offer for the house.",
+          "hindiMeaning": "नेक नीयत से कया गया (Bona fide)",
+          "exampleSentence": "",
+          "hindiTranslation": "",
+          "memoryTip": ""
+        },
+        {
+          "id": "owsp_s1_q2_optB",
+          "optionLabel": "(B)",
+          "word": "Undertaken in a bad faith",
+          "partOfSpeech": "phrase",
+          "isCorrect": true,
+          "englishMeaning": "This is 'Mala fide' - done with a dishonest or evil intention, to cheat or harm someone.",
+          "hindiMeaning": "बुरी नीयत से कया गया (Mala fide / दुार्थवनापूर्थ)",
+          "exampleSentence": "The court rejected the case because it was mala fide - filed only to harass the neighbour.",
+          "hindiTranslation": "अदालत ने ुकदा खारज कर दया क्यांक वहि दुार्थवनापूर्थ (mala fide) ा - क े वल पड़ोसी को परेशान करने क े लए दायर कया गया ा।",
+          "memoryTip": "Mala fide = bad faith (mala = bad). Bona fide = good faith (bona = good)."
+        },
+        {
+          "id": "owsp_s1_q2_optC",
+          "optionLabel": "(C)",
+          "word": "Undertaken",
+          "partOfSpeech": "",
+          "isCorrect": false,
+          "englishMeaning": "after a long delay phrase Describes something done very late (a belated or delayed act). It has nothing to do with intention or faith. The belated apology came after a long delay.",
+          "hindiMeaning": "लंबी देरी क े बाद कया गया (वलंबत)",
+          "exampleSentence": "",
+          "hindiTranslation": "",
+          "memoryTip": ""
+        },
+        {
+          "id": "owsp_s1_q2_optD",
+          "optionLabel": "(D)",
+          "word": "Not undertaken",
+          "partOfSpeech": "",
+          "isCorrect": false,
+          "englishMeaning": "at all phrase Describes something never started or never done at all. The project was never undertaken because the funds were not approved. One Word Substitution - Meanings Workbook | Page 4",
+          "hindiMeaning": "बल्क ु ल शुरू हिी नहिीं कया गया",
+          "exampleSentence": "",
+          "hindiTranslation": "",
+          "memoryTip": ""
+        }
+      ]
+    },
+    {
+      "id": "owsp_s1_q3",
+      "sheet": 1,
+      "questionNumber": 3,
+      "dayNumber": 3,
+      "questionText": "One who does not marry, especially as a religious obligation?",
+      "correctOptionLetter": "A",
+      "memoryTip": "Key clue = 'religious obligation'. A bachelor is simply unmarried.",
+      "options": [
+        {
+          "id": "owsp_s1_q3_optA",
+          "optionLabel": "(A)",
+          "word": "Celibate adj./n.",
+          "partOfSpeech": "",
+          "isCorrect": true,
+          "englishMeaning": "One who abstains from marriage (and sexual relations), especially because of a religious vow.",
+          "hindiMeaning": "ब्रह्मचारी (धांक कार से ववाहि न करने वाला)",
+          "exampleSentence": "The monk took a vow to remain celibate for the rest of his life.",
+          "hindiTranslation": "संन्यासी ने जीवन र ब्रह्मचारी रहिने की प्रतज्ञा ली।",
+          "memoryTip": "Key clue = 'religious obligation'. A bachelor is simply unmarried."
+        },
+        {
+          "id": "owsp_s1_q3_optB",
+          "optionLabel": "(B)",
+          "word": "Bachelor",
+          "partOfSpeech": "n.",
+          "isCorrect": false,
+          "englishMeaning": "An unmarried man (he may marry later; there is no religious vow involved). He is still a bachelor and lives with his parents.",
+          "hindiMeaning": "क ु ं वारा / अववाहित पुरुष",
+          "exampleSentence": "",
+          "hindiTranslation": "",
+          "memoryTip": ""
+        },
+        {
+          "id": "owsp_s1_q3_optC",
+          "optionLabel": "(C)",
+          "word": "Virgin",
+          "partOfSpeech": "n.",
+          "isCorrect": false,
+          "englishMeaning": "A person who has never had sexual intercourse. It is not about a religious obligation of not marrying. In the story, the king wished to marry a virgin princess.",
+          "hindiMeaning": "क ु ं वारा / क ु ं वारी (शारीरक संबंध न बनाने वाला)",
+          "exampleSentence": "",
+          "hindiTranslation": "",
+          "memoryTip": ""
+        },
+        {
+          "id": "owsp_s1_q3_optD",
+          "optionLabel": "(D)",
+          "word": "Recluse",
+          "partOfSpeech": "n.",
+          "isCorrect": false,
+          "englishMeaning": "A person who lives alone and avoids other people (a loner or hermit). After his wife died, he became a recluse and never left his house.",
+          "hindiMeaning": "एकांतवासी (साज से दूर रहिने वाला)",
+          "exampleSentence": "",
+          "hindiTranslation": "",
+          "memoryTip": ""
+        }
+      ]
+    },
+    {
+      "id": "owsp_s1_q4",
+      "sheet": 1,
+      "questionNumber": 4,
+      "dayNumber": 4,
+      "questionText": "A dramatic performance.",
+      "correctOptionLetter": "A",
+      "memoryTip": "All four options look alike - this is a spelling trap. Only 'Masque' means a dramatic performance.",
+      "options": [
+        {
+          "id": "owsp_s1_q4_optA",
+          "optionLabel": "(A)",
+          "word": "Masque n.",
+          "partOfSpeech": "",
+          "isCorrect": true,
+          "englishMeaning": "A dramatic performance (with music, dance and costumes), popular in 16th-17th century England; a form of courtly entertainment.",
+          "hindiMeaning": "नक़ाबपोश संगीतय नाटक / नाट्य-प्रदशर्थन",
+          "exampleSentence": "The court enjoyed a lavish masque at the king's wedding.",
+          "hindiTranslation": "दरबार ने राजा की शादी ं एक व्य नक़ाबपोश नाट्य-प्रदशर्थन का आनंद लया।",
+          "memoryTip": "All four options look alike - this is a spelling trap. Only 'Masque' means a dramatic performance."
+        },
+        {
+          "id": "owsp_s1_q4_optB",
+          "optionLabel": "(B)",
+          "word": "Mosque",
+          "partOfSpeech": "n.",
+          "isCorrect": false,
+          "englishMeaning": "A place of worship for Muslims. The mosque was filled with people during the Friday prayer.",
+          "hindiMeaning": "स्जद",
+          "exampleSentence": "",
+          "hindiTranslation": "",
+          "memoryTip": ""
+        },
+        {
+          "id": "owsp_s1_q4_optC",
+          "optionLabel": "(C)",
+          "word": "Mask",
+          "partOfSpeech": "n.",
+          "isCorrect": false,
+          "englishMeaning": "A covering worn over the face to hide or protect it. The thief wore a mask so that nobody could recognise him.",
+          "hindiMeaning": "ुखौटा / नक़ाब",
+          "exampleSentence": "",
+          "hindiTranslation": "",
+          "memoryTip": ""
+        },
+        {
+          "id": "owsp_s1_q4_optD",
+          "optionLabel": "(D)",
+          "word": "Mascot",
+          "partOfSpeech": "n.",
+          "isCorrect": false,
+          "englishMeaning": "A person, animal or object that represents a team/ group and is thought to bring good luck. The lion is the mascot of our college cricket team. One Word Substitution - Meanings Workbook | Page 5",
+          "hindiMeaning": "शुंकर (ाग्यशाली प्रतीक)",
+          "exampleSentence": "",
+          "hindiTranslation": "",
+          "memoryTip": ""
+        }
+      ]
+    },
+    {
+      "id": "owsp_s1_q5",
+      "sheet": 1,
+      "questionNumber": 5,
+      "dayNumber": 5,
+      "questionText": "Giving undue favors to one's own kith and kin.",
+      "correctOptionLetter": "C",
+      "memoryTip": "Kith = friends/neighbours, Kin = relatives. Favours to relatives = Nepotism.",
+      "options": [
+        {
+          "id": "owsp_s1_q5_optA",
+          "optionLabel": "(A)",
+          "word": "Favouritism",
+          "partOfSpeech": "n.",
+          "isCorrect": false,
+          "englishMeaning": "Unfair support or special treatment given to one person or group over others. The teacher was accused of favouritism towards the topper.",
+          "hindiMeaning": "पक्षपात",
+          "exampleSentence": "",
+          "hindiTranslation": "",
+          "memoryTip": ""
+        },
+        {
+          "id": "owsp_s1_q5_optB",
+          "optionLabel": "(B)",
+          "word": "Worldliness",
+          "partOfSpeech": "n.",
+          "isCorrect": false,
+          "englishMeaning": "Being concerned with material pleasures and ordinary life rather than spiritual matters. His worldliness made him chase money more than peace of mind.",
+          "hindiMeaning": "सांसारकता (ौतक सुखां ं रुच)",
+          "exampleSentence": "",
+          "hindiTranslation": "",
+          "memoryTip": ""
+        },
+        {
+          "id": "owsp_s1_q5_optC",
+          "optionLabel": "(C)",
+          "word": "Nepotism n.",
+          "partOfSpeech": "",
+          "isCorrect": true,
+          "englishMeaning": "Giving unfair favours (especially jobs) to one's own relatives and friends (kith and kin).",
+          "hindiMeaning": "ार्थ-तीजावाद (अपने रश्तेदारां को ग़लत ला देना)",
+          "exampleSentence": "The minister was criticised for nepotism after he appointed his nephew as director.",
+          "hindiTranslation": "ंत्री की आलोचना हुर्थ क्यांक उन्हिांने अपने तीजे को नदेशक नयुक्त कया - यहि ार्थ-तीजावाद ा।",
+          "memoryTip": "Kith = friends/neighbours, Kin = relatives. Favours to relatives = Nepotism."
+        },
+        {
+          "id": "owsp_s1_q5_optD",
+          "optionLabel": "(D)",
+          "word": "Corruption",
+          "partOfSpeech": "n.",
+          "isCorrect": false,
+          "englishMeaning": "Dishonest or illegal behaviour, especially by people in power (e.g., taking bribes). Corruption in the department delayed the construction of the bridge.",
+          "hindiMeaning": "भ्रष्टाचार / रश्वतखोरी",
+          "exampleSentence": "",
+          "hindiTranslation": "",
+          "memoryTip": ""
+        }
+      ]
+    },
+    {
+      "id": "owsp_s1_q6",
+      "sheet": 1,
+      "questionNumber": 6,
+      "dayNumber": 6,
+      "questionText": "Extreme old age when a man behaves like a fool.",
+      "correctOptionLetter": "C",
+      "memoryTip": "Dotage = old age + foolish behaviour. Senility = general weakness of old age.",
+      "options": [
+        {
+          "id": "owsp_s1_q6_optA",
+          "optionLabel": "(A)",
+          "word": "Senility",
+          "partOfSpeech": "n.",
+          "isCorrect": false,
+          "englishMeaning": "Mental and physical weakness caused by old age (memory loss etc.). It is the general condition of old age. His senility made him forget even the names of his children.",
+          "hindiMeaning": "बुढ़ापे की ानसक/शारीरक कज़ोरी",
+          "exampleSentence": "",
+          "hindiTranslation": "",
+          "memoryTip": ""
+        },
+        {
+          "id": "owsp_s1_q6_optB",
+          "optionLabel": "(B)",
+          "word": "Imbecility",
+          "partOfSpeech": "n.",
+          "isCorrect": false,
+          "englishMeaning": "Extreme stupidity or weakness of mind (not related to age). It was an act of sheer imbecility to leave the gas stove on.",
+          "hindiMeaning": "ूखर्थता / ंदबुद्धि",
+          "exampleSentence": "",
+          "hindiTranslation": "",
+          "memoryTip": ""
+        },
+        {
+          "id": "owsp_s1_q6_optC",
+          "optionLabel": "(C)",
+          "word": "Dotage n.",
+          "partOfSpeech": "",
+          "isCorrect": true,
+          "englishMeaning": "The period of old age when a man becomes weak-minded and foolish in behaviour.",
+          "hindiMeaning": "सठयाने की अवस्ा (बुढ़ापे ं बुद्धि-भ्र)",
+          "exampleSentence": "In his dotage the old king began making silly decisions.",
+          "hindiTranslation": "बुढ़ापे की सठयार्थ अवस्ा ं बूढ़े राजा ने ूखर्थतापूर्थ फ ै सले लेने शुरू कर दए।",
+          "memoryTip": "Dotage = old age + foolish behaviour. Senility = general weakness of old age."
+        },
+        {
+          "id": "owsp_s1_q6_optD",
+          "optionLabel": "(D)",
+          "word": "Superannuation",
+          "partOfSpeech": "n.",
+          "isCorrect": false,
+          "englishMeaning": "Retirement from a job because of reaching a certain age (a pension-related word). He received his pension after superannuation at the age of sixty. One Word Substitution - Meanings Workbook | Page 6",
+          "hindiMeaning": "अधवषंता / आयु पूरी हिोने पर सेवानवृत्ति",
+          "exampleSentence": "",
+          "hindiTranslation": "",
+          "memoryTip": ""
+        }
+      ]
+    },
+    {
+      "id": "owsp_s1_q7",
+      "sheet": 1,
+      "questionNumber": 7,
+      "dayNumber": 7,
+      "questionText": "Parts of a country behind the coast or river banks.",
+      "correctOptionLetter": "A",
+      "memoryTip": "Hinter = behind; land. 'Land behind' the coast.",
+      "options": [
+        {
+          "id": "owsp_s1_q7_optA",
+          "optionLabel": "(A)",
+          "word": "Hinterland n.",
+          "partOfSpeech": "",
+          "isCorrect": true,
+          "englishMeaning": "The remote area lying behind the coast or the banks of a river; the interior region.",
+          "hindiMeaning": "ीतरी / पृष्ठ-प्रदेश (तट से दूर का लाका)",
+          "exampleSentence": "The port city supplies goods to its vast hinterland.",
+          "hindiTranslation": "बंदरगाहि वाला शहिर अपने वशाल ीतरी लाक े को साान की आपूतं करता हिै।",
+          "memoryTip": "Hinter = behind; land. 'Land behind' the coast."
+        },
+        {
+          "id": "owsp_s1_q7_optB",
+          "optionLabel": "(B)",
+          "word": "Isthmus",
+          "partOfSpeech": "n.",
+          "isCorrect": false,
+          "englishMeaning": "A narrow strip of land connecting two larger land masses, with water on both sides. The Isthmus of Panama joins North and South America.",
+          "hindiMeaning": "स्लसंध / स्लरूध्य",
+          "exampleSentence": "",
+          "hindiTranslation": "",
+          "memoryTip": ""
+        },
+        {
+          "id": "owsp_s1_q7_optC",
+          "optionLabel": "(C)",
+          "word": "Archipelago",
+          "partOfSpeech": "n.",
+          "isCorrect": false,
+          "englishMeaning": "A group or chain of many islands. Andaman and Nicobar is an archipelago in the Bay of Bengal.",
+          "hindiMeaning": "द्वीप-सूहि",
+          "exampleSentence": "",
+          "hindiTranslation": "",
+          "memoryTip": ""
+        },
+        {
+          "id": "owsp_s1_q7_optD",
+          "optionLabel": "(D)",
+          "word": "Swamps",
+          "partOfSpeech": "n.",
+          "isCorrect": false,
+          "englishMeaning": "Areas of low land that are wet and spongy, covered with water and plants. Mosquitoes breed in the swamps near the river.",
+          "hindiMeaning": "दलदल / कीचड़ वाली ज़ीन",
+          "exampleSentence": "",
+          "hindiTranslation": "",
+          "memoryTip": ""
+        }
+      ]
+    },
+    {
+      "id": "owsp_s1_q8",
+      "sheet": 1,
+      "questionNumber": 8,
+      "dayNumber": 8,
+      "questionText": "The Absence of Law and Order.",
+      "correctOptionLetter": "C",
+      "memoryTip": "An- (without) + archy (rule) = without rule.",
+      "options": [
+        {
+          "id": "owsp_s1_q8_optA",
+          "optionLabel": "(A)",
+          "word": "Mutiny",
+          "partOfSpeech": "n.",
+          "isCorrect": false,
+          "englishMeaning": "An open revolt against authority, especially by soldiers or sailors against their officers. The 1857 mutiny began among the Indian soldiers of the East India Company.",
+          "hindiMeaning": "सैनक वद्रोहि",
+          "exampleSentence": "",
+          "hindiTranslation": "",
+          "memoryTip": ""
+        },
+        {
+          "id": "owsp_s1_q8_optB",
+          "optionLabel": "(B)",
+          "word": "Rebellion",
+          "partOfSpeech": "n.",
+          "isCorrect": false,
+          "englishMeaning": "An organised, open resistance against the government or a ruler. The rebellion against the king was crushed in a month.",
+          "hindiMeaning": "वद्रोहि / बग़ावत",
+          "exampleSentence": "",
+          "hindiTranslation": "",
+          "memoryTip": ""
+        },
+        {
+          "id": "owsp_s1_q8_optC",
+          "optionLabel": "(C)",
+          "word": "Anarchy n.",
+          "partOfSpeech": "",
+          "isCorrect": true,
+          "englishMeaning": "A state of disorder where there is no government, law or order.",
+          "hindiMeaning": "अराजकता (कानून और व्यवस्ा का अाव)",
+          "exampleSentence": "After the dictator fled, the country fell into anarchy.",
+          "hindiTranslation": "तानाशाहि क े ाग जाने क े बाद देश अराजकता ं ूब गया।",
+          "memoryTip": "An- (without) + archy (rule) = without rule."
+        },
+        {
+          "id": "owsp_s1_q8_optD",
+          "optionLabel": "(D)",
+          "word": "Revolt",
+          "partOfSpeech": "n.",
+          "isCorrect": false,
+          "englishMeaning": "An act of rising up against authority (a short, sudden uprising). The workers revolted against the unfair rules of the factory. One Word Substitution - Meanings Workbook | Page 7",
+          "hindiMeaning": "बग़ावत / उपद्रव",
+          "exampleSentence": "",
+          "hindiTranslation": "",
+          "memoryTip": ""
+        }
+      ]
+    },
+    {
+      "id": "owsp_s1_q9",
+      "sheet": 1,
+      "questionNumber": 9,
+      "dayNumber": 9,
+      "questionText": "One who knows everything.",
+      "correctOptionLetter": "D",
+      "memoryTip": "Omni = all; scient = knowing. Omnipotent = all-powerful (potent = power).",
+      "options": [
+        {
+          "id": "owsp_s1_q9_optA",
+          "optionLabel": "(A)",
+          "word": "Omnipotent",
+          "partOfSpeech": "adj.",
+          "isCorrect": false,
+          "englishMeaning": "Many people believe that God is omnipotent.",
+          "hindiMeaning": "सवर्थशक्तान",
+          "exampleSentence": "Having unlimited power; all-powerful.",
+          "hindiTranslation": "",
+          "memoryTip": ""
+        },
+        {
+          "id": "owsp_s1_q9_optB",
+          "optionLabel": "(B)",
+          "word": "Scholar",
+          "partOfSpeech": "n.",
+          "isCorrect": false,
+          "englishMeaning": "A learned person who has studied a subject deeply (but does not know everything). He is a Sanskrit scholar who has read hundreds of ancient texts.",
+          "hindiMeaning": "वद्वान / पंत",
+          "exampleSentence": "",
+          "hindiTranslation": "",
+          "memoryTip": ""
+        },
+        {
+          "id": "owsp_s1_q9_optC",
+          "optionLabel": "(C)",
+          "word": "Literate",
+          "partOfSpeech": "adj.",
+          "isCorrect": false,
+          "englishMeaning": "The village now has a hundred percent literate population.",
+          "hindiMeaning": "साक्षर (पढ़ना-लखना जानने वाला)",
+          "exampleSentence": "Able to read and write.",
+          "hindiTranslation": "",
+          "memoryTip": ""
+        },
+        {
+          "id": "owsp_s1_q9_optD",
+          "optionLabel": "(D)",
+          "word": "Omniscient adj.",
+          "partOfSpeech": "",
+          "isCorrect": true,
+          "englishMeaning": "Knowing everything; having infinite knowledge.",
+          "hindiMeaning": "सवर्थज्ञ (सब क ु छ जानने वाला)",
+          "exampleSentence": "The omniscient narrator of the novel knows what every character is thinking.",
+          "hindiTranslation": "उपन्यास का सवर्थज्ञ कावाचक जानता हिै क हिर पात्र क्या सोच रहिा हिै।",
+          "memoryTip": "Omni = all; scient = knowing. Omnipotent = all-powerful (potent = power)."
+        }
+      ]
+    },
+    {
+      "id": "owsp_s1_q10",
+      "sheet": 1,
+      "questionNumber": 10,
+      "dayNumber": 10,
+      "questionText": "Policemen riding on Motorcycle as guards to VIPs.",
+      "correctOptionLetter": "A",
+      "memoryTip": "",
+      "options": [
+        {
+          "id": "owsp_s1_q10_optA",
+          "optionLabel": "(A)",
+          "word": "Outriders n.",
+          "partOfSpeech": "",
+          "isCorrect": true,
+          "englishMeaning": "Policemen or guards who ride motorcycles (or horses) ahead of or beside the car of a VIP as escorts.",
+          "hindiMeaning": "पायलट/एस्कॉटर्थ सवार (VIP क े आगे-पीछे चलने वाले ोटरसाकल गार्थ)",
+          "exampleSentence": "Four outriders cleared the road for the Prime Minister's car.",
+          "hindiTranslation": "चार पायलट सवारां ने प्रधानंत्री की गाड़ी क े लए सड़क साफ़ करार्थ।",
+          "memoryTip": ""
+        },
+        {
+          "id": "owsp_s1_q10_optB",
+          "optionLabel": "(B)",
+          "word": "Servants",
+          "partOfSpeech": "n.",
+          "isCorrect": false,
+          "englishMeaning": "People employed to do household work or to serve others. The rich merchant kept ten servants in his mansion.",
+          "hindiMeaning": "नौकर / सेवक",
+          "exampleSentence": "",
+          "hindiTranslation": "",
+          "memoryTip": ""
+        },
+        {
+          "id": "owsp_s1_q10_optC",
+          "optionLabel": "(C)",
+          "word": "Commanders",
+          "partOfSpeech": "n.",
+          "isCorrect": false,
+          "englishMeaning": "The commanders met to plan the attack.",
+          "hindiMeaning": "कांर / सेनानायक",
+          "exampleSentence": "Officers who are in charge of a military force or unit.",
+          "hindiTranslation": "",
+          "memoryTip": ""
+        },
+        {
+          "id": "owsp_s1_q10_optD",
+          "optionLabel": "(D)",
+          "word": "Attendants",
+          "partOfSpeech": "n.",
+          "isCorrect": false,
+          "englishMeaning": "People who accompany, assist or serve someone (e.g., in a hospital or temple). The hospital attendants wheeled the patient into the ward. One Word Substitution - Meanings Workbook | Page 8",
+          "hindiMeaning": "परचारक / सेवादार",
+          "exampleSentence": "",
+          "hindiTranslation": "",
+          "memoryTip": ""
+        }
+      ]
+    },
+    {
+      "id": "owsp_s1_q11",
+      "sheet": 1,
+      "questionNumber": 11,
+      "dayNumber": 11,
+      "questionText": "Disease of mind causing an uncontrollable desire to steal.",
+      "correctOptionLetter": "A",
+      "memoryTip": "Klepto = steal; mania = obsession.",
+      "options": [
+        {
+          "id": "owsp_s1_q11_optA",
+          "optionLabel": "(A)",
+          "word": "Kleptomania n.",
+          "partOfSpeech": "",
+          "isCorrect": true,
+          "englishMeaning": "A mental disorder that gives an uncontrollable urge to steal, even things one does not need.",
+          "hindiMeaning": "चोरी करने की ानसक बीारी",
+          "exampleSentence": "She suffers from kleptomania and steals small items from shops.",
+          "hindiTranslation": "उसे क्लेप्टोेनया (चोरी की बीारी) हिै और वहि दुकानां से छोटी चीज़ं चुरा लेती हिै।",
+          "memoryTip": "Klepto = steal; mania = obsession."
+        },
+        {
+          "id": "owsp_s1_q11_optB",
+          "optionLabel": "(B)",
+          "word": "Schizophrenia",
+          "partOfSpeech": "n.",
+          "isCorrect": false,
+          "englishMeaning": "A serious mental illness in which a person's thoughts, emotions and sense of reality become disturbed. Schizophrenia can be managed with proper treatment.",
+          "hindiMeaning": "नोवदलता / सज़ोफ्र े नया (वास्तवकता से कट जाने वाली ानसक बीारी)",
+          "exampleSentence": "",
+          "hindiTranslation": "",
+          "memoryTip": ""
+        },
+        {
+          "id": "owsp_s1_q11_optC",
+          "optionLabel": "(C)",
+          "word": "Claustrophobia",
+          "partOfSpeech": "n.",
+          "isCorrect": false,
+          "englishMeaning": "An extreme fear of being in small or closed spaces (e.g., lifts). Her claustrophobia made her avoid using the lift.",
+          "hindiMeaning": "बंद जगहिां का र",
+          "exampleSentence": "",
+          "hindiTranslation": "",
+          "memoryTip": ""
+        },
+        {
+          "id": "owsp_s1_q11_optD",
+          "optionLabel": "(D)",
+          "word": "Megalomania",
+          "partOfSpeech": "n.",
+          "isCorrect": false,
+          "englishMeaning": "A mental condition with an obsession with power and a delusion of one's own greatness. The dictator's megalomania led him to build statues of himself.",
+          "hindiMeaning": "अपने को बहुत हिान/शक्तशाली सझने का पागलपन",
+          "exampleSentence": "",
+          "hindiTranslation": "",
+          "memoryTip": ""
+        }
+      ]
+    },
+    {
+      "id": "owsp_s1_q12",
+      "sheet": 1,
+      "questionNumber": 12,
+      "dayNumber": 12,
+      "questionText": "A Person pretending to be somebody he is not.",
+      "correctOptionLetter": "D",
+      "memoryTip": "",
+      "options": [
+        {
+          "id": "owsp_s1_q12_optA",
+          "optionLabel": "(A)",
+          "word": "Liar",
+          "partOfSpeech": "n.",
+          "isCorrect": false,
+          "englishMeaning": "A person who tells lies. Nobody trusts him because he is a known liar.",
+          "hindiMeaning": "झूठा",
+          "exampleSentence": "",
+          "hindiTranslation": "",
+          "memoryTip": ""
+        },
+        {
+          "id": "owsp_s1_q12_optB",
+          "optionLabel": "(B)",
+          "word": "Magician",
+          "partOfSpeech": "n.",
+          "isCorrect": false,
+          "englishMeaning": "A person who performs magic tricks to entertain people. The magician pulled a rabbit out of his hat.",
+          "hindiMeaning": "जादूगर",
+          "exampleSentence": "",
+          "hindiTranslation": "",
+          "memoryTip": ""
+        },
+        {
+          "id": "owsp_s1_q12_optC",
+          "optionLabel": "(C)",
+          "word": "Rogue",
+          "partOfSpeech": "n.",
+          "isCorrect": false,
+          "englishMeaning": "A dishonest, unprincipled man (or a mischievous person). The rogue cheated many villagers of their savings. One Word Substitution - Meanings Workbook | Page 9",
+          "hindiMeaning": "बदाश / धूतर्थ",
+          "exampleSentence": "",
+          "hindiTranslation": "",
+          "memoryTip": ""
+        },
+        {
+          "id": "owsp_s1_q12_optD",
+          "optionLabel": "(D)",
+          "word": "Imposter n.",
+          "partOfSpeech": "",
+          "isCorrect": true,
+          "englishMeaning": "A person who pretends to be somebody else in order to deceive others.",
+          "hindiMeaning": "बहुरूपया / धोखेबाज़ (नक़ली पहिचान बताने वाला)",
+          "exampleSentence": "The police arrested an imposter who was posing as a doctor.",
+          "hindiTranslation": "पुलस ने एक बहुरूपये को गरफ़्तार कया जो ॉक्टर बनकर घू रहिा ा।",
+          "memoryTip": ""
+        }
+      ]
+    },
+    {
+      "id": "owsp_s1_q13",
+      "sheet": 1,
+      "questionNumber": 13,
+      "dayNumber": 13,
+      "questionText": "Words inscribed on tombs.",
+      "correctOptionLetter": "D",
+      "memoryTip": "Epi + taph (tomb). All four options start with 'Epi' - learn the differences carefully.",
+      "options": [
+        {
+          "id": "owsp_s1_q13_optA",
+          "optionLabel": "(A)",
+          "word": "Epistle",
+          "partOfSpeech": "n.",
+          "isCorrect": false,
+          "englishMeaning": "A letter, especially a long or formal one. Saint Paul wrote an epistle to the early Christians.",
+          "hindiMeaning": "पत्र / लंबा औपचारक पत्र",
+          "exampleSentence": "",
+          "hindiTranslation": "",
+          "memoryTip": ""
+        },
+        {
+          "id": "owsp_s1_q13_optB",
+          "optionLabel": "(B)",
+          "word": "Epitome",
+          "partOfSpeech": "n.",
+          "isCorrect": false,
+          "englishMeaning": "A perfect example of something; also a short summary.",
+          "hindiMeaning": "आदशर्थ उदाहिर / सार-संक्षेप",
+          "exampleSentence": "She is the epitome of kindness.",
+          "hindiTranslation": "",
+          "memoryTip": ""
+        },
+        {
+          "id": "owsp_s1_q13_optC",
+          "optionLabel": "(C)",
+          "word": "Epilogue",
+          "partOfSpeech": "n.",
+          "isCorrect": false,
+          "englishMeaning": "A short concluding section at the end of a book, play or film. The epilogue tells us what happened to the characters ten years later.",
+          "hindiMeaning": "उपसंहिार / अंत कन",
+          "exampleSentence": "",
+          "hindiTranslation": "",
+          "memoryTip": ""
+        },
+        {
+          "id": "owsp_s1_q13_optD",
+          "optionLabel": "(D)",
+          "word": "Epitaph n.",
+          "partOfSpeech": "",
+          "isCorrect": true,
+          "englishMeaning": "Words inscribed on a tomb or gravestone in memory of the dead.",
+          "hindiMeaning": "साध-लेख / कब्र पर लखे शब्द",
+          "exampleSentence": "His epitaph reads: 'He lived for others.'",
+          "hindiTranslation": "उसकी साध पर लखा हिै: 'वहि दूसरां क े लए जया।'",
+          "memoryTip": "Epi + taph (tomb). All four options start with 'Epi' - learn the differences carefully."
+        }
+      ]
+    },
+    {
+      "id": "owsp_s1_q14",
+      "sheet": 1,
+      "questionNumber": 14,
+      "dayNumber": 14,
+      "questionText": "A state in which the few govern the many.",
+      "correctOptionLetter": "A",
+      "memoryTip": "Oligo = few. Mono = one (king). Pluto = wealth. Auto = self/one person.",
+      "options": [
+        {
+          "id": "owsp_s1_q14_optA",
+          "optionLabel": "(A)",
+          "word": "Oligarchy n.",
+          "partOfSpeech": "",
+          "isCorrect": true,
+          "englishMeaning": "A state governed by a small group of people (the few rule over the many).",
+          "hindiMeaning": "अल्पतंत्र (क ु छ लोगां का शासन)",
+          "exampleSentence": "In an oligarchy, a handful of powerful families control the country.",
+          "hindiTranslation": "अल्पतंत्र ं ुट्ठी र शक्तशाली परवार देश को नयंत्रत करते हिैं।",
+          "memoryTip": "Oligo = few. Mono = one (king). Pluto = wealth. Auto = self/one person."
+        },
+        {
+          "id": "owsp_s1_q14_optB",
+          "optionLabel": "(B)",
+          "word": "Monarchy",
+          "partOfSpeech": "n.",
+          "isCorrect": false,
+          "englishMeaning": "A system in which a king or queen is the head of state.",
+          "hindiMeaning": "राजतंत्र",
+          "exampleSentence": "Nepal was a monarchy until 2008.",
+          "hindiTranslation": "",
+          "memoryTip": ""
+        },
+        {
+          "id": "owsp_s1_q14_optC",
+          "optionLabel": "(C)",
+          "word": "Plutocracy",
+          "partOfSpeech": "n.",
+          "isCorrect": false,
+          "englishMeaning": "A state governed by the rich (government by wealthy people). Critics say that money has turned the system into a plutocracy.",
+          "hindiMeaning": "धनक-तंत्र (अीरां का शासन)",
+          "exampleSentence": "",
+          "hindiTranslation": "",
+          "memoryTip": ""
+        },
+        {
+          "id": "owsp_s1_q14_optD",
+          "optionLabel": "(D)",
+          "word": "Autocracy",
+          "partOfSpeech": "n.",
+          "isCorrect": false,
+          "englishMeaning": "The country lived under an autocracy for forty years. One Word Substitution - Meanings Workbook | Page 10",
+          "hindiMeaning": "नरंक ु श शासन / तानाशाहिी (एक व्यक्त का पूर्थ अधकार)",
+          "exampleSentence": "Rule by a single person with absolute power.",
+          "hindiTranslation": "",
+          "memoryTip": ""
+        }
+      ]
+    },
+    {
+      "id": "owsp_s1_q15",
+      "sheet": 1,
+      "questionNumber": 15,
+      "dayNumber": 15,
+      "questionText": "A child born after the death of his Father.",
+      "correctOptionLetter": "A",
+      "memoryTip": "",
+      "options": [
+        {
+          "id": "owsp_s1_q15_optA",
+          "optionLabel": "(A)",
+          "word": "Posthumous adj.",
+          "partOfSpeech": "",
+          "isCorrect": true,
+          "englishMeaning": "Happening or born after a person's death (e.g., a child born after the father's death, or an award given after death).",
+          "hindiMeaning": "रोपरांत (ृत्यु क े बाद का)",
+          "exampleSentence": "He was awarded a posthumous gallantry medal.",
+          "hindiTranslation": "उन्हिं रोपरांत वीरता पदक से सम्ानत कया गया।",
+          "memoryTip": ""
+        },
+        {
+          "id": "owsp_s1_q15_optB",
+          "optionLabel": "(B)",
+          "word": "Infant",
+          "partOfSpeech": "n.",
+          "isCorrect": false,
+          "englishMeaning": "A very young child or baby. The infant slept peacefully in its mother's lap.",
+          "hindiMeaning": "शशु / नवजात बच्चा",
+          "exampleSentence": "",
+          "hindiTranslation": "",
+          "memoryTip": ""
+        },
+        {
+          "id": "owsp_s1_q15_optC",
+          "optionLabel": "(C)",
+          "word": "Orphan",
+          "partOfSpeech": "n.",
+          "isCorrect": false,
+          "englishMeaning": "A child whose parents are both dead. The orphan was raised in a shelter home.",
+          "hindiMeaning": "अना",
+          "exampleSentence": "",
+          "hindiTranslation": "",
+          "memoryTip": ""
+        },
+        {
+          "id": "owsp_s1_q15_optD",
+          "optionLabel": "(D)",
+          "word": "Progenitor",
+          "partOfSpeech": "n.",
+          "isCorrect": false,
+          "englishMeaning": "An ancestor or forefather; the originator of a line of descendants. Adam is considered the progenitor of the human race.",
+          "hindiMeaning": "पूवर्थज / जनक",
+          "exampleSentence": "",
+          "hindiTranslation": "",
+          "memoryTip": ""
+        }
+      ]
+    },
+    {
+      "id": "owsp_s1_q16",
+      "sheet": 1,
+      "questionNumber": 16,
+      "dayNumber": 16,
+      "questionText": "Code of diplomatic etiquette and precedence",
+      "correctOptionLetter": "D",
+      "memoryTip": "",
+      "options": [
+        {
+          "id": "owsp_s1_q16_optA",
+          "optionLabel": "(A)",
+          "word": "Hierarchy",
+          "partOfSpeech": "n.",
+          "isCorrect": false,
+          "englishMeaning": "A system in which people are ranked one above another according to status or authority. In the army, the hierarchy runs from soldier to general.",
+          "hindiMeaning": "पदानुक्र (ऊ ँ च-नीच की श्रेी)",
+          "exampleSentence": "",
+          "hindiTranslation": "",
+          "memoryTip": ""
+        },
+        {
+          "id": "owsp_s1_q16_optB",
+          "optionLabel": "(B)",
+          "word": "Statesmanship",
+          "partOfSpeech": "n.",
+          "isCorrect": false,
+          "englishMeaning": "Skill and wisdom in managing public or national affairs. His statesmanship saved the country from a war.",
+          "hindiMeaning": "राजनेता जैसी क ु शलता / राजनयक सूझ-बूझ",
+          "exampleSentence": "",
+          "hindiTranslation": "",
+          "memoryTip": ""
+        },
+        {
+          "id": "owsp_s1_q16_optC",
+          "optionLabel": "(C)",
+          "word": "Formalism",
+          "partOfSpeech": "n.",
+          "isCorrect": false,
+          "englishMeaning": "Strict attention to outward forms, rules and ceremony. Too much formalism slows down office work. One Word Substitution - Meanings Workbook | Page 11",
+          "hindiMeaning": "औपचारकतावाद (नयां/रीतयां पर अत्यधक ज़ोर)",
+          "exampleSentence": "",
+          "hindiTranslation": "",
+          "memoryTip": ""
+        },
+        {
+          "id": "owsp_s1_q16_optD",
+          "optionLabel": "(D)",
+          "word": "Protocol n.",
+          "partOfSpeech": "",
+          "isCorrect": true,
+          "englishMeaning": "The official code of rules for diplomatic etiquette and precedence (who comes first, how to behave).",
+          "hindiMeaning": "राजनयक शष्टाचार / प्रोटोकॉल",
+          "exampleSentence": "The visiting president was welcomed according to diplomatic protocol.",
+          "hindiTranslation": "आए हुए राष्ट्रपत का स्वागत राजनयक प्रोटोकॉल क े अनुसार कया गया।",
+          "memoryTip": ""
+        }
+      ]
+    },
+    {
+      "id": "owsp_s1_q17",
+      "sheet": 1,
+      "questionNumber": 17,
+      "dayNumber": 17,
+      "questionText": "Person interested in collecting studying and selling of the old things.",
+      "correctOptionLetter": "C",
+      "memoryTip": "Antique + -arian.",
+      "options": [
+        {
+          "id": "owsp_s1_q17_optA",
+          "optionLabel": "(A)",
+          "word": "Crank",
+          "partOfSpeech": "n.",
+          "isCorrect": false,
+          "englishMeaning": "Everyone thought he was a crank for believing in such ideas.",
+          "hindiMeaning": "सनकी / झक्की आदी",
+          "exampleSentence": "An eccentric person with strange ideas or habits.",
+          "hindiTranslation": "",
+          "memoryTip": ""
+        },
+        {
+          "id": "owsp_s1_q17_optB",
+          "optionLabel": "(B)",
+          "word": "Junk dealer",
+          "partOfSpeech": "n.",
+          "isCorrect": false,
+          "englishMeaning": "A person who buys and sells scrap, old worthless goods. The junk dealer bought our old newspapers and bottles.",
+          "hindiMeaning": "कबाड़ी",
+          "exampleSentence": "",
+          "hindiTranslation": "",
+          "memoryTip": ""
+        },
+        {
+          "id": "owsp_s1_q17_optC",
+          "optionLabel": "(C)",
+          "word": "Antiquarian n.",
+          "partOfSpeech": "",
+          "isCorrect": true,
+          "englishMeaning": "One who collects, studies and sells old and ancient things (antiques, rare old books).",
+          "hindiMeaning": "पुरावस्तु-संग्राहिक / पुरानी वस्तुआं का शौकीन व वक्र े ता",
+          "exampleSentence": "The antiquarian sold me a 200-year-old map.",
+          "hindiTranslation": "पुरावस्तु-वक्र े ता ने ुझे 200 साल पुराना नक्शा बेचा।",
+          "memoryTip": "Antique + -arian."
+        },
+        {
+          "id": "owsp_s1_q17_optD",
+          "optionLabel": "(D)",
+          "word": "Archeologist",
+          "partOfSpeech": "n.",
+          "isCorrect": false,
+          "englishMeaning": "A scientist who studies ancient civilisations by digging up and examining remains. (Studies - but does not collect and sell.) Archeologists discovered an ancient city under the sand.",
+          "hindiMeaning": "पुरातत्ववेत्तिा",
+          "exampleSentence": "",
+          "hindiTranslation": "",
+          "memoryTip": ""
+        }
+      ]
+    },
+    {
+      "id": "owsp_s1_q18",
+      "sheet": 1,
+      "questionNumber": 18,
+      "dayNumber": 18,
+      "questionText": "Practice of having more than one husband at the same time.",
+      "correctOptionLetter": "A",
+      "memoryTip": "Poly = many; andr = man/husband. Gyn = woman/wife (polygyny = many wives).",
+      "options": [
+        {
+          "id": "owsp_s1_q18_optA",
+          "optionLabel": "(A)",
+          "word": "Polyandry n.",
+          "partOfSpeech": "",
+          "isCorrect": true,
+          "englishMeaning": "The practice of having more than one husband at the same time.",
+          "hindiMeaning": "बहुपतत्व (एक स्त्री क े कर्थ पत)",
+          "exampleSentence": "Polyandry is still practised in some tribes of the Himalayas.",
+          "hindiTranslation": "हिालय की क ु छ जनजातयां ं आज ी बहुपतत्व का चलन हिै।",
+          "memoryTip": "Poly = many; andr = man/husband. Gyn = woman/wife (polygyny = many wives)."
+        },
+        {
+          "id": "owsp_s1_q18_optB",
+          "optionLabel": "(B)",
+          "word": "Polyphony",
+          "partOfSpeech": "n.",
+          "isCorrect": false,
+          "englishMeaning": "Music in which many voices/melodies are sung or played together. The choir's polyphony filled the church.",
+          "hindiMeaning": "बहुस्वरता (कर्थ स्वरां का एक सा गायन)",
+          "exampleSentence": "",
+          "hindiTranslation": "",
+          "memoryTip": ""
+        },
+        {
+          "id": "owsp_s1_q18_optC",
+          "optionLabel": "(C)",
+          "word": "Polygyny",
+          "partOfSpeech": "n.",
+          "isCorrect": false,
+          "englishMeaning": "The practice of having more than one wife at the same time. Polygyny was common among ancient kings.",
+          "hindiMeaning": "बहुपत्नीत्व (एक पुरुष की कर्थ पत्नयाँ)",
+          "exampleSentence": "",
+          "hindiTranslation": "",
+          "memoryTip": ""
+        },
+        {
+          "id": "owsp_s1_q18_optD",
+          "optionLabel": "(D)",
+          "word": "Polychromy",
+          "partOfSpeech": "n.",
+          "isCorrect": false,
+          "englishMeaning": "The use of many colours in decoration (e.g., painted statues). The temple walls display beautiful polychromy. One Word Substitution - Meanings Workbook | Page 12",
+          "hindiMeaning": "बहुरंगी सजावट",
+          "exampleSentence": "",
+          "hindiTranslation": "",
+          "memoryTip": ""
+        }
+      ]
+    },
+    {
+      "id": "owsp_s1_q19",
+      "sheet": 1,
+      "questionNumber": 19,
+      "dayNumber": 19,
+      "questionText": "Murder of a brother.",
+      "correctOptionLetter": "D",
+      "memoryTip": "Frater = brother. Patri = father, Regi = king, Homo = human. The suffix -cide = killing.",
+      "options": [
+        {
+          "id": "owsp_s1_q19_optA",
+          "optionLabel": "(A)",
+          "word": "Patricide",
+          "partOfSpeech": "n.",
+          "isCorrect": false,
+          "englishMeaning": "In the tragedy, the prince is guilty of patricide.",
+          "hindiMeaning": "पतृहित्या",
+          "exampleSentence": "The killing of one's own father.",
+          "hindiTranslation": "",
+          "memoryTip": ""
+        },
+        {
+          "id": "owsp_s1_q19_optB",
+          "optionLabel": "(B)",
+          "word": "Homicide",
+          "partOfSpeech": "n.",
+          "isCorrect": false,
+          "englishMeaning": "The killing of one human being by another (general word). The police registered a case of homicide.",
+          "hindiMeaning": "ानव-हित्या",
+          "exampleSentence": "",
+          "hindiTranslation": "",
+          "memoryTip": ""
+        },
+        {
+          "id": "owsp_s1_q19_optC",
+          "optionLabel": "(C)",
+          "word": "Regicide",
+          "partOfSpeech": "n.",
+          "isCorrect": false,
+          "englishMeaning": "The regicide shocked the entire kingdom.",
+          "hindiMeaning": "राजहित्या",
+          "exampleSentence": "The killing of a king (or the person who kills a king).",
+          "hindiTranslation": "",
+          "memoryTip": ""
+        },
+        {
+          "id": "owsp_s1_q19_optD",
+          "optionLabel": "(D)",
+          "word": "Fratricide n.",
+          "partOfSpeech": "",
+          "isCorrect": true,
+          "englishMeaning": "The killing of one's own brother (or sister).",
+          "hindiMeaning": "भ्रातृहित्या (ार्थ की हित्या)",
+          "exampleSentence": "Cain's murder of Abel is the first fratricide in the Bible.",
+          "hindiTranslation": "बाबल ं कान द्वारा हिाबल की हित्या पहिली भ्रातृहित्या हिै।",
+          "memoryTip": "Frater = brother. Patri = father, Regi = king, Homo = human. The suffix -cide = killing."
+        }
+      ]
+    },
+    {
+      "id": "owsp_s1_q20",
+      "sheet": 1,
+      "questionNumber": 20,
+      "dayNumber": 20,
+      "questionText": "To take secretly in small quantities",
+      "correctOptionLetter": "B",
+      "memoryTip": "",
+      "options": [
+        {
+          "id": "owsp_s1_q20_optA",
+          "optionLabel": "(A)",
+          "word": "Theft",
+          "partOfSpeech": "n.",
+          "isCorrect": false,
+          "englishMeaning": "The theft of her bag occurred in the crowded market.",
+          "hindiMeaning": "चोरी",
+          "exampleSentence": "The general act of stealing someone's property.",
+          "hindiTranslation": "",
+          "memoryTip": ""
+        },
+        {
+          "id": "owsp_s1_q20_optB",
+          "optionLabel": "(B)",
+          "word": "Pilferage n.",
+          "partOfSpeech": "",
+          "isCorrect": true,
+          "englishMeaning": "Stealing small quantities, little by little (secretly).",
+          "hindiMeaning": "छोटी-छोटी ात्रा ं चोरी / चुराना",
+          "exampleSentence": "Pilferage by workers caused heavy losses to the warehouse.",
+          "hindiTranslation": "कर्थचारयां द्वारा की गर्थ छोटी-छोटी चोरयां से गोदा को ारी नुकसान हुआ।",
+          "memoryTip": ""
+        },
+        {
+          "id": "owsp_s1_q20_optC",
+          "optionLabel": "(C)",
+          "word": "Robbery",
+          "partOfSpeech": "n.",
+          "isCorrect": false,
+          "englishMeaning": "Three armed men committed a bank robbery.",
+          "hindiMeaning": "क ै ती / लूट",
+          "exampleSentence": "Theft done with force or by threatening a person.",
+          "hindiTranslation": "",
+          "memoryTip": ""
+        },
+        {
+          "id": "owsp_s1_q20_optD",
+          "optionLabel": "(D)",
+          "word": "Defalcation",
+          "partOfSpeech": "n.",
+          "isCorrect": false,
+          "englishMeaning": "Misuse or theft of money that has been entrusted to one (embezzlement). The cashier was jailed for defalcation of company funds. One Word Substitution - Meanings Workbook | Page 13",
+          "hindiMeaning": "गबन (साैंपे गए धन का ग़लत उपयोग)",
+          "exampleSentence": "",
+          "hindiTranslation": "",
+          "memoryTip": ""
+        }
+      ]
+    },
+    {
+      "id": "owsp_s1_q21",
+      "sheet": 1,
+      "questionNumber": 21,
+      "dayNumber": 21,
+      "questionText": "A Christian mass in memory of a dead person",
+      "correctOptionLetter": "A",
+      "memoryTip": "",
+      "options": [
+        {
+          "id": "owsp_s1_q21_optA",
+          "optionLabel": "(A)",
+          "word": "Requiem n.",
+          "partOfSpeech": "",
+          "isCorrect": true,
+          "englishMeaning": "A Christian mass (church service) held in memory of a dead person; also music for it.",
+          "hindiMeaning": "ृतक की स्ृत ं र्थसार्थ प्रार्थना सा / शोक-प्रार्थना",
+          "exampleSentence": "A requiem was held for the victims of the accident.",
+          "hindiTranslation": "दुघर्थटना क े पीड़तां की स्ृत ं एक शोक-प्रार्थना सा हुर्थ।",
+          "memoryTip": ""
+        },
+        {
+          "id": "owsp_s1_q21_optB",
+          "optionLabel": "(B)",
+          "word": "Obsequies",
+          "partOfSpeech": "n.",
+          "isCorrect": false,
+          "englishMeaning": "The obsequies of the great leader were attended by millions.",
+          "hindiMeaning": "अंत्येष्ट संस्कार",
+          "exampleSentence": "Funeral rites or ceremonies.",
+          "hindiTranslation": "",
+          "memoryTip": ""
+        },
+        {
+          "id": "owsp_s1_q21_optC",
+          "optionLabel": "(C)",
+          "word": "Funeral",
+          "partOfSpeech": "n.",
+          "isCorrect": false,
+          "englishMeaning": "The ceremony of burying or cremating a dead person. Hundreds of villagers came to attend the funeral.",
+          "hindiMeaning": "अंत संस्कार / जनाज़ा",
+          "exampleSentence": "",
+          "hindiTranslation": "",
+          "memoryTip": ""
+        },
+        {
+          "id": "owsp_s1_q21_optD",
+          "optionLabel": "(D)",
+          "word": "Litany",
+          "partOfSpeech": "n.",
+          "isCorrect": false,
+          "englishMeaning": "A series of prayers said in turn by a priest and the congregation; also a long, boring list of complaints. He gave me a long litany of complaints about his job.",
+          "hindiMeaning": "प्रार्थनाआं की श्रृंखला / दोहिरार्थ जाने वाली लंबी सूची",
+          "exampleSentence": "",
+          "hindiTranslation": "",
+          "memoryTip": ""
+        }
+      ]
+    },
+    {
+      "id": "owsp_s1_q22",
+      "sheet": 1,
+      "questionNumber": 22,
+      "dayNumber": 22,
+      "questionText": "Something which is fit for being eaten",
+      "correctOptionLetter": "C",
+      "memoryTip": "Related: Inedible = not fit to be eaten.",
+      "options": [
+        {
+          "id": "owsp_s1_q22_optA",
+          "optionLabel": "(A)",
+          "word": "Fodder",
+          "partOfSpeech": "n.",
+          "isCorrect": false,
+          "englishMeaning": "The farmer stored fodder for his cows for the winter.",
+          "hindiMeaning": "चारा (पशुआं का ोजन)",
+          "exampleSentence": "Food (hay, straw) for cattle and farm animals.",
+          "hindiTranslation": "",
+          "memoryTip": ""
+        },
+        {
+          "id": "owsp_s1_q22_optB",
+          "optionLabel": "(B)",
+          "word": "Menu",
+          "partOfSpeech": "n.",
+          "isCorrect": false,
+          "englishMeaning": "A list of dishes available in a restaurant.",
+          "hindiMeaning": "ेन्यू / ोजन-सूची",
+          "exampleSentence": "The waiter handed us the menu.",
+          "hindiTranslation": "",
+          "memoryTip": ""
+        },
+        {
+          "id": "owsp_s1_q22_optC",
+          "optionLabel": "(C)",
+          "word": "Edible adj.",
+          "partOfSpeech": "",
+          "isCorrect": true,
+          "englishMeaning": "Fit or safe to be eaten.",
+          "hindiMeaning": "खाने योग्य",
+          "exampleSentence": "These mushrooms are not edible; they are poisonous.",
+          "hindiTranslation": "ये शरू खाने योग्य नहिीं हिैं; ये ज़हिरीले हिैं।",
+          "memoryTip": "Related: Inedible = not fit to be eaten."
+        },
+        {
+          "id": "owsp_s1_q22_optD",
+          "optionLabel": "(D)",
+          "word": "Gastronome",
+          "partOfSpeech": "n.",
+          "isCorrect": false,
+          "englishMeaning": "A person who loves and appreciates good food (a gourmet). As a gastronome, he travels the world to taste local dishes. One Word Substitution - Meanings Workbook | Page 14",
+          "hindiMeaning": "खाने का शौकीन / स्वादष्ट ोजन का पारखी",
+          "exampleSentence": "",
+          "hindiTranslation": "",
+          "memoryTip": ""
+        }
+      ]
+    },
+    {
+      "id": "owsp_s1_q23",
+      "sheet": 1,
+      "questionNumber": 23,
+      "dayNumber": 23,
+      "questionText": "Of a speech made without preparation",
+      "correctOptionLetter": "A",
+      "memoryTip": "",
+      "options": [
+        {
+          "id": "owsp_s1_q23_optA",
+          "optionLabel": "(A)",
+          "word": "Impromptu adj./adv.",
+          "partOfSpeech": "",
+          "isCorrect": true,
+          "englishMeaning": "Done without any preparation or planning (spontaneous).",
+          "hindiMeaning": "तात्कालक / बना तैयारी का",
+          "exampleSentence": "He gave an impromptu speech at the farewell party.",
+          "hindiTranslation": "उसने वदार्थ सारोहि ं बना तैयारी का ाष दया।",
+          "memoryTip": ""
+        },
+        {
+          "id": "owsp_s1_q23_optB",
+          "optionLabel": "(B)",
+          "word": "Oration",
+          "partOfSpeech": "n.",
+          "isCorrect": false,
+          "englishMeaning": "A formal, dignified public speech. The oration at the memorial moved everybody to tears.",
+          "hindiMeaning": "औपचारक ाष / व्याख्यान",
+          "exampleSentence": "",
+          "hindiTranslation": "",
+          "memoryTip": ""
+        },
+        {
+          "id": "owsp_s1_q23_optC",
+          "optionLabel": "(C)",
+          "word": "Elocution",
+          "partOfSpeech": "n.",
+          "isCorrect": false,
+          "englishMeaning": "The art of clear and expressive public speaking (pronunciation and delivery). She won the elocution contest at school.",
+          "hindiMeaning": "वक्तृत्व कला / उच्चार की शैली",
+          "exampleSentence": "",
+          "hindiTranslation": "",
+          "memoryTip": ""
+        },
+        {
+          "id": "owsp_s1_q23_optD",
+          "optionLabel": "(D)",
+          "word": "Declamation",
+          "partOfSpeech": "n.",
+          "isCorrect": false,
+          "englishMeaning": "A passionate, rehearsed speech or recitation delivered with rhetorical force. The students took part in the declamation contest.",
+          "hindiMeaning": "ओजस्वी ाष / नाटकीय पाठ",
+          "exampleSentence": "",
+          "hindiTranslation": "",
+          "memoryTip": ""
+        }
+      ]
+    },
+    {
+      "id": "owsp_s1_q24",
+      "sheet": 1,
+      "questionNumber": 24,
+      "dayNumber": 24,
+      "questionText": "A person who assails cherished beliefs",
+      "correctOptionLetter": "B",
+      "memoryTip": "",
+      "options": [
+        {
+          "id": "owsp_s1_q24_optA",
+          "optionLabel": "(A)",
+          "word": "Ruffian",
+          "partOfSpeech": "n.",
+          "isCorrect": false,
+          "englishMeaning": "A violent, lawless person (a rowdy or thug). A group of ruffians attacked the shopkeeper.",
+          "hindiMeaning": "गुंा / उपद्रवी",
+          "exampleSentence": "",
+          "hindiTranslation": "",
+          "memoryTip": ""
+        },
+        {
+          "id": "owsp_s1_q24_optB",
+          "optionLabel": "(B)",
+          "word": "Iconoclast n.",
+          "partOfSpeech": "",
+          "isCorrect": true,
+          "englishMeaning": "A person who attacks and criticises cherished beliefs, customs and traditions (originally one who destroys idols).",
+          "hindiMeaning": "ूतंंजक / परंपराआं पर प्रहिार करने वाला",
+          "exampleSentence": "Raja Ram Mohan Roy was an iconoclast who challenged old social customs.",
+          "hindiTranslation": "राजा राोहिन राय एक ूतंंजक (परंपरा-वरोधी) े जन्हिांने पुरानी सााजक रीतयां को चुनौती दी।",
+          "memoryTip": ""
+        },
+        {
+          "id": "owsp_s1_q24_optC",
+          "optionLabel": "(C)",
+          "word": "Atheist",
+          "partOfSpeech": "n.",
+          "isCorrect": false,
+          "englishMeaning": "A person who does not believe in the existence of God. Being an atheist, he never visits temples.",
+          "hindiMeaning": "नास्तक",
+          "exampleSentence": "",
+          "hindiTranslation": "",
+          "memoryTip": ""
+        },
+        {
+          "id": "owsp_s1_q24_optD",
+          "optionLabel": "(D)",
+          "word": "Rebel",
+          "partOfSpeech": "n.",
+          "isCorrect": false,
+          "englishMeaning": "A person who rises against authority or government. One Word Substitution - Meanings Workbook | Page 15",
+          "hindiMeaning": "वद्रोहिी",
+          "exampleSentence": "The rebels captured the fort.",
+          "hindiTranslation": "",
+          "memoryTip": ""
+        }
+      ]
+    },
+    {
+      "id": "owsp_s1_q25",
+      "sheet": 1,
+      "questionNumber": 25,
+      "dayNumber": 25,
+      "questionText": "Lasting for a very short time",
+      "correctOptionLetter": "D",
+      "memoryTip": "On the sheet, option D is written as 'transient/Ephemeral' - both mean 'lasting for a very short time'.",
+      "options": [
+        {
+          "id": "owsp_s1_q25_optA",
+          "optionLabel": "(A)",
+          "word": "Nascent",
+          "partOfSpeech": "adj.",
+          "isCorrect": false,
+          "englishMeaning": "India's nascent startup culture is growing quickly.",
+          "hindiMeaning": "उरता हुआ / नवोदत",
+          "exampleSentence": "Just beginning to exist or develop (newly born).",
+          "hindiTranslation": "",
+          "memoryTip": ""
+        },
+        {
+          "id": "owsp_s1_q25_optB",
+          "optionLabel": "(B)",
+          "word": "Temporary",
+          "partOfSpeech": "adj.",
+          "isCorrect": false,
+          "englishMeaning": "Lasting for only a limited time, not permanent (not necessarily very short). He took a temporary job for three months.",
+          "hindiMeaning": "अस्ायी",
+          "exampleSentence": "",
+          "hindiTranslation": "",
+          "memoryTip": ""
+        },
+        {
+          "id": "owsp_s1_q25_optC",
+          "optionLabel": "(C)",
+          "word": "Embryonic",
+          "partOfSpeech": "adj.",
+          "isCorrect": false,
+          "englishMeaning": "In the very early stage of development (like an embryo). The plan is still in an embryonic stage.",
+          "hindiMeaning": "आरंक अवस्ा का / भ्रूीय",
+          "exampleSentence": "",
+          "hindiTranslation": "",
+          "memoryTip": ""
+        },
+        {
+          "id": "owsp_s1_q25_optD",
+          "optionLabel": "(D)",
+          "word": "Transient adj.",
+          "partOfSpeech": "",
+          "isCorrect": true,
+          "englishMeaning": "Lasting for only a very short time; passing quickly.",
+          "hindiMeaning": "क्षक / अल्पकालक",
+          "exampleSentence": "Fame in the film industry is often transient.",
+          "hindiTranslation": "फ़ल् उद्योग ं प्रसद्धि अक्सर क्षक हिोती हिै। Also written on sheet: Ephemeral (adj.) - Lasting for a very short time (the word the sir has also written beside Transient). क्षंगुर / बहुत क सय टकने वाला Example: The beauty of the cherry blossoms is ephemeral.",
+          "memoryTip": "On the sheet, option D is written as 'transient/Ephemeral' - both mean 'lasting for a very short time'."
+        }
+      ]
+    },
+    {
+      "id": "owsp_s1_q26",
+      "sheet": 1,
+      "questionNumber": 26,
+      "dayNumber": 26,
+      "questionText": "Secretly listening to others' conversation",
+      "correctOptionLetter": "C",
+      "memoryTip": "",
+      "options": [
+        {
+          "id": "owsp_s1_q26_optA",
+          "optionLabel": "(A)",
+          "word": "Overhearing",
+          "partOfSpeech": "",
+          "isCorrect": false,
+          "englishMeaning": "n./v. Hearing something by accident, without meaning to listen. I was overhearing their talk on the bus by chance.",
+          "hindiMeaning": "अचानक/संयोग से सुन लेना",
+          "exampleSentence": "",
+          "hindiTranslation": "",
+          "memoryTip": ""
+        },
+        {
+          "id": "owsp_s1_q26_optB",
+          "optionLabel": "(B)",
+          "word": "Pigeonholing",
+          "partOfSpeech": "",
+          "isCorrect": false,
+          "englishMeaning": "n./v. Putting a person or thing in a narrow category, usually unfairly. Pigeonholing students by their marks is unfair.",
+          "hindiMeaning": "कसी को एक ख़ास खाँचे/श्रेी ं ाल देना",
+          "exampleSentence": "",
+          "hindiTranslation": "",
+          "memoryTip": ""
+        },
+        {
+          "id": "owsp_s1_q26_optC",
+          "optionLabel": "(C)",
+          "word": "Eavesdropping n./v.",
+          "partOfSpeech": "",
+          "isCorrect": true,
+          "englishMeaning": "Secretly listening to the private conversation of others.",
+          "hindiMeaning": "छपकर दूसरां की बात सुनना",
+          "exampleSentence": "She was caught eavesdropping outside the principal's room.",
+          "hindiTranslation": "वहि प्रंसपल क े करे क े बाहिर छपकर बातं सुनते पकड़ी गर्थ।",
+          "memoryTip": ""
+        },
+        {
+          "id": "owsp_s1_q26_optD",
+          "optionLabel": "(D)",
+          "word": "Spying",
+          "partOfSpeech": "",
+          "isCorrect": false,
+          "englishMeaning": "n./v. Secretly collecting information about a person, group or country. He was arrested for spying for a foreign country. One Word Substitution - Meanings Workbook | Page 16",
+          "hindiMeaning": "जासूसी करना",
+          "exampleSentence": "",
+          "hindiTranslation": "",
+          "memoryTip": ""
+        }
+      ]
+    },
+    {
+      "id": "owsp_s1_q27",
+      "sheet": 1,
+      "questionNumber": 27,
+      "dayNumber": 27,
+      "questionText": "A Remedy for all Diseases.",
+      "correctOptionLetter": "A",
+      "memoryTip": "",
+      "options": [
+        {
+          "id": "owsp_s1_q27_optA",
+          "optionLabel": "(A)",
+          "word": "Panacea n.",
+          "partOfSpeech": "",
+          "isCorrect": true,
+          "englishMeaning": "A remedy that cures all diseases or solves all problems.",
+          "hindiMeaning": "राबा औषध / सवर्थरोगहिर उपाय",
+          "exampleSentence": "There is no panacea for unemployment.",
+          "hindiTranslation": "बेरोज़गारी का कोर्थ राबा लाज नहिीं हिै।",
+          "memoryTip": ""
+        },
+        {
+          "id": "owsp_s1_q27_optB",
+          "optionLabel": "(B)",
+          "word": "Marvel",
+          "partOfSpeech": "n.",
+          "isCorrect": false,
+          "englishMeaning": "A wonderful, astonishing thing. The Taj Mahal is a marvel of architecture.",
+          "hindiMeaning": "चत्कार / अद्भुत वस्तु",
+          "exampleSentence": "",
+          "hindiTranslation": "",
+          "memoryTip": ""
+        },
+        {
+          "id": "owsp_s1_q27_optC",
+          "optionLabel": "(C)",
+          "word": "Stoic",
+          "partOfSpeech": "n./adj.",
+          "isCorrect": false,
+          "englishMeaning": "A person who endures pain and hardship calmly, without complaining. He remained stoic even after hearing the bad news.",
+          "hindiMeaning": "सहिनशील / सुख-दुःख ं सान रहिने वाला",
+          "exampleSentence": "",
+          "hindiTranslation": "",
+          "memoryTip": ""
+        },
+        {
+          "id": "owsp_s1_q27_optD",
+          "optionLabel": "(D)",
+          "word": "Recompense",
+          "partOfSpeech": "",
+          "isCorrect": false,
+          "englishMeaning": "n./v. He received no recompense for his years of hard work.",
+          "hindiMeaning": "क्षतपूतं / प्रतफल",
+          "exampleSentence": "Payment or compensation given for a loss or effort.",
+          "hindiTranslation": "",
+          "memoryTip": ""
+        }
+      ]
+    },
+    {
+      "id": "owsp_s1_q28",
+      "sheet": 1,
+      "questionNumber": 28,
+      "dayNumber": 28,
+      "questionText": "A Person appointed by parties to settle the disputes between them.",
+      "correctOptionLetter": "D",
+      "memoryTip": "",
+      "options": [
+        {
+          "id": "owsp_s1_q28_optA",
+          "optionLabel": "(A)",
+          "word": "Middleman",
+          "partOfSpeech": "n.",
+          "isCorrect": false,
+          "englishMeaning": "A person who acts as an intermediary between a buyer and a seller. Farmers sell directly to avoid the middleman.",
+          "hindiMeaning": "बचौलया / दलाल",
+          "exampleSentence": "",
+          "hindiTranslation": "",
+          "memoryTip": ""
+        },
+        {
+          "id": "owsp_s1_q28_optB",
+          "optionLabel": "(B)",
+          "word": "Lawyer",
+          "partOfSpeech": "n.",
+          "isCorrect": false,
+          "englishMeaning": "A professional who gives legal advice and represents clients in court. The lawyer argued the case before the judge.",
+          "hindiMeaning": "वकील",
+          "exampleSentence": "",
+          "hindiTranslation": "",
+          "memoryTip": ""
+        },
+        {
+          "id": "owsp_s1_q28_optC",
+          "optionLabel": "(C)",
+          "word": "Judge",
+          "partOfSpeech": "n.",
+          "isCorrect": false,
+          "englishMeaning": "An officer who hears cases in a court and gives the verdict. The judge sentenced the accused to five years in jail. One Word Substitution - Meanings Workbook | Page 17",
+          "hindiMeaning": "न्यायाधीश",
+          "exampleSentence": "",
+          "hindiTranslation": "",
+          "memoryTip": ""
+        },
+        {
+          "id": "owsp_s1_q28_optD",
+          "optionLabel": "(D)",
+          "word": "Arbitrator n.",
+          "partOfSpeech": "",
+          "isCorrect": true,
+          "englishMeaning": "An independent person chosen by both parties to settle a dispute between them.",
+          "hindiMeaning": "ध्यस् / पंच (ववाद सुलझाने वाला)",
+          "exampleSentence": "An arbitrator was appointed to settle the dispute between the two companies.",
+          "hindiTranslation": "दोनां क ं पनयां क े बीच ववाद सुलझाने क े लए एक ध्यस् नयुक्त कया गया।",
+          "memoryTip": ""
+        }
+      ]
+    },
+    {
+      "id": "owsp_s1_q29",
+      "sheet": 1,
+      "questionNumber": 29,
+      "dayNumber": 29,
+      "questionText": "An introduction that comes before something we say/write.",
+      "correctOptionLetter": "A",
+      "memoryTip": "Pro = before; logue = speech. Opposite: Epilogue.",
+      "options": [
+        {
+          "id": "owsp_s1_q29_optA",
+          "optionLabel": "(A)",
+          "word": "Prologue n.",
+          "partOfSpeech": "",
+          "isCorrect": true,
+          "englishMeaning": "An introduction that comes before a play, book or speech.",
+          "hindiMeaning": "प्रस्तावना / ूका",
+          "exampleSentence": "The prologue of the play introduces the main characters.",
+          "hindiTranslation": "नाटक की प्रस्तावना ुख्य पात्रां का परचय कराती हिै।",
+          "memoryTip": "Pro = before; logue = speech. Opposite: Epilogue."
+        },
+        {
+          "id": "owsp_s1_q29_optB",
+          "optionLabel": "(B)",
+          "word": "Prediction",
+          "partOfSpeech": "n.",
+          "isCorrect": false,
+          "englishMeaning": "A statement about what will happen in the future. His prediction about the match came true.",
+          "hindiMeaning": "वष्यवाी / पूवार्थनुान",
+          "exampleSentence": "",
+          "hindiTranslation": "",
+          "memoryTip": ""
+        },
+        {
+          "id": "owsp_s1_q29_optC",
+          "optionLabel": "(C)",
+          "word": "Review",
+          "partOfSpeech": "n.",
+          "isCorrect": false,
+          "englishMeaning": "A critical evaluation of a book, film or performance (or a re-examination). The film got a good review in the newspaper.",
+          "hindiMeaning": "सीक्षा",
+          "exampleSentence": "",
+          "hindiTranslation": "",
+          "memoryTip": ""
+        },
+        {
+          "id": "owsp_s1_q29_optD",
+          "optionLabel": "(D)",
+          "word": "Premonition",
+          "partOfSpeech": "n.",
+          "isCorrect": false,
+          "englishMeaning": "A strong feeling that something (usually bad) is going to happen. She had a premonition that something terrible would occur. One Word Substitution - Meanings Workbook | Page 18",
+          "hindiMeaning": "पूवार्थास (अनहिोनी की आशंका)",
+          "exampleSentence": "",
+          "hindiTranslation": "",
+          "memoryTip": ""
+        }
+      ]
+    },
+    {
+      "id": "owsp_s2_q1",
+      "sheet": 2,
+      "questionNumber": 1,
+      "dayNumber": 30,
+      "questionText": "A person who renounces the world and practices self-discipline in order to attain salvation.",
+      "correctOptionLetter": "B",
+      "memoryTip": "",
+      "options": [
+        {
+          "id": "owsp_s2_q1_optA",
+          "optionLabel": "(A)",
+          "word": "Skeptic",
+          "partOfSpeech": "n.",
+          "isCorrect": false,
+          "englishMeaning": "A person who doubts accepted beliefs or claims and asks for proof. The skeptic refused to believe the story until he saw proof.",
+          "hindiMeaning": "संशयवादी / हिर बात पर शक करने वाला",
+          "exampleSentence": "",
+          "hindiTranslation": "",
+          "memoryTip": ""
+        },
+        {
+          "id": "owsp_s2_q1_optB",
+          "optionLabel": "(B)",
+          "word": "Ascetic n./adj.",
+          "partOfSpeech": "",
+          "isCorrect": true,
+          "englishMeaning": "A person who renounces worldly pleasures and practises strict self-discipline in order to attain spiritual salvation.",
+          "hindiMeaning": "तपस्वी / संन्यासी (संसार त्यागकर ोक्ष क े लए साधना करने वाला)",
+          "exampleSentence": "The ascetic left his home and lived in a cave in the Himalayas.",
+          "hindiTranslation": "तपस्वी ने अपना घर छोड़ दया और हिालय की एक गुफा ं रहिने लगा।",
+          "memoryTip": ""
+        },
+        {
+          "id": "owsp_s2_q1_optC",
+          "optionLabel": "(C)",
+          "word": "Devotee",
+          "partOfSpeech": "n.",
+          "isCorrect": false,
+          "englishMeaning": "A person who is deeply devoted to a god, a cause or a person. Thousands of devotees visited the temple on Shivratri.",
+          "hindiMeaning": "क्त / अनुयायी",
+          "exampleSentence": "",
+          "hindiTranslation": "",
+          "memoryTip": ""
+        },
+        {
+          "id": "owsp_s2_q1_optD",
+          "optionLabel": "(D)",
+          "word": "Antiquarian",
+          "partOfSpeech": "n.",
+          "isCorrect": false,
+          "englishMeaning": "One who collects, studies and sells old and ancient things (antiques, rare old books). The antiquarian sold me a 200- year-old map.",
+          "hindiMeaning": "पुरावस्तु-संग्राहिक / पुरानी वस्तुआं का शौकीन व वक्र े ता",
+          "exampleSentence": "",
+          "hindiTranslation": "",
+          "memoryTip": ""
+        }
+      ]
+    },
+    {
+      "id": "owsp_s2_q2",
+      "sheet": 2,
+      "questionNumber": 2,
+      "dayNumber": 31,
+      "questionText": "Having an ugly or displeasing sound.",
+      "correctOptionLetter": "C",
+      "memoryTip": "Caco = bad; phon = sound. Opposite: Euphonious (pleasant sound).",
+      "options": [
+        {
+          "id": "owsp_s2_q2_optA",
+          "optionLabel": "(A)",
+          "word": "Quintessence",
+          "partOfSpeech": "n.",
+          "isCorrect": false,
+          "englishMeaning": "The purest, most perfect example or essence of something. He is the quintessence of a gentleman.",
+          "hindiMeaning": "सार-तत्त्व / सवार्बोत्क ृ ष्ट उदाहिर",
+          "exampleSentence": "",
+          "hindiTranslation": "",
+          "memoryTip": ""
+        },
+        {
+          "id": "owsp_s2_q2_optB",
+          "optionLabel": "(B)",
+          "word": "Implacable",
+          "partOfSpeech": "adj.",
+          "isCorrect": false,
+          "englishMeaning": "Impossible to calm down or please; unwilling to forgive. He was an implacable enemy who never forgave anyone.",
+          "hindiMeaning": "अग / जसे शांत या संतुष्ट न कया जा सक े",
+          "exampleSentence": "",
+          "hindiTranslation": "",
+          "memoryTip": ""
+        },
+        {
+          "id": "owsp_s2_q2_optC",
+          "optionLabel": "(C)",
+          "word": "Cacophonous adj.",
+          "partOfSpeech": "",
+          "isCorrect": true,
+          "englishMeaning": "Having a harsh, ugly and unpleasant sound.",
+          "hindiMeaning": "कक र्थ श / कानां को बुरी लगने वाली (ध्वन)",
+          "exampleSentence": "The cacophonous noise of the traffic disturbed my sleep.",
+          "hindiTranslation": "ट्रैफ़क क े कक र्थ श शोर ने ेरी नींद खराब कर दी।",
+          "memoryTip": "Caco = bad; phon = sound. Opposite: Euphonious (pleasant sound)."
+        },
+        {
+          "id": "owsp_s2_q2_optD",
+          "optionLabel": "(D)",
+          "word": "Eternal",
+          "partOfSpeech": "adj.",
+          "isCorrect": false,
+          "englishMeaning": "They promised each other eternal friendship. One Word Substitution - Meanings Workbook | Page 19",
+          "hindiMeaning": "शाश्वत / अनंत",
+          "exampleSentence": "Lasting forever; without beginning or end.",
+          "hindiTranslation": "",
+          "memoryTip": ""
+        }
+      ]
+    },
+    {
+      "id": "owsp_s2_q3",
+      "sheet": 2,
+      "questionNumber": 3,
+      "dayNumber": 32,
+      "questionText": "One who is fond of fighting.",
+      "correctOptionLetter": "A",
+      "memoryTip": "Bellicose = fond of fighting. Belligerent = already fighting / at war.",
+      "options": [
+        {
+          "id": "owsp_s2_q3_optA",
+          "optionLabel": "(A)",
+          "word": "Bellicose adj.",
+          "partOfSpeech": "",
+          "isCorrect": true,
+          "englishMeaning": "Eager to fight; always ready for quarrels or war (a love for fighting).",
+          "hindiMeaning": "झगड़ालू / युद्धिप्रय (लड़ार्थ का शौकीन)",
+          "exampleSentence": "The bellicose king was always ready for a war.",
+          "hindiTranslation": "युद्धिप्रय राजा हिेशा युद्धि क े लए तैयार रहिता ा।",
+          "memoryTip": "Bellicose = fond of fighting. Belligerent = already fighting / at war."
+        },
+        {
+          "id": "owsp_s2_q3_optB",
+          "optionLabel": "(B)",
+          "word": "Aggressive",
+          "partOfSpeech": "adj.",
+          "isCorrect": false,
+          "englishMeaning": "Ready to attack or confront; forceful and hostile in behaviour. The aggressive dog barked at everyone who passed.",
+          "hindiMeaning": "आक्राक",
+          "exampleSentence": "",
+          "hindiTranslation": "",
+          "memoryTip": ""
+        },
+        {
+          "id": "owsp_s2_q3_optC",
+          "optionLabel": "(C)",
+          "word": "Belligerent",
+          "partOfSpeech": "adj.",
+          "isCorrect": false,
+          "englishMeaning": "Hostile and actually engaged in a fight or war (e.g., belligerent nations). The two belligerent countries finally signed a peace treaty.",
+          "hindiMeaning": "युद्धिरत / लड़ाक ू (जो युद्धि ं लगा हिो)",
+          "exampleSentence": "",
+          "hindiTranslation": "",
+          "memoryTip": ""
+        },
+        {
+          "id": "owsp_s2_q3_optD",
+          "optionLabel": "(D)",
+          "word": "Militant",
+          "partOfSpeech": "",
+          "isCorrect": false,
+          "englishMeaning": "adj./n. Using aggressive or violent methods in support of a political or social cause. The militant group demanded a separate state.",
+          "hindiMeaning": "उग्रवादी / जुझारू",
+          "exampleSentence": "",
+          "hindiTranslation": "",
+          "memoryTip": ""
+        }
+      ]
+    },
+    {
+      "id": "owsp_s2_q4",
+      "sheet": 2,
+      "questionNumber": 4,
+      "dayNumber": 33,
+      "questionText": "One who believes in the power of fate.",
+      "correctOptionLetter": "A",
+      "memoryTip": "This same question is repeated as",
+      "options": [
+        {
+          "id": "owsp_s2_q4_optA",
+          "optionLabel": "(A)",
+          "word": "Fatalist n.",
+          "partOfSpeech": "",
+          "isCorrect": true,
+          "englishMeaning": "One who believes that all events are predetermined and controlled by fate.",
+          "hindiMeaning": "ाग्यवादी (जो ानता हिै क सब क ु छ ाग्य से हिोता हिै)",
+          "exampleSentence": "Being a fatalist, he says, 'Whatever has to happen will happen.'",
+          "hindiTranslation": "ाग्यवादी हिोने क े कार वहि कहिता हिै, 'जो हिोना हिै वहिी हिोगा।'",
+          "memoryTip": "This same question is repeated as"
+        },
+        {
+          "id": "owsp_s2_q4_optB",
+          "optionLabel": "(B)",
+          "word": "Optimistic",
+          "partOfSpeech": "",
+          "isCorrect": false,
+          "englishMeaning": "See question definition.",
+          "hindiMeaning": "",
+          "exampleSentence": "",
+          "hindiTranslation": "",
+          "memoryTip": ""
+        },
+        {
+          "id": "owsp_s2_q4_optC",
+          "optionLabel": "(C)",
+          "word": "Pessimistic",
+          "partOfSpeech": "",
+          "isCorrect": false,
+          "englishMeaning": "See question definition.",
+          "hindiMeaning": "",
+          "exampleSentence": "",
+          "hindiTranslation": "",
+          "memoryTip": ""
+        },
+        {
+          "id": "owsp_s2_q4_optD",
+          "optionLabel": "(D)",
+          "word": "Parsimonious",
+          "partOfSpeech": "",
+          "isCorrect": false,
+          "englishMeaning": "See question definition.",
+          "hindiMeaning": "",
+          "exampleSentence": "",
+          "hindiTranslation": "",
+          "memoryTip": ""
+        }
+      ]
+    },
+    {
+      "id": "owsp_s2_q5",
+      "sheet": 2,
+      "questionNumber": 5,
+      "dayNumber": 34,
+      "questionText": "One who cannot be easily pleased.",
+      "correctOptionLetter": "C",
+      "memoryTip": "",
+      "options": [
+        {
+          "id": "owsp_s2_q5_optA",
+          "optionLabel": "(A)",
+          "word": "Cosmopolitan",
+          "partOfSpeech": "",
+          "isCorrect": false,
+          "englishMeaning": "adj./n. At home in all parts of the world; having people or influences from many countries. Mumbai is a cosmopolitan city with people from every state.",
+          "hindiMeaning": "वश्व-नागरक / सवर्थदेशीय",
+          "exampleSentence": "",
+          "hindiTranslation": "",
+          "memoryTip": ""
+        },
+        {
+          "id": "owsp_s2_q5_optB",
+          "optionLabel": "(B)",
+          "word": "Frightening",
+          "partOfSpeech": "adj.",
+          "isCorrect": false,
+          "englishMeaning": "Causing fear; scary. The frightening sound of thunder woke the children.",
+          "hindiMeaning": "रावना",
+          "exampleSentence": "",
+          "hindiTranslation": "",
+          "memoryTip": ""
+        },
+        {
+          "id": "owsp_s2_q5_optC",
+          "optionLabel": "(C)",
+          "word": "Fastidious adj.",
+          "partOfSpeech": "",
+          "isCorrect": true,
+          "englishMeaning": "Very hard to please; excessively particular about small details.",
+          "hindiMeaning": "नकचढ़ा / ीनेख नकालने वाला (जसे जल्दी क ु छ पसंद न आए)",
+          "exampleSentence": "He is so fastidious about food that he rejects most dishes.",
+          "hindiTranslation": "वहि खाने क े ाले ं तना नकचढ़ा हिै क ज़्यादातर पकवान ठुकरा देता हिै।",
+          "memoryTip": ""
+        },
+        {
+          "id": "owsp_s2_q5_optD",
+          "optionLabel": "(D)",
+          "word": "Feminist",
+          "partOfSpeech": "n.",
+          "isCorrect": false,
+          "englishMeaning": "A person who supports equal rights and opportunities for women. She is a feminist who fights for equal pay for women.",
+          "hindiMeaning": "नारीवादी (स्त्री-अधकारां का सर्थक)",
+          "exampleSentence": "",
+          "hindiTranslation": "",
+          "memoryTip": ""
+        }
+      ]
+    },
+    {
+      "id": "owsp_s2_q6",
+      "sheet": 2,
+      "questionNumber": 6,
+      "dayNumber": 35,
+      "questionText": "One who is able to use the right and left hands equally well.",
+      "correctOptionLetter": "B",
+      "memoryTip": "Ambi = both; dexter = right hand.",
+      "options": [
+        {
+          "id": "owsp_s2_q6_optA",
+          "optionLabel": "(A)",
+          "word": "Sinister",
+          "partOfSpeech": "adj.",
+          "isCorrect": false,
+          "englishMeaning": "Suggesting evil or danger; threatening. (In Latin, 'sinister' meant 'left'.) A sinister figure stood in the dark alley.",
+          "hindiMeaning": "अशु / क ु टल / रावना",
+          "exampleSentence": "",
+          "hindiTranslation": "",
+          "memoryTip": ""
+        },
+        {
+          "id": "owsp_s2_q6_optB",
+          "optionLabel": "(B)",
+          "word": "Ambidextrous adj.",
+          "partOfSpeech": "",
+          "isCorrect": true,
+          "englishMeaning": "Able to use both the right and left hands equally well.",
+          "hindiMeaning": "उयहिस्त (दोनां हिाां से सान क ु शलता से का करने वाला)",
+          "exampleSentence": "The ambidextrous bowler can bowl with either hand.",
+          "hindiTranslation": "उयहिस्त गंदबाज़ कसी ी हिा से गंद फ ं क सकता हिै।",
+          "memoryTip": "Ambi = both; dexter = right hand."
+        },
+        {
+          "id": "owsp_s2_q6_optC",
+          "optionLabel": "(C)",
+          "word": "Ambivalent",
+          "partOfSpeech": "adj.",
+          "isCorrect": false,
+          "englishMeaning": "Having mixed or opposite feelings about something at the same time. I feel ambivalent about moving to a new city.",
+          "hindiMeaning": "दुवधाग्रस्त / द्वंद्वात्क नोाव वाला",
+          "exampleSentence": "",
+          "hindiTranslation": "",
+          "memoryTip": ""
+        },
+        {
+          "id": "owsp_s2_q6_optD",
+          "optionLabel": "(D)",
+          "word": "Amateur",
+          "partOfSpeech": "n./adj.",
+          "isCorrect": false,
+          "englishMeaning": "A person who does something for pleasure rather than as a profession. He is an amateur photographer, not a professional. One Word Substitution - Meanings Workbook | Page 21",
+          "hindiMeaning": "शौक़या (गैर-पेशेवर) व्यक्त",
+          "exampleSentence": "",
+          "hindiTranslation": "",
+          "memoryTip": ""
+        }
+      ]
+    },
+    {
+      "id": "owsp_s2_q7",
+      "sheet": 2,
+      "questionNumber": 7,
+      "dayNumber": 36,
+      "questionText": "One who does not tire easily.",
+      "correctOptionLetter": "B",
+      "memoryTip": "Fatigue = tiredness; in- = not.",
+      "options": [
+        {
+          "id": "owsp_s2_q7_optA",
+          "optionLabel": "(A)",
+          "word": "Inevitable",
+          "partOfSpeech": "adj.",
+          "isCorrect": false,
+          "englishMeaning": "Death is inevitable for every living being.",
+          "hindiMeaning": "अपरहिायर्थ / जसे टाला न जा सक े",
+          "exampleSentence": "Certain to happen; unavoidable.",
+          "hindiTranslation": "",
+          "memoryTip": ""
+        },
+        {
+          "id": "owsp_s2_q7_optB",
+          "optionLabel": "(B)",
+          "word": "Indefatigable adj.",
+          "partOfSpeech": "",
+          "isCorrect": true,
+          "englishMeaning": "Never getting tired; working with endless energy.",
+          "hindiMeaning": "अक / की न कने वाला",
+          "exampleSentence": "The indefatigable social worker worked day and night for flood victims.",
+          "hindiTranslation": "अक साजसेवी ने बाढ़ पीड़तां क े लए दन-रात का कया।",
+          "memoryTip": "Fatigue = tiredness; in- = not."
+        },
+        {
+          "id": "owsp_s2_q7_optC",
+          "optionLabel": "(C)",
+          "word": "Indelible",
+          "partOfSpeech": "adj.",
+          "isCorrect": false,
+          "englishMeaning": "Impossible to erase or remove (like ink or a memory). The trip left an indelible impression on my mind.",
+          "hindiMeaning": "अट / जसे टाया न जा सक े",
+          "exampleSentence": "",
+          "hindiTranslation": "",
+          "memoryTip": ""
+        },
+        {
+          "id": "owsp_s2_q7_optD",
+          "optionLabel": "(D)",
+          "word": "Infallible",
+          "partOfSpeech": "adj.",
+          "isCorrect": false,
+          "englishMeaning": "See question definition.",
+          "hindiMeaning": "अचूक / की ग़लती न करने वाला",
+          "exampleSentence": "Never wrong; incapable of making mistakes. No human being is infallible.",
+          "hindiTranslation": "",
+          "memoryTip": ""
+        }
+      ]
+    },
+    {
+      "id": "owsp_s2_q8",
+      "sheet": 2,
+      "questionNumber": 8,
+      "dayNumber": 37,
+      "questionText": "Impossible or extremely difficult to understand.",
+      "correctOptionLetter": "B",
+      "memoryTip": "Comprehend = understand.",
+      "options": [
+        {
+          "id": "owsp_s2_q8_optA",
+          "optionLabel": "(A)",
+          "word": "Inaudible",
+          "partOfSpeech": "adj.",
+          "isCorrect": false,
+          "englishMeaning": "His voice was inaudible in the back rows.",
+          "hindiMeaning": "अश्रव्य (जो सुनार्थ न दे)",
+          "exampleSentence": "Impossible to hear; too quiet to be heard.",
+          "hindiTranslation": "",
+          "memoryTip": ""
+        },
+        {
+          "id": "owsp_s2_q8_optB",
+          "optionLabel": "(B)",
+          "word": "Incomprehensible adj.",
+          "partOfSpeech": "",
+          "isCorrect": true,
+          "englishMeaning": "Impossible or extremely difficult to understand.",
+          "hindiMeaning": "दुबार्बोध / सझ से परे",
+          "exampleSentence": "The lecture was incomprehensible to most students.",
+          "hindiTranslation": "वहि व्याख्यान ज़्यादातर छात्रां की सझ से परे ा।",
+          "memoryTip": "Comprehend = understand."
+        },
+        {
+          "id": "owsp_s2_q8_optC",
+          "optionLabel": "(C)",
+          "word": "Incompatible",
+          "partOfSpeech": "adj.",
+          "isCorrect": false,
+          "englishMeaning": "Unable to exist or work together; not suitable for each other. The two software programs are incompatible with each other.",
+          "hindiMeaning": "असंगत / बेेल",
+          "exampleSentence": "",
+          "hindiTranslation": "",
+          "memoryTip": ""
+        },
+        {
+          "id": "owsp_s2_q8_optD",
+          "optionLabel": "(D)",
+          "word": "Inevitable",
+          "partOfSpeech": "adj.",
+          "isCorrect": false,
+          "englishMeaning": "Death is inevitable for every living being. One Word Substitution - Meanings Workbook | Page 22",
+          "hindiMeaning": "अपरहिायर्थ / जसे टाला न जा सक े",
+          "exampleSentence": "Certain to happen; unavoidable.",
+          "hindiTranslation": "",
+          "memoryTip": ""
+        }
+      ]
+    },
+    {
+      "id": "owsp_s2_q9",
+      "sheet": 2,
+      "questionNumber": 9,
+      "dayNumber": 38,
+      "questionText": "That which cannot be taken by force.",
+      "correctOptionLetter": "A",
+      "memoryTip": "",
+      "options": [
+        {
+          "id": "owsp_s2_q9_optA",
+          "optionLabel": "(A)",
+          "word": "Impregnable adj.",
+          "partOfSpeech": "",
+          "isCorrect": true,
+          "englishMeaning": "Impossible to capture or enter by force; unconquerable.",
+          "hindiMeaning": "अेद्य (जसे बल से जीता न जा सक े )",
+          "exampleSentence": "The fort was impregnable and no army could capture it.",
+          "hindiTranslation": "कला अेद्य ा और कोर्थ ी सेना उसे जीत नहिीं सकी।",
+          "memoryTip": ""
+        },
+        {
+          "id": "owsp_s2_q9_optB",
+          "optionLabel": "(B)",
+          "word": "Inapprehensible",
+          "partOfSpeech": "adj.",
+          "isCorrect": false,
+          "englishMeaning": "(Rare word) That cannot be grasped, understood or perceived. The vast universe is almost inapprehensible to the human mind.",
+          "hindiMeaning": "अग्राह्य / जो पकड़ या सझ ं न आ सक े (दुलर्थ शब्द)",
+          "exampleSentence": "",
+          "hindiTranslation": "",
+          "memoryTip": ""
+        },
+        {
+          "id": "owsp_s2_q9_optC",
+          "optionLabel": "(C)",
+          "word": "Inaccessible",
+          "partOfSpeech": "adj.",
+          "isCorrect": false,
+          "englishMeaning": "The village is inaccessible during the monsoon.",
+          "hindiMeaning": "अगम्य / जहिाँ पहुँचा न जा सक े",
+          "exampleSentence": "Impossible or very hard to reach or approach.",
+          "hindiTranslation": "",
+          "memoryTip": ""
+        },
+        {
+          "id": "owsp_s2_q9_optD",
+          "optionLabel": "(D)",
+          "word": "Immutable",
+          "partOfSpeech": "adj.",
+          "isCorrect": false,
+          "englishMeaning": "See question definition.",
+          "hindiMeaning": "अपरवतर्थनीय / अटल",
+          "exampleSentence": "Unchangeable; not able to be changed over time. The laws of nature are immutable.",
+          "hindiTranslation": "",
+          "memoryTip": ""
+        }
+      ]
+    },
+    {
+      "id": "owsp_s2_q10",
+      "sheet": 2,
+      "questionNumber": 10,
+      "dayNumber": 39,
+      "questionText": "A person without a settled home or work who wanders from place to place, lives by begging.",
+      "correctOptionLetter": "A",
+      "memoryTip": "'Lives by begging' is the clue - itinerant people travel for work, vagrants beg.",
+      "options": [
+        {
+          "id": "owsp_s2_q10_optA",
+          "optionLabel": "(A)",
+          "word": "Vagrant n.",
+          "partOfSpeech": "",
+          "isCorrect": true,
+          "englishMeaning": "A person without a settled home or job who wanders from place to place and lives by begging.",
+          "hindiMeaning": "आवारा / खारी-घुक्कड़ (जसका कोर्थ ठकाना न हिो)",
+          "exampleSentence": "The police removed the vagrants from the railway station.",
+          "hindiTranslation": "पुलस ने रेलवे स्टेशन से आवारा लोगां को हिटाया।",
+          "memoryTip": "'Lives by begging' is the clue - itinerant people travel for work, vagrants beg."
+        },
+        {
+          "id": "owsp_s2_q10_optB",
+          "optionLabel": "(B)",
+          "word": "Truant",
+          "partOfSpeech": "n.",
+          "isCorrect": false,
+          "englishMeaning": "A student who stays away from school without permission. The truant was caught roaming in the park during school hours.",
+          "hindiMeaning": "स्क ू ल से बना बताए ग़ायब रहिने वाला",
+          "exampleSentence": "",
+          "hindiTranslation": "",
+          "memoryTip": ""
+        },
+        {
+          "id": "owsp_s2_q10_optC",
+          "optionLabel": "(C)",
+          "word": "Itinerant",
+          "partOfSpeech": "",
+          "isCorrect": false,
+          "englishMeaning": "adj./n. Travelling from place to place, especially for work (e.g., a travelling trader). The itinerant salesman visits a new village every week.",
+          "hindiMeaning": "घुंतू / का क े लए जगहि-जगहि घूने वाला",
+          "exampleSentence": "",
+          "hindiTranslation": "",
+          "memoryTip": ""
+        },
+        {
+          "id": "owsp_s2_q10_optD",
+          "optionLabel": "(D)",
+          "word": "Migrant",
+          "partOfSpeech": "n.",
+          "isCorrect": false,
+          "englishMeaning": "A person who moves from one place or country to another for work or settlement. Many migrant workers return home during the festival. One Word Substitution - Meanings Workbook | Page 23",
+          "hindiMeaning": "प्रवासी",
+          "exampleSentence": "",
+          "hindiTranslation": "",
+          "memoryTip": ""
+        }
+      ]
+    },
+    {
+      "id": "owsp_s2_q11",
+      "sheet": 2,
+      "questionNumber": 11,
+      "dayNumber": 40,
+      "questionText": "Willing to be guided or controlled.",
+      "correctOptionLetter": "C",
+      "memoryTip": "",
+      "options": [
+        {
+          "id": "owsp_s2_q11_optA",
+          "optionLabel": "(A)",
+          "word": "Adorable",
+          "partOfSpeech": "adj.",
+          "isCorrect": false,
+          "englishMeaning": "The adorable puppy wagged its tail.",
+          "hindiMeaning": "प्यारा / नोहिक",
+          "exampleSentence": "Very lovable and charming.",
+          "hindiTranslation": "",
+          "memoryTip": ""
+        },
+        {
+          "id": "owsp_s2_q11_optB",
+          "optionLabel": "(B)",
+          "word": "Adamant",
+          "partOfSpeech": "adj.",
+          "isCorrect": false,
+          "englishMeaning": "He was adamant that he would not sign the paper.",
+          "hindiMeaning": "अड़यल / अपनी बात पर दृढ़",
+          "exampleSentence": "Refusing to change one's mind; firm and stubborn.",
+          "hindiTranslation": "",
+          "memoryTip": ""
+        },
+        {
+          "id": "owsp_s2_q11_optC",
+          "optionLabel": "(C)",
+          "word": "Amenable adj.",
+          "partOfSpeech": "",
+          "isCorrect": true,
+          "englishMeaning": "Willing to be guided, controlled or to accept advice; agreeable.",
+          "hindiMeaning": "ानने को तैयार / आज्ञाकारी / वनम्र",
+          "exampleSentence": "The manager was amenable to the suggestions of his staff.",
+          "hindiTranslation": "प्रबंधक अपने कर्थचारयां क े सुझाव ानने को तैयार े।",
+          "memoryTip": ""
+        },
+        {
+          "id": "owsp_s2_q11_optD",
+          "optionLabel": "(D)",
+          "word": "Abominable",
+          "partOfSpeech": "adj.",
+          "isCorrect": false,
+          "englishMeaning": "The prisoners lived in abominable conditions.",
+          "hindiMeaning": "घृत / अत्यंत बुरा",
+          "exampleSentence": "Very bad, hateful and disgusting.",
+          "hindiTranslation": "",
+          "memoryTip": ""
+        }
+      ]
+    },
+    {
+      "id": "owsp_s2_q12",
+      "sheet": 2,
+      "questionNumber": 12,
+      "dayNumber": 41,
+      "questionText": "A person who draws or produces maps.",
+      "correctOptionLetter": "B",
+      "memoryTip": "Carto = map; graph = write/draw.",
+      "options": [
+        {
+          "id": "owsp_s2_q12_optA",
+          "optionLabel": "(A)",
+          "word": "Calligrapher",
+          "partOfSpeech": "n.",
+          "isCorrect": false,
+          "englishMeaning": "A person who is skilled in beautiful, artistic handwriting. The calligrapher wrote the invitation in elegant letters.",
+          "hindiMeaning": "सुलेखक (सुंदर लखावट का कलाकार)",
+          "exampleSentence": "",
+          "hindiTranslation": "",
+          "memoryTip": ""
+        },
+        {
+          "id": "owsp_s2_q12_optB",
+          "optionLabel": "(B)",
+          "word": "Cartographer n.",
+          "partOfSpeech": "",
+          "isCorrect": true,
+          "englishMeaning": "A person who draws or produces maps.",
+          "hindiMeaning": "ानचत्रकार (नक़्शे बनाने वाला)",
+          "exampleSentence": "The cartographer spent years drawing the map of the island.",
+          "hindiTranslation": "ानचत्रकार ने द्वीप का नक्शा बनाने ं कर्थ साल लगाए।",
+          "memoryTip": "Carto = map; graph = write/draw."
+        },
+        {
+          "id": "owsp_s2_q12_optC",
+          "optionLabel": "(C)",
+          "word": "Lexicographer",
+          "partOfSpeech": "n.",
+          "isCorrect": false,
+          "englishMeaning": "A person who compiles or writes a dictionary. The lexicographer added hundreds of new words to the dictionary.",
+          "hindiMeaning": "कोशकार (शब्दकोश बनाने वाला)",
+          "exampleSentence": "",
+          "hindiTranslation": "",
+          "memoryTip": ""
+        },
+        {
+          "id": "owsp_s2_q12_optD",
+          "optionLabel": "(D)",
+          "word": "Choreographer",
+          "partOfSpeech": "n.",
+          "isCorrect": false,
+          "englishMeaning": "A person who designs and arranges dance steps for a performance. The choreographer trained the dancers for the stage show. One Word Substitution - Meanings Workbook | Page 24",
+          "hindiMeaning": "नृत्य-नदर्बोशक",
+          "exampleSentence": "",
+          "hindiTranslation": "",
+          "memoryTip": ""
+        }
+      ]
+    },
+    {
+      "id": "owsp_s2_q13",
+      "sheet": 2,
+      "questionNumber": 13,
+      "dayNumber": 42,
+      "questionText": "Persons living at the same time.",
+      "correctOptionLetter": "A",
+      "memoryTip": "Con = together; tempor = time.",
+      "options": [
+        {
+          "id": "owsp_s2_q13_optA",
+          "optionLabel": "(A)",
+          "word": "Contemporaries n.",
+          "partOfSpeech": "",
+          "isCorrect": true,
+          "englishMeaning": "Persons who live (or lived) at the same time.",
+          "hindiMeaning": "सकालीन लोग",
+          "exampleSentence": "T ulsidas and Akbar were contemporaries.",
+          "hindiTranslation": "तुलसीदास और अकबर सकालीन े।",
+          "memoryTip": "Con = together; tempor = time."
+        },
+        {
+          "id": "owsp_s2_q13_optB",
+          "optionLabel": "(B)",
+          "word": "Cosmopolitans",
+          "partOfSpeech": "n.",
+          "isCorrect": false,
+          "englishMeaning": "People who are at home anywhere in the world and free of narrow national feelings. Cosmopolitans enjoy the food and culture of many countries.",
+          "hindiMeaning": "वश्व-नागरक / सवर्थदेशीय लोग",
+          "exampleSentence": "",
+          "hindiTranslation": "",
+          "memoryTip": ""
+        },
+        {
+          "id": "owsp_s2_q13_optC",
+          "optionLabel": "(C)",
+          "word": "Compatriots",
+          "partOfSpeech": "n.",
+          "isCorrect": false,
+          "englishMeaning": "Meeting a compatriot in a foreign land made him happy.",
+          "hindiMeaning": "हिवतन / देशवासी",
+          "exampleSentence": "Fellow countrymen; people from the same country.",
+          "hindiTranslation": "",
+          "memoryTip": ""
+        },
+        {
+          "id": "owsp_s2_q13_optD",
+          "optionLabel": "(D)",
+          "word": "Colleagues",
+          "partOfSpeech": "n.",
+          "isCorrect": false,
+          "englishMeaning": "People who work together in the same office or profession. I had lunch with my colleagues in the canteen.",
+          "hindiMeaning": "सहिकर्मी",
+          "exampleSentence": "",
+          "hindiTranslation": "",
+          "memoryTip": ""
+        }
+      ]
+    },
+    {
+      "id": "owsp_s2_q14",
+      "sheet": 2,
+      "questionNumber": 14,
+      "dayNumber": 43,
+      "questionText": "Rapid increase in the number or amount of something.",
+      "correctOptionLetter": "A",
+      "memoryTip": "",
+      "options": [
+        {
+          "id": "owsp_s2_q14_optA",
+          "optionLabel": "(A)",
+          "word": "Proliferation n.",
+          "partOfSpeech": "",
+          "isCorrect": true,
+          "englishMeaning": "A rapid increase in the number or amount of something.",
+          "hindiMeaning": "तीव्र वृद्धि / तेज़ी से फ ै लाव",
+          "exampleSentence": "The proliferation of mobile phones has changed our lives.",
+          "hindiTranslation": "ोबाल फ़ोनां क े तेज़ फ ै लाव ने हिारा जीवन बदल दया हिै।",
+          "memoryTip": ""
+        },
+        {
+          "id": "owsp_s2_q14_optB",
+          "optionLabel": "(B)",
+          "word": "Promotion",
+          "partOfSpeech": "n.",
+          "isCorrect": false,
+          "englishMeaning": "Advancement to a higher rank or position; also advertising of a product. He got a promotion after five years of service.",
+          "hindiMeaning": "पदोन्नत / प्रचार",
+          "exampleSentence": "",
+          "hindiTranslation": "",
+          "memoryTip": ""
+        },
+        {
+          "id": "owsp_s2_q14_optC",
+          "optionLabel": "(C)",
+          "word": "Propensity",
+          "partOfSpeech": "n.",
+          "isCorrect": false,
+          "englishMeaning": "A natural tendency or inclination to behave in a particular way.",
+          "hindiMeaning": "प्रवृत्ति / झुकाव",
+          "exampleSentence": "He has a propensity to exaggerate.",
+          "hindiTranslation": "",
+          "memoryTip": ""
+        },
+        {
+          "id": "owsp_s2_q14_optD",
+          "optionLabel": "(D)",
+          "word": "Paucity",
+          "partOfSpeech": "n.",
+          "isCorrect": false,
+          "englishMeaning": "Scarcity; the presence of something in only small or insufficient quantities. There is a paucity of good teachers in rural areas. One Word Substitution - Meanings Workbook | Page 25",
+          "hindiMeaning": "की / अल्पता",
+          "exampleSentence": "",
+          "hindiTranslation": "",
+          "memoryTip": ""
+        }
+      ]
+    },
+    {
+      "id": "owsp_s2_q15",
+      "sheet": 2,
+      "questionNumber": 15,
+      "dayNumber": 44,
+      "questionText": "One whose hobby is stamp collection.",
+      "correctOptionLetter": "C",
+      "memoryTip": "",
+      "options": [
+        {
+          "id": "owsp_s2_q15_optA",
+          "optionLabel": "(A)",
+          "word": "Phonologist",
+          "partOfSpeech": "n.",
+          "isCorrect": false,
+          "englishMeaning": "An expert in phonology - the study of the sound system of a language. The phonologist studied how Hindi vowels are pronounced.",
+          "hindiMeaning": "ध्वन-वज्ञानी (ाषा की ध्वनयां का अध्ययन करने वाला)",
+          "exampleSentence": "",
+          "hindiTranslation": "",
+          "memoryTip": ""
+        },
+        {
+          "id": "owsp_s2_q15_optB",
+          "optionLabel": "(B)",
+          "word": "Philanthropist",
+          "partOfSpeech": "n.",
+          "isCorrect": false,
+          "englishMeaning": "A person who loves mankind and gives money or time to help others. The philanthropist donated crores of rupees to build a hospital.",
+          "hindiMeaning": "परोपकारी / दानवीर",
+          "exampleSentence": "",
+          "hindiTranslation": "",
+          "memoryTip": ""
+        },
+        {
+          "id": "owsp_s2_q15_optC",
+          "optionLabel": "(C)",
+          "word": "Philatelist n.",
+          "partOfSpeech": "",
+          "isCorrect": true,
+          "englishMeaning": "A person who collects and studies postage stamps (philately = stamp collection).",
+          "hindiMeaning": "ाक-टकट संग्राहिक",
+          "exampleSentence": "The philatelist has stamps from over a hundred countries.",
+          "hindiTranslation": "ाक-टकट संग्राहिक क े पास सौ से अधक देशां क े टकट हिैं।",
+          "memoryTip": ""
+        },
+        {
+          "id": "owsp_s2_q15_optD",
+          "optionLabel": "(D)",
+          "word": "Panegyrist",
+          "partOfSpeech": "n.",
+          "isCorrect": false,
+          "englishMeaning": "A person who writes or delivers a speech of high praise (panegyric). The poet was the court panegyrist who sang praises of the king.",
+          "hindiMeaning": "प्रशंसक / स्तुत-गान करने वाला",
+          "exampleSentence": "",
+          "hindiTranslation": "",
+          "memoryTip": ""
+        }
+      ]
+    },
+    {
+      "id": "owsp_s2_q16",
+      "sheet": 2,
+      "questionNumber": 16,
+      "dayNumber": 45,
+      "questionText": "A large, deep, metal pot used for cooking over open fire.",
+      "correctOptionLetter": "C",
+      "memoryTip": "",
+      "options": [
+        {
+          "id": "owsp_s2_q16_optA",
+          "optionLabel": "(A)",
+          "word": "Barrel",
+          "partOfSpeech": "n.",
+          "isCorrect": false,
+          "englishMeaning": "A large cylindrical container, usually of wood or metal, for liquids. The oil was stored in a metal barrel.",
+          "hindiMeaning": "पीपा / ढोल जैसा बड़ा बतर्थन",
+          "exampleSentence": "",
+          "hindiTranslation": "",
+          "memoryTip": ""
+        },
+        {
+          "id": "owsp_s2_q16_optB",
+          "optionLabel": "(B)",
+          "word": "Skillet",
+          "partOfSpeech": "n.",
+          "isCorrect": false,
+          "englishMeaning": "A small, shallow pan with a long handle used for frying.",
+          "hindiMeaning": "छोटी तवा-नुा कड़ाहिी (फ्रांग पैन)",
+          "exampleSentence": "She fried eggs in an iron skillet.",
+          "hindiTranslation": "",
+          "memoryTip": ""
+        },
+        {
+          "id": "owsp_s2_q16_optC",
+          "optionLabel": "(C)",
+          "word": "Cauldron n.",
+          "partOfSpeech": "",
+          "isCorrect": true,
+          "englishMeaning": "A large, deep metal pot used for cooking over an open fire.",
+          "hindiMeaning": "बड़ा कड़ाहिा / देग",
+          "exampleSentence": "The witch stirred the potion in a large cauldron.",
+          "hindiTranslation": "चुड़ैल ने बड़े कड़ाहिे ं औषध को हिलाया।",
+          "memoryTip": ""
+        },
+        {
+          "id": "owsp_s2_q16_optD",
+          "optionLabel": "(D)",
+          "word": "Kettle",
+          "partOfSpeech": "n.",
+          "isCorrect": false,
+          "englishMeaning": "A metal container with a spout and handle used for boiling water. One Word Substitution - Meanings Workbook | Page 26",
+          "hindiMeaning": "क े तली",
+          "exampleSentence": "She put the kettle on to make tea.",
+          "hindiTranslation": "",
+          "memoryTip": ""
+        }
+      ]
+    },
+    {
+      "id": "owsp_s2_q17",
+      "sheet": 2,
+      "questionNumber": 17,
+      "dayNumber": 46,
+      "questionText": "Flowers or leaves woven together in a circle for placing on a coffin or a grave.",
+      "correctOptionLetter": "B",
+      "memoryTip": "Clue = 'in a circle' + 'coffin or grave' = Wreath. A garland is a long string/chain of flowers (worn round the neck or hung for decoration).",
+      "options": [
+        {
+          "id": "owsp_s2_q17_optA",
+          "optionLabel": "(A)",
+          "word": "Bunch",
+          "partOfSpeech": "n.",
+          "isCorrect": false,
+          "englishMeaning": "A number of things (like flowers or keys) fastened or growing together. He carried a bunch of keys in his pocket.",
+          "hindiMeaning": "गुच्छा",
+          "exampleSentence": "",
+          "hindiTranslation": "",
+          "memoryTip": ""
+        },
+        {
+          "id": "owsp_s2_q17_optB",
+          "optionLabel": "(B)",
+          "word": "Wreath n.",
+          "partOfSpeech": "",
+          "isCorrect": true,
+          "englishMeaning": "Flowers or leaves woven together in a circle, placed on a coffin or grave in memory of the dead.",
+          "hindiMeaning": "पुष्पचक्र (कब्र/शव पर चढ़ाया जाने वाला फ ू लां का गोल हिार)",
+          "exampleSentence": "The President laid a wreath at the martyrs' memorial.",
+          "hindiTranslation": "राष्ट्रपत ने शहिीद स्ारक पर पुष्पचक्र अपंत कया।",
+          "memoryTip": "Clue = 'in a circle' + 'coffin or grave' = Wreath. A garland is a long string/chain of flowers (worn round the neck or hung for decoration)."
+        },
+        {
+          "id": "owsp_s2_q17_optC",
+          "optionLabel": "(C)",
+          "word": "Bouquet",
+          "partOfSpeech": "n.",
+          "isCorrect": false,
+          "englishMeaning": "A neatly arranged bunch of flowers, given as a gift.",
+          "hindiMeaning": "पुष्प-गुच्छ / फ ू लां का गुलदस्ता",
+          "exampleSentence": "He gave her a bouquet of roses.",
+          "hindiTranslation": "",
+          "memoryTip": ""
+        },
+        {
+          "id": "owsp_s2_q17_optD",
+          "optionLabel": "(D)",
+          "word": "Garland",
+          "partOfSpeech": "n.",
+          "isCorrect": false,
+          "englishMeaning": "Flowers or leaves strung in a long chain, worn round the neck or used for decoration. The bride put a garland around the groom's neck.",
+          "hindiMeaning": "ाला / हिार",
+          "exampleSentence": "",
+          "hindiTranslation": "",
+          "memoryTip": ""
+        }
+      ]
+    },
+    {
+      "id": "owsp_s2_q18",
+      "sheet": 2,
+      "questionNumber": 18,
+      "dayNumber": 47,
+      "questionText": "A trade that is prohibited by law.",
+      "correctOptionLetter": "A",
+      "memoryTip": "Il- + licit (permitted) = not permitted by law.",
+      "options": [
+        {
+          "id": "owsp_s2_q18_optA",
+          "optionLabel": "(A)",
+          "word": "Illicit adj.",
+          "partOfSpeech": "",
+          "isCorrect": true,
+          "englishMeaning": "Forbidden by law, rules or custom; illegal.",
+          "hindiMeaning": "अवैध / नषद्धि",
+          "exampleSentence": "The police caught him in illicit liquor trade.",
+          "hindiTranslation": "पुलस ने उसे अवैध शराब क े धंधे ं पकड़ा।",
+          "memoryTip": "Il- + licit (permitted) = not permitted by law."
+        },
+        {
+          "id": "owsp_s2_q18_optB",
+          "optionLabel": "(B)",
+          "word": "Incredible",
+          "partOfSpeech": "adj.",
+          "isCorrect": false,
+          "englishMeaning": "It is incredible that he finished the race with a broken leg.",
+          "hindiMeaning": "अवश्वसनीय / अद्भुत",
+          "exampleSentence": "Impossible or very hard to believe; amazing.",
+          "hindiTranslation": "",
+          "memoryTip": ""
+        },
+        {
+          "id": "owsp_s2_q18_optC",
+          "optionLabel": "(C)",
+          "word": "Illusive",
+          "partOfSpeech": "adj.",
+          "isCorrect": false,
+          "englishMeaning": "Deceptive; creating a false impression (also spelt 'illusory'). The oasis in the desert turned out to be an illusive mirage.",
+          "hindiMeaning": "भ्राक / ायावी",
+          "exampleSentence": "",
+          "hindiTranslation": "",
+          "memoryTip": ""
+        },
+        {
+          "id": "owsp_s2_q18_optD",
+          "optionLabel": "(D)",
+          "word": "Inapt",
+          "partOfSpeech": "adj.",
+          "isCorrect": false,
+          "englishMeaning": "His inapt remark embarrassed everyone. One Word Substitution - Meanings Workbook | Page 27",
+          "hindiMeaning": "अनुपयुक्त / बेेल",
+          "exampleSentence": "Not suitable or appropriate for the situation.",
+          "hindiTranslation": "",
+          "memoryTip": ""
+        }
+      ]
+    },
+    {
+      "id": "owsp_s2_q19",
+      "sheet": 2,
+      "questionNumber": 19,
+      "dayNumber": 48,
+      "questionText": "To give up the throne.",
+      "correctOptionLetter": "B",
+      "memoryTip": "",
+      "options": [
+        {
+          "id": "owsp_s2_q19_optA",
+          "optionLabel": "(A)",
+          "word": "Consign",
+          "partOfSpeech": "v.",
+          "isCorrect": false,
+          "englishMeaning": "T o hand over or deliver something to someone's care; to send goods. The goods were consigned to the railway for delivery.",
+          "hindiMeaning": "साैंपना / सुपुदर्थ करना",
+          "exampleSentence": "",
+          "hindiTranslation": "",
+          "memoryTip": ""
+        },
+        {
+          "id": "owsp_s2_q19_optB",
+          "optionLabel": "(B)",
+          "word": "Abdicate v.",
+          "partOfSpeech": "",
+          "isCorrect": true,
+          "englishMeaning": "T o give up the throne (or a high position/responsibility) formally.",
+          "hindiMeaning": "गद्दी छोड़ना / पद या अधकार त्याग देना",
+          "exampleSentence": "King Edward VIII abdicated the throne in 1936.",
+          "hindiTranslation": "राजा एवर्थ अष्ट ने 1936 ं गद्दी छोड़ दी।",
+          "memoryTip": ""
+        },
+        {
+          "id": "owsp_s2_q19_optC",
+          "optionLabel": "(C)",
+          "word": "Usurp",
+          "partOfSpeech": "v.",
+          "isCorrect": false,
+          "englishMeaning": "T o seize a throne or power by force or without legal right. The general usurped the throne from the rightful king.",
+          "hindiMeaning": "हिड़पना / अवैध रूप से सत्तिा छीन लेना",
+          "exampleSentence": "",
+          "hindiTranslation": "",
+          "memoryTip": ""
+        },
+        {
+          "id": "owsp_s2_q19_optD",
+          "optionLabel": "(D)",
+          "word": "Bequeath",
+          "partOfSpeech": "v.",
+          "isCorrect": false,
+          "englishMeaning": "T o leave property or money to someone through a will. He bequeathed his house to his daughter.",
+          "hindiMeaning": "वसीयत ं देना",
+          "exampleSentence": "",
+          "hindiTranslation": "",
+          "memoryTip": ""
+        }
+      ]
+    },
+    {
+      "id": "owsp_s2_q20",
+      "sheet": 2,
+      "questionNumber": 20,
+      "dayNumber": 49,
+      "questionText": "One who is indifferent to art and culture.",
+      "correctOptionLetter": "C",
+      "memoryTip": "",
+      "options": [
+        {
+          "id": "owsp_s2_q20_optA",
+          "optionLabel": "(A)",
+          "word": "Philanderer",
+          "partOfSpeech": "n.",
+          "isCorrect": false,
+          "englishMeaning": "A man who has many casual love affairs, especially with women he does not intend to marry. The philanderer was known for having a new girlfriend every month.",
+          "hindiMeaning": "एेयाश / स्त्रयां से खलवाड़ करने वाला",
+          "exampleSentence": "",
+          "hindiTranslation": "",
+          "memoryTip": ""
+        },
+        {
+          "id": "owsp_s2_q20_optB",
+          "optionLabel": "(B)",
+          "word": "Cynic",
+          "partOfSpeech": "n.",
+          "isCorrect": false,
+          "englishMeaning": "A person who believes that people act only from selfish motives and distrusts them. The cynic said, 'Nobody helps without a selfish reason.'",
+          "hindiMeaning": "शंकालु / दूसरां की नीयत पर शक करने वाला",
+          "exampleSentence": "",
+          "hindiTranslation": "",
+          "memoryTip": ""
+        },
+        {
+          "id": "owsp_s2_q20_optC",
+          "optionLabel": "(C)",
+          "word": "Philistine n.",
+          "partOfSpeech": "",
+          "isCorrect": true,
+          "englishMeaning": "A person who is indifferent or hostile to art, culture and learning.",
+          "hindiMeaning": "कला और संस्क ृ त क े प्रत उदासीन व्यक्त",
+          "exampleSentence": "Only a philistine would walk out of a classical concert.",
+          "hindiTranslation": "क े वल कला-वुख व्यक्त हिी शास्त्रीय संगीत सारोहि से उठकर जाएगा।",
+          "memoryTip": ""
+        },
+        {
+          "id": "owsp_s2_q20_optD",
+          "optionLabel": "(D)",
+          "word": "Scientist",
+          "partOfSpeech": "n.",
+          "isCorrect": false,
+          "englishMeaning": "A person who studies or works in science. The scientist spent years researching a cure for cancer. One Word Substitution - Meanings Workbook | Page 28",
+          "hindiMeaning": "वैज्ञानक",
+          "exampleSentence": "",
+          "hindiTranslation": "",
+          "memoryTip": ""
+        }
+      ]
+    },
+    {
+      "id": "owsp_s2_q21",
+      "sheet": 2,
+      "questionNumber": 21,
+      "dayNumber": 50,
+      "questionText": "One who helps a person in need.",
+      "correctOptionLetter": "C",
+      "memoryTip": "",
+      "options": [
+        {
+          "id": "owsp_s2_q21_optA",
+          "optionLabel": "(A)",
+          "word": "Mercenary",
+          "partOfSpeech": "n./adj.",
+          "isCorrect": false,
+          "englishMeaning": "A soldier hired only for money; (adj.) motivated only by money. The king hired mercenaries to fight his wars.",
+          "hindiMeaning": "ाड़े का सैनक / सफ़ र्थ पैसे क े लए का करने वाला",
+          "exampleSentence": "",
+          "hindiTranslation": "",
+          "memoryTip": ""
+        },
+        {
+          "id": "owsp_s2_q21_optB",
+          "optionLabel": "(B)",
+          "word": "Veteran",
+          "partOfSpeech": "n.",
+          "isCorrect": false,
+          "englishMeaning": "A person with long experience in a field, especially an old soldier. The veteran actor has worked in films for fifty years.",
+          "hindiMeaning": "अनुवी व्यक्त / पूवर्थ सैनक",
+          "exampleSentence": "",
+          "hindiTranslation": "",
+          "memoryTip": ""
+        },
+        {
+          "id": "owsp_s2_q21_optC",
+          "optionLabel": "(C)",
+          "word": "Samaritan n.",
+          "partOfSpeech": "",
+          "isCorrect": true,
+          "englishMeaning": "A person who helps those in need (from the Bible's 'Good Samaritan').",
+          "hindiMeaning": "परोपकारी / ज़रूरतंद की दद करने वाला",
+          "exampleSentence": "A Good Samaritan took the injured man to the hospital.",
+          "hindiTranslation": "एक नेक व्यक्त घायल आदी को अस्पताल ले गया।",
+          "memoryTip": ""
+        },
+        {
+          "id": "owsp_s2_q21_optD",
+          "optionLabel": "(D)",
+          "word": "Collaborator",
+          "partOfSpeech": "n.",
+          "isCorrect": false,
+          "englishMeaning": "A person who works jointly with others on a project (also, one who helps an enemy). She was a collaborator on the research paper.",
+          "hindiMeaning": "सहियोगी / सा लकर का करने वाला",
+          "exampleSentence": "",
+          "hindiTranslation": "",
+          "memoryTip": ""
+        }
+      ]
+    },
+    {
+      "id": "owsp_s2_q22",
+      "sheet": 2,
+      "questionNumber": 22,
+      "dayNumber": 51,
+      "questionText": "Sole right to make and sell invention.",
+      "correctOptionLetter": "D",
+      "memoryTip": "Copyright is for books/songs/art; Patent is for inventions.",
+      "options": [
+        {
+          "id": "owsp_s2_q22_optA",
+          "optionLabel": "(A)",
+          "word": "Copyright",
+          "partOfSpeech": "n.",
+          "isCorrect": false,
+          "englishMeaning": "The legal right of the creator of a book, song, film etc. to control its use and copying. The book is under copyright, so it cannot be photocopied freely.",
+          "hindiMeaning": "कॉपीराट / रचनाकार का प्रतलप्यधकार",
+          "exampleSentence": "",
+          "hindiTranslation": "",
+          "memoryTip": ""
+        },
+        {
+          "id": "owsp_s2_q22_optB",
+          "optionLabel": "(B)",
+          "word": "Inheritance",
+          "partOfSpeech": "n.",
+          "isCorrect": false,
+          "englishMeaning": "Money or property received from a person who has died. He spent his whole inheritance within two years.",
+          "hindiMeaning": "वरासत / उत्तिराधकार ं ली संपत्ति",
+          "exampleSentence": "",
+          "hindiTranslation": "",
+          "memoryTip": ""
+        },
+        {
+          "id": "owsp_s2_q22_optC",
+          "optionLabel": "(C)",
+          "word": "Heirloom",
+          "partOfSpeech": "n.",
+          "isCorrect": false,
+          "englishMeaning": "A valuable object that has been in a family for generations. One Word Substitution - Meanings Workbook | Page 29",
+          "hindiMeaning": "पुश्तैनी धरोहिर",
+          "exampleSentence": "The old watch is a family heirloom.",
+          "hindiTranslation": "",
+          "memoryTip": ""
+        },
+        {
+          "id": "owsp_s2_q22_optD",
+          "optionLabel": "(D)",
+          "word": "Patent n.",
+          "partOfSpeech": "",
+          "isCorrect": true,
+          "englishMeaning": "The sole legal right to make, use and sell an invention for a fixed period.",
+          "hindiMeaning": "एकस्व अधकार / पेटंट (आवष्कार बनाने-बेचने का एकात्र अधकार)",
+          "exampleSentence": "The company took out a patent for its new engine.",
+          "hindiTranslation": "क ं पनी ने अपने नए ंजन का पेटंट कराया।",
+          "memoryTip": "Copyright is for books/songs/art; Patent is for inventions."
+        }
+      ]
+    },
+    {
+      "id": "owsp_s2_q23",
+      "sheet": 2,
+      "questionNumber": 23,
+      "dayNumber": 52,
+      "questionText": "A fictitious name used by an author.",
+      "correctOptionLetter": "C",
+      "memoryTip": "Pseudo = false; nym = name.",
+      "options": [
+        {
+          "id": "owsp_s2_q23_optA",
+          "optionLabel": "(A)",
+          "word": "Homonym",
+          "partOfSpeech": "n.",
+          "isCorrect": false,
+          "englishMeaning": "A word that has the same spelling or sound as another but a different meaning. 'Bat' (animal) and 'bat' (cricket) are homonyms.",
+          "hindiMeaning": "सनाी शब्द (एक जैसे शब्द, अलग अर्थ)",
+          "exampleSentence": "",
+          "hindiTranslation": "",
+          "memoryTip": ""
+        },
+        {
+          "id": "owsp_s2_q23_optB",
+          "optionLabel": "(B)",
+          "word": "Alibi",
+          "partOfSpeech": "n.",
+          "isCorrect": false,
+          "englishMeaning": "A claim or proof that a person was somewhere else when a crime took place. The accused had a strong alibi - he was in another city.",
+          "hindiMeaning": "घटनास्ल पर ौजूद न हिोने का सबूत",
+          "exampleSentence": "",
+          "hindiTranslation": "",
+          "memoryTip": ""
+        },
+        {
+          "id": "owsp_s2_q23_optC",
+          "optionLabel": "(C)",
+          "word": "Pseudonym n.",
+          "partOfSpeech": "",
+          "isCorrect": true,
+          "englishMeaning": "A fictitious name used by an author in place of his real name; a pen-name.",
+          "hindiMeaning": "छद्मना / उपना (लेखक का नक़ली ना)",
+          "exampleSentence": "Premchand was the pseudonym of Dhanpat Rai.",
+          "hindiTranslation": "प्रेचंद, धनपत राय का छद्मना ा।",
+          "memoryTip": "Pseudo = false; nym = name."
+        },
+        {
+          "id": "owsp_s2_q23_optD",
+          "optionLabel": "(D)",
+          "word": "Anonymous",
+          "partOfSpeech": "adj.",
+          "isCorrect": false,
+          "englishMeaning": "Of unknown name; written or done by someone whose name is not given.",
+          "hindiMeaning": "अना / गुना",
+          "exampleSentence": "She received an anonymous letter.",
+          "hindiTranslation": "",
+          "memoryTip": ""
+        }
+      ]
+    },
+    {
+      "id": "owsp_s2_q24",
+      "sheet": 2,
+      "questionNumber": 24,
+      "dayNumber": 53,
+      "questionText": "The act of looking back on past time.",
+      "correctOptionLetter": "A",
+      "memoryTip": "Retro = back; spect = look. Intro = inside (looking inside yourself).",
+      "options": [
+        {
+          "id": "owsp_s2_q24_optA",
+          "optionLabel": "(A)",
+          "word": "Retrospection n.",
+          "partOfSpeech": "",
+          "isCorrect": true,
+          "englishMeaning": "The act of looking back on or thinking about past events or time.",
+          "hindiMeaning": "पूवार्थवलोकन / बीते सय पर नज़र ालना",
+          "exampleSentence": "In retrospection, he regretted leaving school early.",
+          "hindiTranslation": "पीछे ुड़कर देखने पर उसे स्क ू ल जल्दी छोड़ने का पछतावा हुआ।",
+          "memoryTip": "Retro = back; spect = look. Intro = inside (looking inside yourself)."
+        },
+        {
+          "id": "owsp_s2_q24_optB",
+          "optionLabel": "(B)",
+          "word": "Inspection",
+          "partOfSpeech": "n.",
+          "isCorrect": false,
+          "englishMeaning": "The officer made an inspection of the factory.",
+          "hindiMeaning": "नरीक्ष",
+          "exampleSentence": "Careful examination or checking of something.",
+          "hindiTranslation": "",
+          "memoryTip": ""
+        },
+        {
+          "id": "owsp_s2_q24_optC",
+          "optionLabel": "(C)",
+          "word": "Introspection",
+          "partOfSpeech": "n.",
+          "isCorrect": false,
+          "englishMeaning": "The examination of one's own thoughts and feelings (looking inward). After failing, he spent time in deep introspection.",
+          "hindiMeaning": "आत्-नरीक्ष (अपने ीतर झाँकना)",
+          "exampleSentence": "",
+          "hindiTranslation": "",
+          "memoryTip": ""
+        },
+        {
+          "id": "owsp_s2_q24_optD",
+          "optionLabel": "(D)",
+          "word": "Circumspection",
+          "partOfSpeech": "n.",
+          "isCorrect": false,
+          "englishMeaning": "Careful and cautious consideration of all circumstances before acting. He acted with great circumspection before signing the deal. One Word Substitution - Meanings Workbook | Page 30",
+          "hindiMeaning": "सावधानी / सोच-सझकर चलना",
+          "exampleSentence": "",
+          "hindiTranslation": "",
+          "memoryTip": ""
+        }
+      ]
+    },
+    {
+      "id": "owsp_s2_q25",
+      "sheet": 2,
+      "questionNumber": 25,
+      "dayNumber": 54,
+      "questionText": "The study of human history and prehistory.",
+      "correctOptionLetter": "A",
+      "memoryTip": "Archaeology digs up the remains of ancient human history. Anthropology studies human beings and societies.",
+      "options": [
+        {
+          "id": "owsp_s2_q25_optA",
+          "optionLabel": "(A)",
+          "word": "Archaeology n.",
+          "partOfSpeech": "",
+          "isCorrect": true,
+          "englishMeaning": "The study of human history and prehistory through the excavation and analysis of ancient remains.",
+          "hindiMeaning": "पुरातत्व (खुदार्थ से ले अवशेषां द्वारा ानव तहिास का अध्ययन)",
+          "exampleSentence": "Archaeology has revealed the secrets of the Indus Valley Civilisation.",
+          "hindiTranslation": "पुरातत्व ने संधु घाटी सभ्यता क े रहिस्य उजागर कए हिैं।",
+          "memoryTip": "Archaeology digs up the remains of ancient human history. Anthropology studies human beings and societies."
+        },
+        {
+          "id": "owsp_s2_q25_optB",
+          "optionLabel": "(B)",
+          "word": "Psephology",
+          "partOfSpeech": "n.",
+          "isCorrect": false,
+          "englishMeaning": "A psephologist predicts election results using statistics.",
+          "hindiMeaning": "चुनाव-वश्लेष वज्ञान (तदान प्रवृत्तियां का अध्ययन)",
+          "exampleSentence": "The study of elections and voting patterns.",
+          "hindiTranslation": "",
+          "memoryTip": ""
+        },
+        {
+          "id": "owsp_s2_q25_optC",
+          "optionLabel": "(C)",
+          "word": "Anthropology",
+          "partOfSpeech": "n.",
+          "isCorrect": false,
+          "englishMeaning": "The study of human beings, their societies, cultures and development. Anthropology studies how different tribes live and think.",
+          "hindiMeaning": "ानव-वज्ञान / नृवज्ञान",
+          "exampleSentence": "",
+          "hindiTranslation": "",
+          "memoryTip": ""
+        },
+        {
+          "id": "owsp_s2_q25_optD",
+          "optionLabel": "(D)",
+          "word": "Geology",
+          "partOfSpeech": "n.",
+          "isCorrect": false,
+          "englishMeaning": "The science that studies the Earth's rocks, soil and structure. Geology helps us understand how mountains were formed.",
+          "hindiMeaning": "ू-वज्ञान",
+          "exampleSentence": "",
+          "hindiTranslation": "",
+          "memoryTip": ""
+        }
+      ]
+    },
+    {
+      "id": "owsp_s2_q26",
+      "sheet": 2,
+      "questionNumber": 26,
+      "dayNumber": 55,
+      "questionText": "One who is a great lover of books.",
+      "correctOptionLetter": "A",
+      "memoryTip": "Biblio = book; phile = lover. All '-phile' words mean 'lover of ...'.",
+      "options": [
+        {
+          "id": "owsp_s2_q26_optA",
+          "optionLabel": "(A)",
+          "word": "Bibliophile n.",
+          "partOfSpeech": "",
+          "isCorrect": true,
+          "englishMeaning": "A person who loves reading and collecting books; one who loves to read and gain knowledge from books.",
+          "hindiMeaning": "पुस्तक-प्रेी (कताबं पढ़ने और कट्ठा करने का शौकीन)",
+          "exampleSentence": "As a true bibliophile, Riya spends her entire pocket money on books and keeps adding to her home library.",
+          "hindiTranslation": "सच्ची पुस्तक-प्रेी हिोने क े कार रया अपना सारा जेब-खचर्थ कताबां पर लगाती हिै और अपनी घरेलू लाब्रेरी बढ़ाती रहिती हिै।",
+          "memoryTip": "Biblio = book; phile = lover. All '-phile' words mean 'lover of ...'."
+        },
+        {
+          "id": "owsp_s2_q26_optB",
+          "optionLabel": "(B)",
+          "word": "Pedophile",
+          "partOfSpeech": "n.",
+          "isCorrect": false,
+          "englishMeaning": "An adult who has a disordered sexual attraction to children (a serious disorder; acting on it is a grave crime). Strict laws exist to protect children from every pedophile.",
+          "hindiMeaning": "बच्चां क े प्रत वक ृ त यौन आकषर्थ रखने वाला वयस्क (गंीर ानसक वकार / अपराध)",
+          "exampleSentence": "",
+          "hindiTranslation": "",
+          "memoryTip": ""
+        },
+        {
+          "id": "owsp_s2_q26_optC",
+          "optionLabel": "(C)",
+          "word": "Xenophile",
+          "partOfSpeech": "n.",
+          "isCorrect": false,
+          "englishMeaning": "A person who loves and admires foreign people, cultures and things. As a xenophile, he loves learning foreign languages and trying foreign food.",
+          "hindiMeaning": "वदेशी वस्तुआं/संस्क ृ त का प्रेी",
+          "exampleSentence": "",
+          "hindiTranslation": "",
+          "memoryTip": ""
+        },
+        {
+          "id": "owsp_s2_q26_optD",
+          "optionLabel": "(D)",
+          "word": "Hemophile",
+          "partOfSpeech": "n.",
+          "isCorrect": false,
+          "englishMeaning": "(Distractor) Related to blood - from 'haema' meaning blood; hemophilia is a blood disorder in which blood does not clot properly. A person with hemophilia can bleed for a long time after a small cut. One Word Substitution - Meanings Workbook | Page 31",
+          "hindiMeaning": "रक्त से संबंधत शब्द (हिीोफीलया = रक्त न जने की बीारी)",
+          "exampleSentence": "",
+          "hindiTranslation": "",
+          "memoryTip": ""
+        }
+      ]
+    },
+    {
+      "id": "owsp_s2_q27",
+      "sheet": 2,
+      "questionNumber": 27,
+      "dayNumber": 56,
+      "questionText": "A person who is womanish in his habits.",
+      "correctOptionLetter": "C",
+      "memoryTip": "",
+      "options": [
+        {
+          "id": "owsp_s2_q27_optA",
+          "optionLabel": "(A)",
+          "word": "Feminist",
+          "partOfSpeech": "n.",
+          "isCorrect": false,
+          "englishMeaning": "A person who supports equal rights and opportunities for women. She is a feminist who fights for equal pay for women.",
+          "hindiMeaning": "नारीवादी (स्त्री-अधकारां का सर्थक)",
+          "exampleSentence": "",
+          "hindiTranslation": "",
+          "memoryTip": ""
+        },
+        {
+          "id": "owsp_s2_q27_optB",
+          "optionLabel": "(B)",
+          "word": "Philogynist",
+          "partOfSpeech": "n.",
+          "isCorrect": false,
+          "englishMeaning": "A man who loves or admires women. The philogynist always spoke highly of women.",
+          "hindiMeaning": "स्त्रयां का प्रेी / प्रशंसक पुरुष",
+          "exampleSentence": "",
+          "hindiTranslation": "",
+          "memoryTip": ""
+        },
+        {
+          "id": "owsp_s2_q27_optC",
+          "optionLabel": "(C)",
+          "word": "Effeminate adj.",
+          "partOfSpeech": "",
+          "isCorrect": true,
+          "englishMeaning": "(Of a man) having feminine habits, manners or qualities.",
+          "hindiMeaning": "जनाना / स्त्रै (पुरुष जसं स्त्रयां जैसी आदतं हिां)",
+          "exampleSentence": "The critic called the actor's walk effeminate.",
+          "hindiTranslation": "आलोचक ने अनेता की चाल को स्त्रै (जनाना) कहिा।",
+          "memoryTip": ""
+        },
+        {
+          "id": "owsp_s2_q27_optD",
+          "optionLabel": "(D)",
+          "word": "Feminine",
+          "partOfSpeech": "adj.",
+          "isCorrect": false,
+          "englishMeaning": "Having qualities or appearance considered typical of women.",
+          "hindiMeaning": "स्त्रयोचत / नारी-सुल",
+          "exampleSentence": "She wore a soft, feminine dress.",
+          "hindiTranslation": "",
+          "memoryTip": ""
+        }
+      ]
+    },
+    {
+      "id": "owsp_s2_q28",
+      "sheet": 2,
+      "questionNumber": 28,
+      "dayNumber": 57,
+      "questionText": "That which cannot be satisfied.",
+      "correctOptionLetter": "B",
+      "memoryTip": "Sate = satisfy.",
+      "options": [
+        {
+          "id": "owsp_s2_q28_optA",
+          "optionLabel": "(A)",
+          "word": "Incredible",
+          "partOfSpeech": "adj.",
+          "isCorrect": false,
+          "englishMeaning": "It is incredible that he finished the race with a broken leg.",
+          "hindiMeaning": "अवश्वसनीय / अद्भुत",
+          "exampleSentence": "Impossible or very hard to believe; amazing.",
+          "hindiTranslation": "",
+          "memoryTip": ""
+        },
+        {
+          "id": "owsp_s2_q28_optB",
+          "optionLabel": "(B)",
+          "word": "Insatiable adj.",
+          "partOfSpeech": "",
+          "isCorrect": true,
+          "englishMeaning": "Impossible to satisfy; always wanting more.",
+          "hindiMeaning": "अतृप्त / जो की संतुष्ट न हिो",
+          "exampleSentence": "He has an insatiable hunger for knowledge.",
+          "hindiTranslation": "उसं ज्ञान की अतृप्त ूख हिै।",
+          "memoryTip": "Sate = satisfy."
+        },
+        {
+          "id": "owsp_s2_q28_optC",
+          "optionLabel": "(C)",
+          "word": "Improbable",
+          "partOfSpeech": "adj.",
+          "isCorrect": false,
+          "englishMeaning": "It is improbable that it will snow in Kanpur in June.",
+          "hindiMeaning": "असंाव्य / जसक े हिोने की संावना क हिो",
+          "exampleSentence": "Not likely to happen or be true.",
+          "hindiTranslation": "",
+          "memoryTip": ""
+        },
+        {
+          "id": "owsp_s2_q28_optD",
+          "optionLabel": "(D)",
+          "word": "Impossible",
+          "partOfSpeech": "adj.",
+          "isCorrect": false,
+          "englishMeaning": "It is impossible to finish this work in one hour. One Word Substitution - Meanings Workbook | Page 32",
+          "hindiMeaning": "असंव",
+          "exampleSentence": "Not able to be done or to happen.",
+          "hindiTranslation": "",
+          "memoryTip": ""
+        }
+      ]
+    },
+    {
+      "id": "owsp_s2_q29",
+      "sheet": 2,
+      "questionNumber": 29,
+      "dayNumber": 58,
+      "questionText": "Asadsong. (printed this way on the sheet; it means 'A sad song')",
+      "correctOptionLetter": "C",
+      "memoryTip": "",
+      "options": [
+        {
+          "id": "owsp_s2_q29_optA",
+          "optionLabel": "(A)",
+          "word": "Ditty",
+          "partOfSpeech": "n.",
+          "isCorrect": false,
+          "englishMeaning": "A short, simple song or poem.",
+          "hindiMeaning": "छोटा सरल गीत",
+          "exampleSentence": "The child sang a cheerful ditty.",
+          "hindiTranslation": "",
+          "memoryTip": ""
+        },
+        {
+          "id": "owsp_s2_q29_optB",
+          "optionLabel": "(B)",
+          "word": "Knell",
+          "partOfSpeech": "n.",
+          "isCorrect": false,
+          "englishMeaning": "The sound of a bell rung slowly after a death or at a funeral. The knell of the church bell announced his death.",
+          "hindiMeaning": "ृत्यु या अंत संस्कार पर बजने वाला घंटा",
+          "exampleSentence": "",
+          "hindiTranslation": "",
+          "memoryTip": ""
+        },
+        {
+          "id": "owsp_s2_q29_optC",
+          "optionLabel": "(C)",
+          "word": "Dirge n.",
+          "partOfSpeech": "",
+          "isCorrect": true,
+          "englishMeaning": "A slow, sad song or poem sung at a funeral or for the dead (a lament).",
+          "hindiMeaning": "शोकगीत / संया (ृतक क े लए गाया जाने वाला दुःख रा गीत)",
+          "exampleSentence": "The mourners sang a dirge as the coffin was carried out.",
+          "hindiTranslation": "जब ताबूत बाहिर ले जाया गया तो शोकाक ु ल लोगां ने शोकगीत गाया।",
+          "memoryTip": ""
+        },
+        {
+          "id": "owsp_s2_q29_optD",
+          "optionLabel": "(D)",
+          "word": "Lay",
+          "partOfSpeech": "n.",
+          "isCorrect": false,
+          "englishMeaning": "A short narrative poem or song (a ballad). The minstrel sang a lay about an ancient warrior.",
+          "hindiMeaning": "छोटी गाा-कवता / गीत",
+          "exampleSentence": "",
+          "hindiTranslation": "",
+          "memoryTip": ""
+        }
+      ]
+    },
+    {
+      "id": "owsp_s2_q30",
+      "sheet": 2,
+      "questionNumber": 30,
+      "dayNumber": 59,
+      "questionText": "One who believes in the power of fate.",
+      "correctOptionLetter": "A",
+      "memoryTip": "Repeated question (same as",
+      "options": [
+        {
+          "id": "owsp_s2_q30_optA",
+          "optionLabel": "(A)",
+          "word": "Fatalist n.",
+          "partOfSpeech": "",
+          "isCorrect": true,
+          "englishMeaning": "One who believes that all events are predetermined and controlled by fate.",
+          "hindiMeaning": "ाग्यवादी (जो ानता हिै क सब क ु छ ाग्य से हिोता हिै)",
+          "exampleSentence": "Being a fatalist, he says, 'Whatever has to happen will happen.'",
+          "hindiTranslation": "ाग्यवादी हिोने क े कार वहि कहिता हिै, 'जो हिोना हिै वहिी हिोगा।'",
+          "memoryTip": "Repeated question (same as"
+        },
+        {
+          "id": "owsp_s2_q30_optB",
+          "optionLabel": "(B)",
+          "word": "Optimistic",
+          "partOfSpeech": "",
+          "isCorrect": false,
+          "englishMeaning": "See question definition.",
+          "hindiMeaning": "",
+          "exampleSentence": "",
+          "hindiTranslation": "",
+          "memoryTip": ""
+        },
+        {
+          "id": "owsp_s2_q30_optC",
+          "optionLabel": "(C)",
+          "word": "Pessimistic",
+          "partOfSpeech": "",
+          "isCorrect": false,
+          "englishMeaning": "See question definition.",
+          "hindiMeaning": "",
+          "exampleSentence": "",
+          "hindiTranslation": "",
+          "memoryTip": ""
+        },
+        {
+          "id": "owsp_s2_q30_optD",
+          "optionLabel": "(D)",
+          "word": "Parsimonious",
+          "partOfSpeech": "",
+          "isCorrect": false,
+          "englishMeaning": "See question definition.",
+          "hindiMeaning": "",
+          "exampleSentence": "",
+          "hindiTranslation": "",
+          "memoryTip": ""
+        }
+      ]
+    }
+  ],
+  "azIndex": [
+    {
+      "word": "Abdicate",
+      "hindiMeaning": "गद्दी छोड़ना / पद या अधकार त्याग देना"
+    },
+    {
+      "word": "Abominable",
+      "hindiMeaning": "घृत / अत्यंत बुरा"
+    },
+    {
+      "word": "Adamant",
+      "hindiMeaning": "अड़यल / अपनी बात पर दृढ़"
+    },
+    {
+      "word": "Adorable",
+      "hindiMeaning": "प्यारा / नोहिक"
+    },
+    {
+      "word": "Aggressive",
+      "hindiMeaning": "आक्राक"
+    },
+    {
+      "word": "Alibi",
+      "hindiMeaning": "घटनास्ल पर ौजूद न हिोने का सबूत"
+    },
+    {
+      "word": "Amateur",
+      "hindiMeaning": "शौक़या (गैर-पेशेवर) व्यक्त"
+    },
+    {
+      "word": "Ambidextrous",
+      "hindiMeaning": "उयहिस्त (दोनां हिाां से सान क ु शलता से का करनेवाला)"
+    },
+    {
+      "word": "Ambivalent",
+      "hindiMeaning": "दुवधाग्रस्त / द्वंद्वात्क नोाव वाला"
+    },
+    {
+      "word": "Amenable",
+      "hindiMeaning": "ानने को तैयार / आज्ञाकारी / वनम्र"
+    },
+    {
+      "word": "Anarchy",
+      "hindiMeaning": "अराजकता (कानून और व्यवस्ा का अाव)"
+    },
+    {
+      "word": "Anonymous",
+      "hindiMeaning": "अना / गुना"
+    },
+    {
+      "word": "Anthropology",
+      "hindiMeaning": "ानव-वज्ञान / नृवज्ञान"
+    },
+    {
+      "word": "Antiquarian",
+      "hindiMeaning": "पुरावस्तु-संग्राहिक / पुरानी वस्तुआं का शौकीन व वक्र े ता"
+    },
+    {
+      "word": "Arbitrator",
+      "hindiMeaning": "ध्यस् / पंच (ववाद सुलझाने वाला)"
+    },
+    {
+      "word": "Archaeology",
+      "hindiMeaning": "पुरातत्व (खुदार्थ से ले अवशेषां द्वारा ानव तहिास काअध्ययन)"
+    },
+    {
+      "word": "Archeologist",
+      "hindiMeaning": "पुरातत्ववेत्तिा"
+    },
+    {
+      "word": "Archipelago",
+      "hindiMeaning": "द्वीप-सूहि"
+    },
+    {
+      "word": "Ascetic",
+      "hindiMeaning": "तपस्वी / संन्यासी (संसार त्यागकर ोक्ष क े लए साधनाकरने वाला)"
+    },
+    {
+      "word": "Atheist",
+      "hindiMeaning": "नास्तक"
+    },
+    {
+      "word": "Attendants",
+      "hindiMeaning": "परचारक / सेवादार"
+    },
+    {
+      "word": "Autocracy",
+      "hindiMeaning": "नरंक ु श शासन / तानाशाहिी (एक व्यक्त का पूर्थअधकार)"
+    },
+    {
+      "word": "Bachelor",
+      "hindiMeaning": "क ु ं वारा / अववाहित पुरुष"
+    },
+    {
+      "word": "Barrel",
+      "hindiMeaning": "पीपा / ढोल जैसा बड़ा बतर्थन"
+    },
+    {
+      "word": "Bellicose",
+      "hindiMeaning": "झगड़ालू / युद्धिप्रय (लड़ार्थ का शौकीन)"
+    },
+    {
+      "word": "Belligerent",
+      "hindiMeaning": "युद्धिरत / लड़ाक ू (जो युद्धि ं लगा हिो)"
+    },
+    {
+      "word": "Bequeath",
+      "hindiMeaning": "वसीयत ं देना"
+    },
+    {
+      "word": "Bibliophile",
+      "hindiMeaning": "पुस्तक-प्रेी (कताबं पढ़ने और कट्ठा करने का शौकीन)"
+    },
+    {
+      "word": "Bouquet",
+      "hindiMeaning": "पुष्प-गुच्छ / फ ू लां का गुलदस्ता"
+    },
+    {
+      "word": "Bunch",
+      "hindiMeaning": "गुच्छा"
+    },
+    {
+      "word": "Cacophonous",
+      "hindiMeaning": "कक र्थ श / कानां को बुरी लगने वाली (ध्वन)"
+    },
+    {
+      "word": "Calligrapher",
+      "hindiMeaning": "सुलेखक (सुंदर लखावट का कलाकार)"
+    },
+    {
+      "word": "Cartographer",
+      "hindiMeaning": "ानचत्रकार (नक़्शे बनाने वाला)"
+    },
+    {
+      "word": "Cauldron",
+      "hindiMeaning": "बड़ा कड़ाहिा / देग"
+    },
+    {
+      "word": "Celibate",
+      "hindiMeaning": "ब्रह्मचारी (धांक कार से ववाहि न करने वाला)"
+    },
+    {
+      "word": "Choreographer",
+      "hindiMeaning": "नृत्य-नदर्बोशक"
+    },
+    {
+      "word": "Circumspection",
+      "hindiMeaning": "सावधानी / सोच-सझकर चलना"
+    },
+    {
+      "word": "Claustrophobia",
+      "hindiMeaning": "बंद जगहिां का र"
+    },
+    {
+      "word": "Collaborator",
+      "hindiMeaning": "सहियोगी / सा लकर का करने वाला"
+    },
+    {
+      "word": "Colleagues",
+      "hindiMeaning": "सहिकर्मी"
+    },
+    {
+      "word": "Commanders",
+      "hindiMeaning": "कांर / सेनानायक"
+    },
+    {
+      "word": "Compatriots",
+      "hindiMeaning": "हिवतन / देशवासी"
+    },
+    {
+      "word": "Consign",
+      "hindiMeaning": "साैंपना / सुपुदर्थ करना"
+    },
+    {
+      "word": "Contemporaries",
+      "hindiMeaning": "सकालीन लोग"
+    },
+    {
+      "word": "Copyright",
+      "hindiMeaning": "कॉपीराट / रचनाकार का प्रतलप्यधकार"
+    },
+    {
+      "word": "Corruption",
+      "hindiMeaning": "भ्रष्टाचार / रश्वतखोरी"
+    },
+    {
+      "word": "Cosmopolitan",
+      "hindiMeaning": "वश्व-नागरक / सवर्थदेशीय"
+    },
+    {
+      "word": "Cosmopolitans",
+      "hindiMeaning": "वश्व-नागरक / सवर्थदेशीय लोग"
+    },
+    {
+      "word": "Crank",
+      "hindiMeaning": "सनकी / झक्की आदी"
+    },
+    {
+      "word": "Cynic",
+      "hindiMeaning": "शंकालु / दूसरां की नीयत पर शक करने वाला"
+    },
+    {
+      "word": "Declamation",
+      "hindiMeaning": "ओजस्वी ाष / नाटकीय पाठ"
+    },
+    {
+      "word": "Defalcation",
+      "hindiMeaning": "गबन (साैंपे गए धन का ग़लत उपयोग)"
+    },
+    {
+      "word": "Devotee",
+      "hindiMeaning": "क्त / अनुयायी"
+    },
+    {
+      "word": "Dirge",
+      "hindiMeaning": "शोकगीत / संया (ृतक क े लए गाया जाने वाला दुःखरा गीत)"
+    },
+    {
+      "word": "Ditty",
+      "hindiMeaning": "छोटा सरल गीत"
+    },
+    {
+      "word": "Dotage",
+      "hindiMeaning": "सठयाने की अवस्ा (बुढ़ापे ं बुद्धि-भ्र)"
+    },
+    {
+      "word": "Eavesdropping",
+      "hindiMeaning": "छपकर दूसरां की बात सुनना"
+    },
+    {
+      "word": "Edible",
+      "hindiMeaning": "खाने योग्य"
+    },
+    {
+      "word": "Effeminate",
+      "hindiMeaning": "जनाना / स्त्रै (पुरुष जसं स्त्रयां जैसी आदतं हिां)"
+    },
+    {
+      "word": "Elocution",
+      "hindiMeaning": "वक्तृत्व कला / उच्चार की शैली"
+    },
+    {
+      "word": "Embryonic",
+      "hindiMeaning": "आरंक अवस्ा का / भ्रूीय"
+    },
+    {
+      "word": "Ephemeral",
+      "hindiMeaning": "क्षंगुर / बहुत क सय टकने वाला"
+    },
+    {
+      "word": "Epilogue",
+      "hindiMeaning": "उपसंहिार / अंत कन"
+    },
+    {
+      "word": "Epistle",
+      "hindiMeaning": "पत्र / लंबा औपचारक पत्र"
+    },
+    {
+      "word": "Epitaph",
+      "hindiMeaning": "साध-लेख / कब्र पर लखे शब्द"
+    },
+    {
+      "word": "Epitome",
+      "hindiMeaning": "आदशर्थ उदाहिर / सार-संक्षेप"
+    },
+    {
+      "word": "Eternal",
+      "hindiMeaning": "शाश्वत / अनंत"
+    },
+    {
+      "word": "Fastidious",
+      "hindiMeaning": "नकचढ़ा / ीनेख नकालने वाला (जसे जल्दी क ु छपसंद न आए)"
+    },
+    {
+      "word": "Fatalist",
+      "hindiMeaning": "ाग्यवादी (जो ानता हिै क सब क ु छ ाग्य से हिोता हिै)"
+    },
+    {
+      "word": "Favouritism",
+      "hindiMeaning": "पक्षपात"
+    },
+    {
+      "word": "Feminine",
+      "hindiMeaning": "स्त्रयोचत / नारी-सुल"
+    },
+    {
+      "word": "Feminist",
+      "hindiMeaning": "नारीवादी (स्त्री-अधकारां का सर्थक)"
+    },
+    {
+      "word": "Fodder",
+      "hindiMeaning": "चारा (पशुआं का ोजन)"
+    },
+    {
+      "word": "Formalism",
+      "hindiMeaning": "औपचारकतावाद (नयां/रीतयां पर अत्यधक ज़ोर)"
+    },
+    {
+      "word": "Fratricide",
+      "hindiMeaning": "भ्रातृहित्या (ार्थ की हित्या)"
+    },
+    {
+      "word": "Frightening",
+      "hindiMeaning": "रावना"
+    },
+    {
+      "word": "Funeral",
+      "hindiMeaning": "अंत संस्कार / जनाज़ा"
+    },
+    {
+      "word": "Garland",
+      "hindiMeaning": "ाला / हिार"
+    },
+    {
+      "word": "Gastronome",
+      "hindiMeaning": "खाने का शौकीन / स्वादष्ट ोजन का पारखी"
+    },
+    {
+      "word": "Geology",
+      "hindiMeaning": "ू-वज्ञान"
+    },
+    {
+      "word": "Heirloom",
+      "hindiMeaning": "पुश्तैनी धरोहिर"
+    },
+    {
+      "word": "Hemophile",
+      "hindiMeaning": "रक्त से संबंधत शब्द (हिीोफीलया = रक्त न जने कीबीारी)"
+    },
+    {
+      "word": "Hierarchy",
+      "hindiMeaning": "पदानुक्र (ऊ ँ च-नीच की श्रेी)"
+    },
+    {
+      "word": "Hinterland",
+      "hindiMeaning": "ीतरी / पृष्ठ-प्रदेश (तट से दूर का लाका)"
+    },
+    {
+      "word": "Homicide",
+      "hindiMeaning": "ानव-हित्या"
+    },
+    {
+      "word": "Homonym",
+      "hindiMeaning": "सनाी शब्द (एक जैसे शब्द, अलग अर्थ)"
+    },
+    {
+      "word": "Iconoclast",
+      "hindiMeaning": "ूतंंजक / परंपराआं पर प्रहिार करने वाला"
+    },
+    {
+      "word": "Illegible",
+      "hindiMeaning": "अपठनीय (जो पढ़ा न जा सक े )"
+    },
+    {
+      "word": "Illicit",
+      "hindiMeaning": "अवैध / नषद्धि"
+    },
+    {
+      "word": "Illusive",
+      "hindiMeaning": "भ्राक / ायावी"
+    },
+    {
+      "word": "Imbecility",
+      "hindiMeaning": "ूखर्थता / ंदबुद्धि"
+    },
+    {
+      "word": "Immutable",
+      "hindiMeaning": "अपरवतर्थनीय / अटल"
+    },
+    {
+      "word": "Implacable",
+      "hindiMeaning": "अग / जसे शांत या संतुष्ट न कया जा सक े"
+    },
+    {
+      "word": "Impossible",
+      "hindiMeaning": "असंव"
+    },
+    {
+      "word": "Imposter",
+      "hindiMeaning": "बहुरूपया / धोखेबाज़ (नक़ली पहिचान बताने वाला)"
+    },
+    {
+      "word": "Impregnable",
+      "hindiMeaning": "अेद्य (जसे बल से जीता न जा सक े )"
+    },
+    {
+      "word": "Improbable",
+      "hindiMeaning": "असंाव्य / जसक े हिोने की संावना क हिो"
+    },
+    {
+      "word": "Impromptu",
+      "hindiMeaning": "तात्कालक / बना तैयारी का"
+    },
+    {
+      "word": "Inaccessible",
+      "hindiMeaning": "अगम्य / जहिाँ पहुँचा न जा सक े"
+    },
+    {
+      "word": "Inapprehensible",
+      "hindiMeaning": "अग्राह्य / जो पकड़ या सझ ं न आ सक े (दुलर्थ शब्द)"
+    },
+    {
+      "word": "Inapt",
+      "hindiMeaning": "अनुपयुक्त / बेेल"
+    },
+    {
+      "word": "Inaudible",
+      "hindiMeaning": "अश्रव्य (जो सुनार्थ न दे)"
+    },
+    {
+      "word": "Incompatible",
+      "hindiMeaning": "असंगत / बेेल"
+    },
+    {
+      "word": "Incomprehensible",
+      "hindiMeaning": "दुबार्बोध / सझ से परे"
+    },
+    {
+      "word": "Incorrigible",
+      "hindiMeaning": "असुधायर्थ (जसे सुधारा न जा सक े )"
+    },
+    {
+      "word": "Incredible",
+      "hindiMeaning": "अवश्वसनीय / अद्भुत"
+    },
+    {
+      "word": "Indefatigable",
+      "hindiMeaning": "अक / की न कने वाला"
+    },
+    {
+      "word": "Indelible",
+      "hindiMeaning": "अट / जसे टाया न जा सक े"
+    },
+    {
+      "word": "Ineligible",
+      "hindiMeaning": "अयोग्य / पात्रता न रखने वाला"
+    },
+    {
+      "word": "Inevitable",
+      "hindiMeaning": "अपरहिायर्थ / जसे टाला न जा सक े"
+    },
+    {
+      "word": "Infallible",
+      "hindiMeaning": "अचूक / की ग़लती न करने वाला"
+    },
+    {
+      "word": "Infant",
+      "hindiMeaning": "शशु / नवजात बच्चा"
+    },
+    {
+      "word": "Inheritance",
+      "hindiMeaning": "वरासत / उत्तिराधकार ं ली संपत्ति"
+    },
+    {
+      "word": "Insatiable",
+      "hindiMeaning": "अतृप्त / जो की संतुष्ट न हिो"
+    },
+    {
+      "word": "Inspection",
+      "hindiMeaning": "नरीक्ष"
+    },
+    {
+      "word": "Introspection",
+      "hindiMeaning": "आत्-नरीक्ष (अपने ीतर झाँकना)"
+    },
+    {
+      "word": "Isthmus",
+      "hindiMeaning": "स्लसंध / स्लरूध्य"
+    },
+    {
+      "word": "Itinerant",
+      "hindiMeaning": "घुंतू / का क े लए जगहि-जगहि घूने वाला"
+    },
+    {
+      "word": "Judge",
+      "hindiMeaning": "न्यायाधीश"
+    },
+    {
+      "word": "Junk dealer",
+      "hindiMeaning": "कबाड़ी"
+    },
+    {
+      "word": "Kettle",
+      "hindiMeaning": "क े तली"
+    },
+    {
+      "word": "Kleptomania",
+      "hindiMeaning": "चोरी करने की ानसक बीारी"
+    },
+    {
+      "word": "Knell",
+      "hindiMeaning": "ृत्यु या अंत संस्कार पर बजने वाला घंटा"
+    },
+    {
+      "word": "Lawyer",
+      "hindiMeaning": "वकील"
+    },
+    {
+      "word": "Lay",
+      "hindiMeaning": "छोटी गाा-कवता / गीत"
+    },
+    {
+      "word": "Lexicographer",
+      "hindiMeaning": "कोशकार (शब्दकोश बनाने वाला)"
+    },
+    {
+      "word": "Liar",
+      "hindiMeaning": "झूठा"
+    },
+    {
+      "word": "Litany",
+      "hindiMeaning": "प्रार्थनाआं की श्रृंखला / दोहिरार्थ जाने वाली लंबी सूची"
+    },
+    {
+      "word": "Literate",
+      "hindiMeaning": "साक्षर (पढ़ना-लखना जानने वाला)"
+    },
+    {
+      "word": "Magician",
+      "hindiMeaning": "जादूगर"
+    },
+    {
+      "word": "Marvel",
+      "hindiMeaning": "चत्कार / अद्भुत वस्तु"
+    },
+    {
+      "word": "Mascot",
+      "hindiMeaning": "शुंकर (ाग्यशाली प्रतीक)"
+    },
+    {
+      "word": "Mask",
+      "hindiMeaning": "ुखौटा / नक़ाब"
+    },
+    {
+      "word": "Masque",
+      "hindiMeaning": "नक़ाबपोश संगीतय नाटक / नाट्य-प्रदशर्थन"
+    },
+    {
+      "word": "Megalomania",
+      "hindiMeaning": "अपने को बहुत हिान/शक्तशाली सझने का पागलपन"
+    },
+    {
+      "word": "Menu",
+      "hindiMeaning": "ेन्यू / ोजन-सूची"
+    },
+    {
+      "word": "Mercenary",
+      "hindiMeaning": "ाड़े का सैनक / सफ़ र्थ पैसे क े लए का करने वाला"
+    },
+    {
+      "word": "Middleman",
+      "hindiMeaning": "बचौलया / दलाल"
+    },
+    {
+      "word": "Migrant",
+      "hindiMeaning": "प्रवासी"
+    },
+    {
+      "word": "Militant",
+      "hindiMeaning": "उग्रवादी / जुझारू"
+    },
+    {
+      "word": "Monarchy",
+      "hindiMeaning": "राजतंत्र"
+    },
+    {
+      "word": "Mosque",
+      "hindiMeaning": "स्जद"
+    },
+    {
+      "word": "Mutiny",
+      "hindiMeaning": "सैनक वद्रोहि"
+    },
+    {
+      "word": "Nascent",
+      "hindiMeaning": "उरता हुआ / नवोदत"
+    },
+    {
+      "word": "Negligible",
+      "hindiMeaning": "नगण्य (तना क क ध्यान देने लायक न हिो)"
+    },
+    {
+      "word": "Nepotism",
+      "hindiMeaning": "ार्थ-तीजावाद (अपने रश्तेदारां को ग़लत ला देना)"
+    },
+    {
+      "word": "Obsequies",
+      "hindiMeaning": "अंत्येष्ट संस्कार"
+    },
+    {
+      "word": "Oligarchy",
+      "hindiMeaning": "अल्पतंत्र (क ु छ लोगां का शासन)"
+    },
+    {
+      "word": "Omnipotent",
+      "hindiMeaning": "सवर्थशक्तान"
+    },
+    {
+      "word": "Omniscient",
+      "hindiMeaning": "सवर्थज्ञ (सब क ु छ जानने वाला)"
+    },
+    {
+      "word": "Optimistic",
+      "hindiMeaning": "आशावादी"
+    },
+    {
+      "word": "Oration",
+      "hindiMeaning": "औपचारक ाष / व्याख्यान"
+    },
+    {
+      "word": "Orphan",
+      "hindiMeaning": "अना"
+    },
+    {
+      "word": "Outriders",
+      "hindiMeaning": "पायलट/एस्कॉटर्थ सवार (VIP क े आगे-पीछे चलने वालेोटरसाकल गार्थ)"
+    },
+    {
+      "word": "Overhearing",
+      "hindiMeaning": "अचानक/संयोग से सुन लेना"
+    },
+    {
+      "word": "Panacea",
+      "hindiMeaning": "राबा औषध / सवर्थरोगहिर उपाय"
+    },
+    {
+      "word": "Panegyrist",
+      "hindiMeaning": "प्रशंसक / स्तुत-गान करने वाला"
+    },
+    {
+      "word": "Parsimonious",
+      "hindiMeaning": "अत क ं जूस / बहुत तव्ययी"
+    },
+    {
+      "word": "Patent",
+      "hindiMeaning": "एकस्व अधकार / पेटंट (आवष्कार बनाने-बेचने काएकात्र अधकार)"
+    },
+    {
+      "word": "Patricide",
+      "hindiMeaning": "पतृहित्या"
+    },
+    {
+      "word": "Paucity",
+      "hindiMeaning": "की / अल्पता"
+    },
+    {
+      "word": "Pedophile",
+      "hindiMeaning": "बच्चां क े प्रत वक ृ त यौन आकषर्थ रखने वाला वयस्क(गंीर ानसक वकार / अपराध)"
+    },
+    {
+      "word": "Pessimistic",
+      "hindiMeaning": "नराशावादी"
+    },
+    {
+      "word": "Philanderer",
+      "hindiMeaning": "एेयाश / स्त्रयां से खलवाड़ करने वाला"
+    },
+    {
+      "word": "Philanthropist",
+      "hindiMeaning": "परोपकारी / दानवीर"
+    },
+    {
+      "word": "Philatelist",
+      "hindiMeaning": "ाक-टकट संग्राहिक"
+    },
+    {
+      "word": "Philistine",
+      "hindiMeaning": "कला और संस्क ृ त क े प्रत उदासीन व्यक्त"
+    },
+    {
+      "word": "Philogynist",
+      "hindiMeaning": "स्त्रयां का प्रेी / प्रशंसक पुरुष"
+    },
+    {
+      "word": "Phonologist",
+      "hindiMeaning": "ध्वन-वज्ञानी (ाषा की ध्वनयां का अध्ययन करनेवाला)"
+    },
+    {
+      "word": "Pigeonholing",
+      "hindiMeaning": "कसी को एक ख़ास खाँचे/श्रेी ं ाल देना"
+    },
+    {
+      "word": "Pilferage",
+      "hindiMeaning": "छोटी-छोटी ात्रा ं चोरी / चुराना"
+    },
+    {
+      "word": "Plutocracy",
+      "hindiMeaning": "धनक-तंत्र (अीरां का शासन)"
+    },
+    {
+      "word": "Polyandry",
+      "hindiMeaning": "बहुपतत्व (एक स्त्री क े कर्थ पत)"
+    },
+    {
+      "word": "Polychromy",
+      "hindiMeaning": "बहुरंगी सजावट"
+    },
+    {
+      "word": "Polygyny",
+      "hindiMeaning": "बहुपत्नीत्व (एक पुरुष की कर्थ पत्नयाँ)"
+    },
+    {
+      "word": "Polyphony",
+      "hindiMeaning": "बहुस्वरता (कर्थ स्वरां का एक सा गायन)"
+    },
+    {
+      "word": "Posthumous",
+      "hindiMeaning": "रोपरांत (ृत्यु क े बाद का)"
+    },
+    {
+      "word": "Prediction",
+      "hindiMeaning": "वष्यवाी / पूवार्थनुान"
+    },
+    {
+      "word": "Premonition",
+      "hindiMeaning": "पूवार्थास (अनहिोनी की आशंका)"
+    },
+    {
+      "word": "Progenitor",
+      "hindiMeaning": "पूवर्थज / जनक"
+    },
+    {
+      "word": "Proliferation",
+      "hindiMeaning": "तीव्र वृद्धि / तेज़ी से फ ै लाव"
+    },
+    {
+      "word": "Prologue",
+      "hindiMeaning": "प्रस्तावना / ूका"
+    },
+    {
+      "word": "Promotion",
+      "hindiMeaning": "पदोन्नत / प्रचार"
+    },
+    {
+      "word": "Propensity",
+      "hindiMeaning": "प्रवृत्ति / झुकाव"
+    },
+    {
+      "word": "Protocol",
+      "hindiMeaning": "राजनयक शष्टाचार / प्रोटोकॉल"
+    },
+    {
+      "word": "Psephology",
+      "hindiMeaning": "चुनाव-वश्लेष वज्ञान (तदान प्रवृत्तियां का अध्ययन)"
+    },
+    {
+      "word": "Pseudonym",
+      "hindiMeaning": "छद्मना / उपना (लेखक का नक़ली ना)"
+    },
+    {
+      "word": "Quintessence",
+      "hindiMeaning": "सार-तत्त्व / सवार्बोत्क ृ ष्ट उदाहिर"
+    },
+    {
+      "word": "Rebel",
+      "hindiMeaning": "वद्रोहिी"
+    },
+    {
+      "word": "Rebellion",
+      "hindiMeaning": "वद्रोहि / बग़ावत"
+    },
+    {
+      "word": "Recluse",
+      "hindiMeaning": "एकांतवासी (साज से दूर रहिने वाला)"
+    },
+    {
+      "word": "Recompense",
+      "hindiMeaning": "क्षतपूतं / प्रतफल"
+    },
+    {
+      "word": "Regicide",
+      "hindiMeaning": "राजहित्या"
+    },
+    {
+      "word": "Requiem",
+      "hindiMeaning": "ृतक की स्ृत ं र्थसार्थ प्रार्थना सा / शोक-प्रार्थना"
+    },
+    {
+      "word": "Retrospection",
+      "hindiMeaning": "पूवार्थवलोकन / बीते सय पर नज़र ालना"
+    },
+    {
+      "word": "Review",
+      "hindiMeaning": "सीक्षा"
+    },
+    {
+      "word": "Revolt",
+      "hindiMeaning": "बग़ावत / उपद्रव"
+    },
+    {
+      "word": "Robbery",
+      "hindiMeaning": "क ै ती / लूट"
+    },
+    {
+      "word": "Rogue",
+      "hindiMeaning": "बदाश / धूतर्थ"
+    },
+    {
+      "word": "Ruffian",
+      "hindiMeaning": "गुंा / उपद्रवी"
+    },
+    {
+      "word": "Samaritan",
+      "hindiMeaning": "परोपकारी / ज़रूरतंद की दद करने वाला"
+    },
+    {
+      "word": "Schizophrenia",
+      "hindiMeaning": "नोवदलता / सज़ोफ्र े नया (वास्तवकता से कट जानेवाली ानसक बीारी)"
+    },
+    {
+      "word": "Scholar",
+      "hindiMeaning": "वद्वान / पंत"
+    },
+    {
+      "word": "Scientist",
+      "hindiMeaning": "वैज्ञानक"
+    },
+    {
+      "word": "Senility",
+      "hindiMeaning": "बुढ़ापे की ानसक/शारीरक कज़ोरी"
+    },
+    {
+      "word": "Servants",
+      "hindiMeaning": "नौकर / सेवक"
+    },
+    {
+      "word": "Sinister",
+      "hindiMeaning": "अशु / क ु टल / रावना"
+    },
+    {
+      "word": "Skeptic",
+      "hindiMeaning": "संशयवादी / हिर बात पर शक करने वाला"
+    },
+    {
+      "word": "Skillet",
+      "hindiMeaning": "छोटी तवा-नुा कड़ाहिी (फ्रांग पैन)"
+    },
+    {
+      "word": "Spying",
+      "hindiMeaning": "जासूसी करना"
+    },
+    {
+      "word": "Statesmanship",
+      "hindiMeaning": "राजनेता जैसी क ु शलता / राजनयक सूझ-बूझ"
+    },
+    {
+      "word": "Stoic",
+      "hindiMeaning": "सहिनशील / सुख-दुःख ं सान रहिने वाला"
+    },
+    {
+      "word": "Superannuation",
+      "hindiMeaning": "अधवषंता / आयु पूरी हिोने पर सेवानवृत्ति"
+    },
+    {
+      "word": "Swamps",
+      "hindiMeaning": "दलदल / कीचड़ वाली ज़ीन"
+    },
+    {
+      "word": "Temporary",
+      "hindiMeaning": "अस्ायी"
+    },
+    {
+      "word": "Theft",
+      "hindiMeaning": "चोरी"
+    },
+    {
+      "word": "Transient",
+      "hindiMeaning": "क्षक / अल्पकालक"
+    },
+    {
+      "word": "Truant",
+      "hindiMeaning": "स्क ू ल से बना बताए ग़ायब रहिने वाला"
+    },
+    {
+      "word": "Usurp",
+      "hindiMeaning": "हिड़पना / अवैध रूप से सत्तिा छीन लेना"
+    },
+    {
+      "word": "Vagrant",
+      "hindiMeaning": "आवारा / खारी-घुक्कड़ (जसका कोर्थ ठकाना नहिो)"
+    },
+    {
+      "word": "Veteran",
+      "hindiMeaning": "अनुवी व्यक्त / पूवर्थ सैनक"
+    },
+    {
+      "word": "Virgin",
+      "hindiMeaning": "क ु ं वारा / क ु ं वारी (शारीरक संबंध न बनाने वाला)"
+    },
+    {
+      "word": "Worldliness",
+      "hindiMeaning": "सांसारकता (ौतक सुखां ं रुच)"
+    },
+    {
+      "word": "Wreath",
+      "hindiMeaning": "पुष्पचक्र (कब्र/शव पर चढ़ाया जाने वाला फ ू लां का गोलहिार)"
+    },
+    {
+      "word": "Xenophile",
+      "hindiMeaning": "वदेशी वस्तुआं/संस्क ृ त का प्रेी"
+    }
+  ]
+}

@@ -1,0 +1,11 @@
+.gradle/
+build/
+**/build/
+local.properties
+.idea/
+*.iml
+.externalNativeBuild/
+.cxx/
+.DS_Store
+
+extracted_pdf_text.txt
