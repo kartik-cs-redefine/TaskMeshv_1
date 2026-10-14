@@ -10,21 +10,23 @@ import androidx.compose.animation.fadeIn
 import androidx.compose.animation.fadeOut
 import androidx.compose.animation.shrinkVertically
 import androidx.compose.foundation.BorderStroke
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.automirrored.filled.List
 import androidx.compose.material.icons.filled.Bookmark
 import androidx.compose.material.icons.filled.Check
 import androidx.compose.material.icons.filled.CheckCircle
 import androidx.compose.material.icons.filled.ChevronLeft
 import androidx.compose.material.icons.filled.ChevronRight
+import androidx.compose.material.icons.filled.Error
 import androidx.compose.material.icons.filled.ExpandLess
 import androidx.compose.material.icons.filled.ExpandMore
 import androidx.compose.material.icons.filled.Explore
-import androidx.compose.material.icons.filled.List
 import androidx.compose.material.icons.filled.Settings
 import androidx.compose.material.icons.outlined.BookmarkBorder
 import androidx.compose.material3.*
@@ -32,6 +34,7 @@ import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
@@ -53,6 +56,14 @@ fun OwspHomeScreen(
     val context = LocalContext.current
     val question = remember(currentDay) { OwspDatasetRepository.getQuestionForDay(context, currentDay) }
     var refreshTrigger by remember { mutableIntStateOf(0) }
+
+    // Quiz State remembered per currentDay
+    var selectedOptionId by remember(currentDay) { mutableStateOf<String?>(null) }
+    var isSubmitted by remember(currentDay) { mutableStateOf(false) }
+
+    val correctOption = remember(question) { question?.options?.find { it.isCorrect } }
+    val selectedOption = remember(question, selectedOptionId) { question?.options?.find { it.id == selectedOptionId } }
+    val isUserCorrect = remember(isSubmitted, selectedOption) { isSubmitted && selectedOption?.isCorrect == true }
 
     val learnedCount = remember(currentDay, refreshTrigger, question) {
         question?.options?.count { prefs.isOwspWordLearned(it.id) } ?: 0
@@ -130,7 +141,6 @@ fun OwspHomeScreen(
 
                     Spacer(modifier = Modifier.height(12.dp))
 
-                    // Prominent "See All Meanings" button
                     Button(
                         onClick = onNavigateToSeeAllMeanings,
                         shape = RoundedCornerShape(20.dp),
@@ -142,7 +152,7 @@ fun OwspHomeScreen(
                             .fillMaxWidth()
                             .defaultMinSize(minHeight = 44.dp)
                     ) {
-                        Icon(Icons.Filled.List, contentDescription = null, modifier = Modifier.size(18.dp))
+                        Icon(Icons.AutoMirrored.Filled.List, contentDescription = null, modifier = Modifier.size(18.dp))
                         Spacer(modifier = Modifier.width(6.dp))
                         Text(
                             text = "See All Meanings & A-Z Index",
@@ -194,19 +204,39 @@ fun OwspHomeScreen(
                     modifier = Modifier.fillMaxWidth()
                 ) {
                     Column(modifier = Modifier.padding(18.dp)) {
-                        Surface(
-                            shape = CircleShape,
-                            color = MaterialTheme.colorScheme.primary
+                        Row(
+                            verticalAlignment = Alignment.CenterVertically,
+                            horizontalArrangement = Arrangement.SpaceBetween,
+                            modifier = Modifier.fillMaxWidth()
                         ) {
-                            Text(
-                                text = "ORIGINAL QUESTION",
-                                style = MaterialTheme.typography.labelSmall.copy(fontWeight = FontWeight.Bold),
-                                color = MaterialTheme.colorScheme.onPrimary,
-                                modifier = Modifier.padding(horizontal = 10.dp, vertical = 4.dp)
-                            )
+                            Surface(
+                                shape = CircleShape,
+                                color = MaterialTheme.colorScheme.primary
+                            ) {
+                                Text(
+                                    text = "MCQ QUIZ QUESTION",
+                                    style = MaterialTheme.typography.labelSmall.copy(fontWeight = FontWeight.Bold),
+                                    color = MaterialTheme.colorScheme.onPrimary,
+                                    modifier = Modifier.padding(horizontal = 10.dp, vertical = 4.dp)
+                                )
+                            }
+
+                            if (!isSubmitted) {
+                                Surface(
+                                    shape = RoundedCornerShape(8.dp),
+                                    color = MaterialTheme.colorScheme.surfaceVariant
+                                ) {
+                                    Text(
+                                        text = "Select 1 option below",
+                                        style = MaterialTheme.typography.labelSmall.copy(fontWeight = FontWeight.Medium),
+                                        color = MaterialTheme.colorScheme.onSurfaceVariant,
+                                        modifier = Modifier.padding(horizontal = 8.dp, vertical = 4.dp)
+                                    )
+                                }
+                            }
                         }
 
-                        Spacer(modifier = Modifier.height(8.dp))
+                        Spacer(modifier = Modifier.height(10.dp))
 
                         Text(
                             text = question.questionText,
@@ -214,54 +244,81 @@ fun OwspHomeScreen(
                             color = MaterialTheme.colorScheme.onSurface
                         )
 
-                        Spacer(modifier = Modifier.height(12.dp))
+                        // Post-Submission Result Feedback Banner
+                        if (isSubmitted) {
+                            Spacer(modifier = Modifier.height(12.dp))
 
-                        Surface(
-                            shape = RoundedCornerShape(12.dp),
-                            color = MaterialTheme.colorScheme.primaryContainer.copy(alpha = 0.25f),
-                            border = BorderStroke(1.dp, MaterialTheme.colorScheme.primary.copy(alpha = 0.3f))
-                        ) {
-                            Row(
-                                modifier = Modifier
-                                    .fillMaxWidth()
-                                    .padding(12.dp),
-                                verticalAlignment = Alignment.CenterVertically,
-                                horizontalArrangement = Arrangement.spacedBy(8.dp)
-                            ) {
-                                Icon(
-                                    imageVector = Icons.Filled.CheckCircle,
-                                    contentDescription = null,
-                                    tint = MaterialTheme.colorScheme.primary,
-                                    modifier = Modifier.size(20.dp)
-                                )
-                                Text(
-                                    text = "Correct Answer: Option (${question.correctOptionLetter})",
-                                    style = MaterialTheme.typography.labelLarge.copy(fontWeight = FontWeight.Bold),
-                                    color = MaterialTheme.colorScheme.primary
-                                )
+                            val bannerBgColor = if (isUserCorrect) {
+                                MaterialTheme.colorScheme.primaryContainer
+                            } else {
+                                MaterialTheme.colorScheme.errorContainer
                             }
-                        }
 
-                        if (question.memoryTip.isNotBlank()) {
-                            Spacer(modifier = Modifier.height(8.dp))
+                            val bannerTextColor = if (isUserCorrect) {
+                                MaterialTheme.colorScheme.onPrimaryContainer
+                            } else {
+                                MaterialTheme.colorScheme.onErrorContainer
+                            }
+
                             Surface(
                                 shape = RoundedCornerShape(12.dp),
-                                color = MaterialTheme.colorScheme.secondaryContainer.copy(alpha = 0.3f)
+                                color = bannerBgColor,
+                                border = BorderStroke(
+                                    1.dp,
+                                    if (isUserCorrect) MaterialTheme.colorScheme.primary else MaterialTheme.colorScheme.error
+                                )
                             ) {
                                 Row(
-                                    modifier = Modifier.padding(12.dp),
-                                    verticalAlignment = Alignment.Top
+                                    modifier = Modifier
+                                        .fillMaxWidth()
+                                        .padding(12.dp),
+                                    verticalAlignment = Alignment.CenterVertically,
+                                    horizontalArrangement = Arrangement.spacedBy(10.dp)
                                 ) {
-                                    Text(
-                                        text = "💡 Memory Tip: ",
-                                        style = MaterialTheme.typography.bodySmall.copy(fontWeight = FontWeight.Bold),
-                                        color = MaterialTheme.colorScheme.primary
+                                    Icon(
+                                        imageVector = if (isUserCorrect) Icons.Filled.CheckCircle else Icons.Filled.Error,
+                                        contentDescription = null,
+                                        tint = bannerTextColor,
+                                        modifier = Modifier.size(24.dp)
                                     )
-                                    Text(
-                                        text = question.memoryTip,
-                                        style = MaterialTheme.typography.bodySmall,
-                                        color = MaterialTheme.colorScheme.onSurface
-                                    )
+                                    Column {
+                                        Text(
+                                            text = if (isUserCorrect) "Correct! Well done!" else "Incorrect",
+                                            style = MaterialTheme.typography.titleMedium.copy(fontWeight = FontWeight.Bold),
+                                            color = bannerTextColor
+                                        )
+                                        if (!isUserCorrect && correctOption != null) {
+                                            Text(
+                                                text = "The correct answer is Option (${correctOption.optionLabel}) — ${correctOption.word}.",
+                                                style = MaterialTheme.typography.bodyMedium.copy(fontWeight = FontWeight.SemiBold),
+                                                color = bannerTextColor
+                                            )
+                                        }
+                                    }
+                                }
+                            }
+
+                            if (question.memoryTip.isNotBlank()) {
+                                Spacer(modifier = Modifier.height(8.dp))
+                                Surface(
+                                    shape = RoundedCornerShape(12.dp),
+                                    color = MaterialTheme.colorScheme.secondaryContainer.copy(alpha = 0.3f)
+                                ) {
+                                    Row(
+                                        modifier = Modifier.padding(12.dp),
+                                        verticalAlignment = Alignment.Top
+                                    ) {
+                                        Text(
+                                            text = "💡 Memory Tip: ",
+                                            style = MaterialTheme.typography.bodySmall.copy(fontWeight = FontWeight.Bold),
+                                            color = MaterialTheme.colorScheme.primary
+                                        )
+                                        Text(
+                                            text = question.memoryTip,
+                                            style = MaterialTheme.typography.bodySmall,
+                                            color = MaterialTheme.colorScheme.onSurface
+                                        )
+                                    }
                                 }
                             }
                         }
@@ -269,17 +326,26 @@ fun OwspHomeScreen(
                 }
             }
 
+            // 4 Option Cards
             items(
                 items = question.options,
                 key = { it.id }
             ) { option ->
+                val isSelected = selectedOptionId == option.id
                 val isLearned = remember(refreshTrigger, currentDay) { prefs.isOwspWordLearned(option.id) }
                 val isFav = remember(refreshTrigger, currentDay) { prefs.isOwspWordFavorite(option.id) }
 
-                OwspOptionCard(
+                OwspMcqOptionCard(
                     option = option,
+                    isSelected = isSelected,
+                    isSubmitted = isSubmitted,
                     isLearned = isLearned,
                     isFavorite = isFav,
+                    onSelect = {
+                        if (!isSubmitted) {
+                            selectedOptionId = option.id
+                        }
+                    },
                     onToggleLearned = {
                         prefs.setOwspWordLearned(option.id, !isLearned)
                         refreshTrigger++
@@ -289,6 +355,64 @@ fun OwspHomeScreen(
                         refreshTrigger++
                     }
                 )
+            }
+
+            // Submit Answer Button / Next Question Button
+            item(key = "submit_or_next_action") {
+                if (!isSubmitted) {
+                    Button(
+                        onClick = {
+                            if (selectedOptionId != null) {
+                                isSubmitted = true
+                            }
+                        },
+                        enabled = selectedOptionId != null,
+                        shape = RoundedCornerShape(24.dp),
+                        modifier = Modifier
+                            .fillMaxWidth()
+                            .defaultMinSize(minHeight = 48.dp)
+                    ) {
+                        Text(
+                            text = if (selectedOptionId == null) "Select an Option above" else "Submit Answer",
+                            style = MaterialTheme.typography.labelLarge.copy(fontWeight = FontWeight.Bold)
+                        )
+                    }
+                } else {
+                    if (currentDay < 59) {
+                        Button(
+                            onClick = {
+                                onDayChanged(currentDay + 1)
+                            },
+                            shape = RoundedCornerShape(24.dp),
+                            colors = ButtonDefaults.buttonColors(
+                                containerColor = MaterialTheme.colorScheme.primary
+                            ),
+                            modifier = Modifier
+                                .fillMaxWidth()
+                                .defaultMinSize(minHeight = 48.dp)
+                        ) {
+                            Text(
+                                text = "Next Question →",
+                                style = MaterialTheme.typography.labelLarge.copy(fontWeight = FontWeight.Bold)
+                            )
+                        }
+                    } else {
+                        Surface(
+                            shape = RoundedCornerShape(16.dp),
+                            color = MaterialTheme.colorScheme.primaryContainer,
+                            modifier = Modifier.fillMaxWidth()
+                        ) {
+                            Text(
+                                text = "🎉 59-Day Workbook Journey Complete!",
+                                style = MaterialTheme.typography.titleMedium.copy(fontWeight = FontWeight.Bold),
+                                color = MaterialTheme.colorScheme.onPrimaryContainer,
+                                modifier = Modifier
+                                    .padding(16.dp)
+                                    .fillMaxWidth()
+                            )
+                        }
+                    }
+                }
             }
         }
 
@@ -340,35 +464,58 @@ fun OwspHomeScreen(
 }
 
 @Composable
-fun OwspOptionCard(
+fun OwspMcqOptionCard(
     option: OwspOption,
+    isSelected: Boolean,
+    isSubmitted: Boolean,
     isLearned: Boolean,
     isFavorite: Boolean,
+    onSelect: () -> Unit,
     onToggleLearned: () -> Unit,
     onToggleFavorite: () -> Unit
 ) {
     var expanded by remember { mutableStateOf(false) }
 
-    val borderColor = if (option.isCorrect) {
-        MaterialTheme.colorScheme.primary.copy(alpha = 0.7f)
-    } else if (isLearned) {
-        MaterialTheme.colorScheme.outline.copy(alpha = 0.6f)
+    // Colors and borders for Pre vs Post Submission
+    val cardBorder = if (!isSubmitted) {
+        if (isSelected) {
+            BorderStroke(2.dp, MaterialTheme.colorScheme.primary)
+        } else {
+            BorderStroke(1.dp, MaterialTheme.colorScheme.outline.copy(alpha = 0.3f))
+        }
     } else {
-        MaterialTheme.colorScheme.outline.copy(alpha = 0.3f)
+        if (option.isCorrect) {
+            BorderStroke(2.dp, MaterialTheme.colorScheme.primary)
+        } else if (isSelected) {
+            BorderStroke(2.dp, MaterialTheme.colorScheme.error)
+        } else {
+            BorderStroke(1.dp, MaterialTheme.colorScheme.outline.copy(alpha = 0.3f))
+        }
+    }
+
+    val cardBgColor = if (!isSubmitted) {
+        if (isSelected) {
+            MaterialTheme.colorScheme.primaryContainer.copy(alpha = 0.18f)
+        } else {
+            MaterialTheme.colorScheme.surface
+        }
+    } else {
+        if (option.isCorrect) {
+            MaterialTheme.colorScheme.primaryContainer.copy(alpha = 0.22f)
+        } else if (isSelected) {
+            MaterialTheme.colorScheme.errorContainer.copy(alpha = 0.22f)
+        } else {
+            MaterialTheme.colorScheme.surface
+        }
     }
 
     Card(
         shape = RoundedCornerShape(20.dp),
-        border = BorderStroke(if (option.isCorrect) 1.5.dp else 1.dp, borderColor),
-        colors = CardDefaults.cardColors(
-            containerColor = if (option.isCorrect) {
-                MaterialTheme.colorScheme.primaryContainer.copy(alpha = 0.12f)
-            } else {
-                MaterialTheme.colorScheme.surface
-            }
-        ),
+        border = cardBorder,
+        colors = CardDefaults.cardColors(containerColor = cardBgColor),
         modifier = Modifier
             .fillMaxWidth()
+            .clickable(enabled = !isSubmitted) { onSelect() }
             .animateContentSize(animationSpec = tween(300))
     ) {
         Column(modifier = Modifier.padding(16.dp)) {
@@ -381,19 +528,39 @@ fun OwspOptionCard(
                     verticalAlignment = Alignment.CenterVertically,
                     horizontalArrangement = Arrangement.spacedBy(8.dp)
                 ) {
+                    val labelBgColor = if (isSubmitted && option.isCorrect) {
+                        MaterialTheme.colorScheme.primary
+                    } else if (isSubmitted && isSelected) {
+                        MaterialTheme.colorScheme.error
+                    } else if (isSelected) {
+                        MaterialTheme.colorScheme.primary
+                    } else {
+                        MaterialTheme.colorScheme.surfaceVariant
+                    }
+
+                    val labelTextColor = if (isSubmitted && option.isCorrect) {
+                        MaterialTheme.colorScheme.onPrimary
+                    } else if (isSubmitted && isSelected) {
+                        MaterialTheme.colorScheme.onError
+                    } else if (isSelected) {
+                        MaterialTheme.colorScheme.onPrimary
+                    } else {
+                        MaterialTheme.colorScheme.onSurfaceVariant
+                    }
+
                     Surface(
                         shape = CircleShape,
-                        color = if (option.isCorrect) MaterialTheme.colorScheme.primary else MaterialTheme.colorScheme.surfaceVariant
+                        color = labelBgColor
                     ) {
                         Text(
                             text = option.optionLabel,
                             style = MaterialTheme.typography.labelMedium.copy(fontWeight = FontWeight.Bold),
-                            color = if (option.isCorrect) MaterialTheme.colorScheme.onPrimary else MaterialTheme.colorScheme.onSurfaceVariant,
+                            color = labelTextColor,
                             modifier = Modifier.padding(horizontal = 10.dp, vertical = 4.dp)
                         )
                     }
 
-                    if (option.partOfSpeech.isNotBlank()) {
+                    if (isSubmitted && option.partOfSpeech.isNotBlank()) {
                         Surface(
                             shape = RoundedCornerShape(8.dp),
                             color = MaterialTheme.colorScheme.surfaceVariant
@@ -407,7 +574,7 @@ fun OwspOptionCard(
                         }
                     }
 
-                    if (option.isCorrect) {
+                    if (isSubmitted && option.isCorrect) {
                         Surface(
                             shape = RoundedCornerShape(8.dp),
                             color = MaterialTheme.colorScheme.primaryContainer
@@ -419,18 +586,32 @@ fun OwspOptionCard(
                                 modifier = Modifier.padding(horizontal = 8.dp, vertical = 4.dp)
                             )
                         }
+                    } else if (isSubmitted && isSelected && !option.isCorrect) {
+                        Surface(
+                            shape = RoundedCornerShape(8.dp),
+                            color = MaterialTheme.colorScheme.errorContainer
+                        ) {
+                            Text(
+                                text = "YOUR SELECTION",
+                                style = MaterialTheme.typography.labelSmall.copy(fontWeight = FontWeight.Bold),
+                                color = MaterialTheme.colorScheme.onErrorContainer,
+                                modifier = Modifier.padding(horizontal = 8.dp, vertical = 4.dp)
+                            )
+                        }
                     }
                 }
 
-                IconButton(
-                    onClick = onToggleFavorite,
-                    modifier = Modifier.size(48.dp)
-                ) {
-                    Icon(
-                        imageVector = if (isFavorite) Icons.Filled.Bookmark else Icons.Outlined.BookmarkBorder,
-                        contentDescription = "Bookmark Option",
-                        tint = if (isFavorite) MaterialTheme.colorScheme.primary else MaterialTheme.colorScheme.onSurfaceVariant
-                    )
+                if (isSubmitted) {
+                    IconButton(
+                        onClick = onToggleFavorite,
+                        modifier = Modifier.size(48.dp)
+                    ) {
+                        Icon(
+                            imageVector = if (isFavorite) Icons.Filled.Bookmark else Icons.Outlined.BookmarkBorder,
+                            contentDescription = "Bookmark Option",
+                            tint = if (isFavorite) MaterialTheme.colorScheme.primary else MaterialTheme.colorScheme.onSurfaceVariant
+                        )
+                    }
                 }
             }
 
@@ -442,143 +623,146 @@ fun OwspOptionCard(
                 color = MaterialTheme.colorScheme.onSurface
             )
 
-            if (option.hindiMeaning.isNotBlank()) {
-                Spacer(modifier = Modifier.height(2.dp))
-                Text(
-                    text = option.hindiMeaning,
-                    style = MaterialTheme.typography.titleMedium.copy(fontWeight = FontWeight.SemiBold),
-                    color = MaterialTheme.colorScheme.primary
-                )
-            }
-
-            if (option.englishMeaning.isNotBlank()) {
-                Spacer(modifier = Modifier.height(4.dp))
-                Text(
-                    text = option.englishMeaning,
-                    style = MaterialTheme.typography.bodyMedium,
-                    color = MaterialTheme.colorScheme.onSurfaceVariant
-                )
-            }
-
-            if (option.exampleSentence.isNotBlank() || option.hindiTranslation.isNotBlank()) {
-                Spacer(modifier = Modifier.height(10.dp))
-
-                Surface(
-                    onClick = { expanded = !expanded },
-                    shape = RoundedCornerShape(12.dp),
-                    color = MaterialTheme.colorScheme.surfaceVariant.copy(alpha = 0.5f),
-                    modifier = Modifier.fillMaxWidth()
-                ) {
-                    Row(
-                        modifier = Modifier
-                            .padding(horizontal = 12.dp, vertical = 8.dp)
-                            .fillMaxWidth(),
-                        horizontalArrangement = Arrangement.SpaceBetween,
-                        verticalAlignment = Alignment.CenterVertically
-                    ) {
-                        Text(
-                            text = if (expanded) "Hide example & details" else "View example sentence",
-                            style = MaterialTheme.typography.labelLarge.copy(fontWeight = FontWeight.Medium),
-                            color = MaterialTheme.colorScheme.onSurface
-                        )
-                        Icon(
-                            imageVector = if (expanded) Icons.Filled.ExpandLess else Icons.Filled.ExpandMore,
-                            contentDescription = null,
-                            tint = MaterialTheme.colorScheme.onSurfaceVariant
-                        )
-                    }
+            // Learning details revealed AFTER submission
+            if (isSubmitted) {
+                if (option.hindiMeaning.isNotBlank()) {
+                    Spacer(modifier = Modifier.height(2.dp))
+                    Text(
+                        text = option.hindiMeaning,
+                        style = MaterialTheme.typography.titleMedium.copy(fontWeight = FontWeight.SemiBold),
+                        color = MaterialTheme.colorScheme.primary
+                    )
                 }
 
-                AnimatedVisibility(
-                    visible = expanded,
-                    enter = expandVertically() + fadeIn(),
-                    exit = shrinkVertically() + fadeOut()
-                ) {
-                    Column(
-                        modifier = Modifier
-                            .fillMaxWidth()
-                            .padding(top = 10.dp),
-                        verticalArrangement = Arrangement.spacedBy(8.dp)
-                    ) {
-                        Surface(
-                            shape = RoundedCornerShape(12.dp),
-                            color = MaterialTheme.colorScheme.surfaceVariant.copy(alpha = 0.3f),
-                            border = BorderStroke(1.dp, MaterialTheme.colorScheme.outline.copy(alpha = 0.2f))
-                        ) {
-                            Column(modifier = Modifier.padding(12.dp)) {
-                                if (option.exampleSentence.isNotBlank()) {
-                                    Text(
-                                        text = "EXAMPLE",
-                                        style = MaterialTheme.typography.labelSmall.copy(fontWeight = FontWeight.Bold),
-                                        color = MaterialTheme.colorScheme.primary
-                                    )
-                                    Spacer(modifier = Modifier.height(2.dp))
-                                    Text(
-                                        text = "\"${option.exampleSentence}\"",
-                                        style = MaterialTheme.typography.bodyMedium,
-                                        color = MaterialTheme.colorScheme.onSurface
-                                    )
-                                }
+                if (option.englishMeaning.isNotBlank()) {
+                    Spacer(modifier = Modifier.height(4.dp))
+                    Text(
+                        text = option.englishMeaning,
+                        style = MaterialTheme.typography.bodyMedium,
+                        color = MaterialTheme.colorScheme.onSurfaceVariant
+                    )
+                }
 
-                                if (option.hindiTranslation.isNotBlank()) {
-                                    Spacer(modifier = Modifier.height(6.dp))
-                                    Text(
-                                        text = "हिन्दी अनुवाद",
-                                        style = MaterialTheme.typography.labelSmall.copy(fontWeight = FontWeight.Bold),
-                                        color = MaterialTheme.colorScheme.primary
-                                    )
-                                    Spacer(modifier = Modifier.height(2.dp))
-                                    Text(
-                                        text = "\"${option.hindiTranslation}\"",
-                                        style = MaterialTheme.typography.bodyMedium,
-                                        color = MaterialTheme.colorScheme.onSurface
-                                    )
+                if (option.exampleSentence.isNotBlank() || option.hindiTranslation.isNotBlank()) {
+                    Spacer(modifier = Modifier.height(10.dp))
+
+                    Surface(
+                        onClick = { expanded = !expanded },
+                        shape = RoundedCornerShape(12.dp),
+                        color = MaterialTheme.colorScheme.surfaceVariant.copy(alpha = 0.5f),
+                        modifier = Modifier.fillMaxWidth()
+                    ) {
+                        Row(
+                            modifier = Modifier
+                                .padding(horizontal = 12.dp, vertical = 8.dp)
+                                .fillMaxWidth(),
+                            horizontalArrangement = Arrangement.SpaceBetween,
+                            verticalAlignment = Alignment.CenterVertically
+                        ) {
+                            Text(
+                                text = if (expanded) "Hide example & details" else "View example sentence",
+                                style = MaterialTheme.typography.labelLarge.copy(fontWeight = FontWeight.Medium),
+                                color = MaterialTheme.colorScheme.onSurface
+                            )
+                            Icon(
+                                imageVector = if (expanded) Icons.Filled.ExpandLess else Icons.Filled.ExpandMore,
+                                contentDescription = null,
+                                tint = MaterialTheme.colorScheme.onSurfaceVariant
+                            )
+                        }
+                    }
+
+                    AnimatedVisibility(
+                        visible = expanded,
+                        enter = expandVertically() + fadeIn(),
+                        exit = shrinkVertically() + fadeOut()
+                    ) {
+                        Column(
+                            modifier = Modifier
+                                .fillMaxWidth()
+                                .padding(top = 10.dp),
+                            verticalArrangement = Arrangement.spacedBy(8.dp)
+                        ) {
+                            Surface(
+                                shape = RoundedCornerShape(12.dp),
+                                color = MaterialTheme.colorScheme.surfaceVariant.copy(alpha = 0.3f),
+                                border = BorderStroke(1.dp, MaterialTheme.colorScheme.outline.copy(alpha = 0.2f))
+                            ) {
+                                Column(modifier = Modifier.padding(12.dp)) {
+                                    if (option.exampleSentence.isNotBlank()) {
+                                        Text(
+                                            text = "EXAMPLE",
+                                            style = MaterialTheme.typography.labelSmall.copy(fontWeight = FontWeight.Bold),
+                                            color = MaterialTheme.colorScheme.primary
+                                        )
+                                        Spacer(modifier = Modifier.height(2.dp))
+                                        Text(
+                                            text = "\"${option.exampleSentence}\"",
+                                            style = MaterialTheme.typography.bodyMedium,
+                                            color = MaterialTheme.colorScheme.onSurface
+                                        )
+                                    }
+
+                                    if (option.hindiTranslation.isNotBlank()) {
+                                        Spacer(modifier = Modifier.height(6.dp))
+                                        Text(
+                                            text = "हिन्दी अनुवाद",
+                                            style = MaterialTheme.typography.labelSmall.copy(fontWeight = FontWeight.Bold),
+                                            color = MaterialTheme.colorScheme.primary
+                                        )
+                                        Spacer(modifier = Modifier.height(2.dp))
+                                        Text(
+                                            text = "\"${option.hindiTranslation}\"",
+                                            style = MaterialTheme.typography.bodyMedium,
+                                            color = MaterialTheme.colorScheme.onSurface
+                                        )
+                                    }
                                 }
                             }
                         }
                     }
                 }
-            }
 
-            Spacer(modifier = Modifier.height(12.dp))
+                Spacer(modifier = Modifier.height(12.dp))
 
-            val buttonBgColor by animateColorAsState(
-                targetValue = if (isLearned) MaterialTheme.colorScheme.secondaryContainer else MaterialTheme.colorScheme.primary,
-                animationSpec = tween(300)
-            )
+                val buttonBgColor by animateColorAsState(
+                    targetValue = if (isLearned) MaterialTheme.colorScheme.secondaryContainer else MaterialTheme.colorScheme.primary,
+                    animationSpec = tween(300)
+                )
 
-            val buttonTextColor by animateColorAsState(
-                targetValue = if (isLearned) MaterialTheme.colorScheme.onSecondaryContainer else MaterialTheme.colorScheme.onPrimary,
-                animationSpec = tween(300)
-            )
+                val buttonTextColor by animateColorAsState(
+                    targetValue = if (isLearned) MaterialTheme.colorScheme.onSecondaryContainer else MaterialTheme.colorScheme.onPrimary,
+                    animationSpec = tween(300)
+                )
 
-            Button(
-                onClick = onToggleLearned,
-                shape = RoundedCornerShape(24.dp),
-                colors = ButtonDefaults.buttonColors(
-                    containerColor = buttonBgColor,
-                    contentColor = buttonTextColor
-                ),
-                modifier = Modifier
-                    .fillMaxWidth()
-                    .defaultMinSize(minHeight = 44.dp)
-            ) {
-                Row(
-                    verticalAlignment = Alignment.CenterVertically,
-                    horizontalArrangement = Arrangement.Center
+                Button(
+                    onClick = onToggleLearned,
+                    shape = RoundedCornerShape(24.dp),
+                    colors = ButtonDefaults.buttonColors(
+                        containerColor = buttonBgColor,
+                        contentColor = buttonTextColor
+                    ),
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .defaultMinSize(minHeight = 44.dp)
                 ) {
-                    if (isLearned) {
-                        Icon(Icons.Filled.Check, contentDescription = null, modifier = Modifier.size(18.dp))
-                        Spacer(modifier = Modifier.width(6.dp))
-                        Text(
-                            text = "Learned · Tap to undo",
-                            style = MaterialTheme.typography.labelLarge.copy(fontWeight = FontWeight.SemiBold)
-                        )
-                    } else {
-                        Text(
-                            text = "Mark as learned",
-                            style = MaterialTheme.typography.labelLarge.copy(fontWeight = FontWeight.SemiBold)
-                        )
+                    Row(
+                        verticalAlignment = Alignment.CenterVertically,
+                        horizontalArrangement = Arrangement.Center
+                    ) {
+                        if (isLearned) {
+                            Icon(Icons.Filled.Check, contentDescription = null, modifier = Modifier.size(18.dp))
+                            Spacer(modifier = Modifier.width(6.dp))
+                            Text(
+                                text = "Learned · Tap to undo",
+                                style = MaterialTheme.typography.labelLarge.copy(fontWeight = FontWeight.SemiBold)
+                            )
+                        } else {
+                            Text(
+                                text = "Mark as learned",
+                                style = MaterialTheme.typography.labelLarge.copy(fontWeight = FontWeight.SemiBold)
+                            )
+                        }
                     }
                 }
             }

@@ -1,5 +1,10 @@
 package com.taskmesh.app.ui.screens
 
+import android.Manifest
+import android.content.pm.PackageManager
+import android.os.Build
+import androidx.activity.compose.rememberLauncherForActivityResult
+import androidx.activity.result.contract.ActivityResultContracts
 import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
@@ -7,6 +12,7 @@ import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.CalendarToday
 import androidx.compose.material.icons.filled.Check
+import androidx.compose.material.icons.filled.Notifications
 import androidx.compose.material.icons.filled.Palette
 import androidx.compose.material.icons.filled.Refresh
 import androidx.compose.material.icons.filled.School
@@ -17,6 +23,8 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
+import androidx.core.content.ContextCompat
+import com.taskmesh.app.data.NudgeScheduler
 import com.taskmesh.app.data.OwspDatasetRepository
 import com.taskmesh.app.data.OwspStudyDayManager
 import com.taskmesh.app.data.PreferencesManager
@@ -42,6 +50,22 @@ fun SettingsScreen(
 ) {
     val context = LocalContext.current
     var showResetDialog by remember { mutableStateOf(false) }
+
+    var notificationsEnabled by remember { mutableStateOf(prefs.areNotificationsEnabled()) }
+
+    val permissionLauncher = rememberLauncherForActivityResult(
+        contract = ActivityResultContracts.RequestPermission()
+    ) { isGranted ->
+        if (isGranted) {
+            notificationsEnabled = true
+            prefs.setNotificationsEnabled(true)
+            NudgeScheduler.scheduleNudgeWorker(context)
+        } else {
+            notificationsEnabled = false
+            prefs.setNotificationsEnabled(false)
+            NudgeScheduler.cancelNudgeWorker(context)
+        }
+    }
 
     var selectedPickerDay1 by remember(currentDay1) { mutableIntStateOf(currentDay1) }
     var dropdownExpanded1 by remember { mutableStateOf(false) }
@@ -338,6 +362,75 @@ fun SettingsScreen(
                             )
                         }
                     }
+                }
+            }
+        }
+
+        item {
+            Card(
+                shape = RoundedCornerShape(20.dp),
+                border = BorderStroke(1.dp, MaterialTheme.colorScheme.outline.copy(alpha = 0.4f)),
+                colors = CardDefaults.cardColors(containerColor = MaterialTheme.colorScheme.surface),
+                modifier = Modifier.fillMaxWidth()
+            ) {
+                Column(modifier = Modifier.padding(18.dp)) {
+                    Row(
+                        modifier = Modifier.fillMaxWidth(),
+                        horizontalArrangement = Arrangement.SpaceBetween,
+                        verticalAlignment = Alignment.CenterVertically
+                    ) {
+                        Row(
+                            verticalAlignment = Alignment.CenterVertically,
+                            horizontalArrangement = Arrangement.spacedBy(8.dp),
+                            modifier = Modifier.weight(1f)
+                        ) {
+                            Icon(
+                                imageVector = Icons.Filled.Notifications,
+                                contentDescription = null,
+                                tint = MaterialTheme.colorScheme.primary
+                            )
+                            Column {
+                                Text(
+                                    text = "TaskMesh Nudge — Padh Le Bhai!",
+                                    style = MaterialTheme.typography.titleMedium.copy(fontWeight = FontWeight.Bold)
+                                )
+                                Text(
+                                    text = "Funny Hinglish reminders every ~6 hrs",
+                                    style = MaterialTheme.typography.bodySmall,
+                                    color = MaterialTheme.colorScheme.onSurfaceVariant
+                                )
+                            }
+                        }
+
+                        Switch(
+                            checked = notificationsEnabled,
+                            onCheckedChange = { enabled ->
+                                if (enabled) {
+                                    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU &&
+                                        ContextCompat.checkSelfPermission(context, Manifest.permission.POST_NOTIFICATIONS) != PackageManager.PERMISSION_GRANTED
+                                    ) {
+                                        permissionLauncher.launch(Manifest.permission.POST_NOTIFICATIONS)
+                                    } else {
+                                        notificationsEnabled = true
+                                        prefs.setNotificationsEnabled(true)
+                                        NudgeScheduler.scheduleNudgeWorker(context)
+                                    }
+                                } else {
+                                    notificationsEnabled = false
+                                    prefs.setNotificationsEnabled(false)
+                                    NudgeScheduler.cancelNudgeWorker(context)
+                                }
+                            }
+                        )
+                    }
+
+                    Spacer(modifier = Modifier.height(8.dp))
+
+                    Text(
+                        text = "Randomized study reminders every ~6 hours. 100% offline, battery-friendly, and respects device Doze mode.",
+                        style = MaterialTheme.typography.bodySmall,
+                        color = MaterialTheme.colorScheme.onSurfaceVariant
+                    )
                 }
             }
         }

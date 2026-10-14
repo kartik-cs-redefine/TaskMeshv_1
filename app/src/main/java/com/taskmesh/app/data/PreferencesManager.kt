@@ -67,6 +67,19 @@ open class PreferencesManager(context: Context) {
         prefs?.edit()?.putLong("owsp_last_advancement_boundary", timestampMillis)?.apply()
     }
 
+    // --- TaskMesh Nudge Notifications ---
+    open fun areNotificationsEnabled(): Boolean = prefs?.getBoolean("nudge_notifications_enabled", true) ?: true
+
+    open fun setNotificationsEnabled(enabled: Boolean) {
+        prefs?.edit()?.putBoolean("nudge_notifications_enabled", enabled)?.apply()
+    }
+
+    open fun getLastNudgeMessageIndex(): Int = prefs?.getInt("last_nudge_message_index", -1) ?: -1
+
+    open fun setLastNudgeMessageIndex(index: Int) {
+        prefs?.edit()?.putInt("last_nudge_message_index", index)?.apply()
+    }
+
     // --- Theme Mode ---
     open fun getThemeMode(): ThemeMode {
         val modeStr = prefs?.getString("theme_mode", ThemeMode.SYSTEM.name) ?: ThemeMode.SYSTEM.name
