@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "474670577322",
+    "project_id": "taskmesh-6242d",
+    "storage_bucket": "taskmesh-6242d.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:474670577322:android:53e9603336facb2c5002d3",
+        "android_client_info": {
+          "package_name": "com.taskmesh.app"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "474670577322-20npj0al9h8i0sprahjiocfh9mq2i2s9.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.taskmesh.app",
+            "certificate_hash": "c5ded011487bae9b86cee999a3f662e796e2e3ad"
+          }
+        },
+        {
+          "client_id": "474670577322-ug0b045946b5pk7pi98adbendmr1ubkr.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.taskmesh.app",
+            "certificate_hash": "e18a84145e59bcaa72a357032262cbe1aee70f1d"
+          }
+        },
+        {
+          "client_id": "474670577322-kk9494s8bmj5pt9i0tq2tvosq9195um9.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyC9cmhj1euAcl9MuKAWH0m0V43zwQLGbnw"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "474670577322-kk9494s8bmj5pt9i0tq2tvosq9195um9.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

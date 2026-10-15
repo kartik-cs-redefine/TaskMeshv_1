@@ -2,12 +2,16 @@ package com.taskmesh.app
 
 import android.os.Bundle
 import androidx.activity.ComponentActivity
+import androidx.activity.compose.BackHandler
 import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
 import androidx.compose.foundation.layout.*
-import androidx.compose.foundation.shape.CircleShape
+import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.automirrored.filled.ArrowBack
+import androidx.compose.material.icons.filled.ArrowDropDown
 import androidx.compose.material.icons.filled.Bookmark
+import androidx.compose.material.icons.filled.Check
 import androidx.compose.material.icons.filled.Explore
 import androidx.compose.material.icons.filled.Settings
 import androidx.compose.material.icons.filled.Today
@@ -24,10 +28,12 @@ import androidx.compose.ui.unit.dp
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.LifecycleEventObserver
 import androidx.lifecycle.compose.LocalLifecycleOwner
+import com.taskmesh.app.data.AuthRepository
 import com.taskmesh.app.data.OwspStudyDayManager
 import com.taskmesh.app.data.PreferencesManager
 import com.taskmesh.app.data.StudyDayManager
-import com.taskmesh.app.data.ThemeMode
+import com.taskmesh.app.data.UserRepository
+import com.taskmesh.app.ui.components.TopBarAccountAction
 import com.taskmesh.app.ui.screens.*
 import com.taskmesh.app.ui.theme.TaskMeshTheme
 
@@ -38,15 +44,20 @@ class MainActivity : ComponentActivity() {
         val prefs = PreferencesManager(this)
         val studyDayManager1 = StudyDayManager(prefs)
         val studyDayManager2 = OwspStudyDayManager(prefs)
+        val userRepository = UserRepository()
+        val authRepository = AuthRepository(userRepository)
 
         setContent {
             var themeMode by remember { mutableStateOf(prefs.getThemeMode()) }
             var selectedCourse by remember { mutableStateOf(prefs.getSelectedCourse()) }
-            var currentScreen by remember { mutableStateOf("today") }
+            var mainDestination by remember { mutableStateOf("initiatives") } // "initiatives", "english_initiative", "vocabulary_app", "profile", "auth"
+            var previousDestination by remember { mutableStateOf("initiatives") }
+            var currentScreen by remember { mutableStateOf("today") } // "today", "journey", "favourites", "settings", "see_all_meanings"
 
             var currentDay1 by remember { mutableIntStateOf(prefs.getSelectedDay()) }
             var currentDay2 by remember { mutableIntStateOf(prefs.getOwspSelectedDay()) }
             var showSplash by remember { mutableStateOf(true) }
+            var showCourseDropdown by remember { mutableStateOf(false) }
 
             val lifecycleOwner = LocalLifecycleOwner.current
             DisposableEffect(lifecycleOwner) {
@@ -62,16 +73,70 @@ class MainActivity : ComponentActivity() {
                 }
             }
 
+            fun openProfileOrAuth() {
+                previousDestination = mainDestination
+                if (authRepository.isLoggedIn()) {
+                    mainDestination = "profile"
+                } else {
+                    mainDestination = "auth"
+                }
+            }
+
+            // System Back Handler logic for multi-level navigation with dynamic return history
+            BackHandler(enabled = !showSplash && (mainDestination != "initiatives" || currentScreen == "see_all_meanings")) {
+                if (currentScreen == "see_all_meanings") {
+                    currentScreen = "today"
+                } else if (mainDestination == "profile" || mainDestination == "auth") {
+                    mainDestination = previousDestination
+                } else if (mainDestination == "vocabulary_app") {
+                    mainDestination = "english_initiative"
+                } else if (mainDestination == "english_initiative") {
+                    mainDestination = "initiatives"
+                }
+            }
+
             TaskMeshTheme(themeMode = themeMode) {
                 if (showSplash) {
                     SplashScreen(onFinish = { showSplash = false })
+                } else if (mainDestination == "profile") {
+                    ProfileScreen(
+                        authRepository = authRepository,
+                        userRepository = userRepository,
+                        prefs = prefs,
+                        onBack = { mainDestination = previousDestination },
+                        onSignOut = { mainDestination = "initiatives" }
+                    )
+                } else if (mainDestination == "auth") {
+                    AuthScreen(
+                        authRepository = authRepository,
+                        onBack = { mainDestination = previousDestination },
+                        onAuthSuccess = { mainDestination = "profile" }
+                    )
+                } else if (mainDestination == "initiatives") {
+                    InitiativeSelectionScreen(
+                        onNavigateToEnglishInitiative = {
+                            mainDestination = "english_initiative"
+                        },
+                        onNavigateToProfile = { openProfileOrAuth() }
+                    )
+                } else if (mainDestination == "english_initiative") {
+                    EnglishInitiativeScreen(
+                        onBackToHome = {
+                            mainDestination = "initiatives"
+                        },
+                        onNavigateToVocabularyApp = {
+                            mainDestination = "vocabulary_app"
+                        },
+                        onNavigateToProfile = { openProfileOrAuth() }
+                    )
                 } else if (currentScreen == "see_all_meanings") {
                     OwspSeeAllMeaningsScreen(
                         onBack = { currentScreen = "today" },
                         onNavigateToDay = { day ->
                             currentDay2 = studyDayManager2.setManualStudyDay(day)
                             currentScreen = "today"
-                        }
+                        },
+                        onNavigateToProfile = { openProfileOrAuth() }
                     )
                 } else {
                     Scaffold(
@@ -84,45 +149,33 @@ class MainActivity : ComponentActivity() {
                                     modifier = Modifier
                                         .fillMaxWidth()
                                         .statusBarsPadding()
-                                        .padding(horizontal = 16.dp, vertical = 8.dp),
+                                        .padding(horizontal = 16.dp, vertical = 10.dp),
                                     horizontalArrangement = Arrangement.SpaceBetween,
                                     verticalAlignment = Alignment.CenterVertically
                                 ) {
-                                    Text(
-                                        text = "TASKMESH",
-                                        style = MaterialTheme.typography.titleMedium.copy(fontWeight = FontWeight.Bold),
-                                        color = MaterialTheme.colorScheme.primary
-                                    )
-
-                                    Row(horizontalArrangement = Arrangement.spacedBy(6.dp)) {
-                                        FilterChip(
-                                            selected = selectedCourse == "general",
-                                            onClick = {
-                                                selectedCourse = "general"
-                                                prefs.setSelectedCourse("general")
-                                            },
-                                            label = { Text("General (30D)") },
-                                            shape = CircleShape,
-                                            colors = FilterChipDefaults.filterChipColors(
-                                                selectedContainerColor = MaterialTheme.colorScheme.primary,
-                                                selectedLabelColor = MaterialTheme.colorScheme.onPrimary
+                                    Row(
+                                        verticalAlignment = Alignment.CenterVertically,
+                                        horizontalArrangement = Arrangement.spacedBy(8.dp)
+                                    ) {
+                                        IconButton(
+                                            onClick = { mainDestination = "english_initiative" },
+                                            modifier = Modifier.size(36.dp)
+                                        ) {
+                                            Icon(
+                                                imageVector = Icons.AutoMirrored.Filled.ArrowBack,
+                                                contentDescription = "Back to English Initiative",
+                                                tint = MaterialTheme.colorScheme.primary
                                             )
-                                        )
+                                        }
 
-                                        FilterChip(
-                                            selected = selectedCourse == "owsp",
-                                            onClick = {
-                                                selectedCourse = "owsp"
-                                                prefs.setSelectedCourse("owsp")
-                                            },
-                                            label = { Text("Workbook (59D)") },
-                                            shape = CircleShape,
-                                            colors = FilterChipDefaults.filterChipColors(
-                                                selectedContainerColor = MaterialTheme.colorScheme.primary,
-                                                selectedLabelColor = MaterialTheme.colorScheme.onPrimary
-                                            )
+                                        Text(
+                                            text = "TASKMESH",
+                                            style = MaterialTheme.typography.titleMedium.copy(fontWeight = FontWeight.Bold),
+                                            color = MaterialTheme.colorScheme.primary
                                         )
                                     }
+
+                                    TopBarAccountAction(onNavigateToProfile = { openProfileOrAuth() })
                                 }
                             }
                         },
@@ -178,93 +231,204 @@ class MainActivity : ComponentActivity() {
                             }
                         }
                     ) { innerPadding ->
-                        Box(
+                        Column(
                             modifier = Modifier
                                 .padding(innerPadding)
                                 .fillMaxSize()
                         ) {
-                            when (currentScreen) {
-                                "today" -> {
-                                    if (selectedCourse == "general") {
-                                        HomeScreen(
-                                            currentDay = currentDay1,
-                                            studyDayManager = studyDayManager1,
-                                            onDayChanged = { day ->
-                                                currentDay1 = studyDayManager1.setManualStudyDay(day)
-                                            },
-                                            prefs = prefs,
-                                            onNavigateToJourney = { currentScreen = "journey" },
-                                            onNavigateToSettings = { currentScreen = "settings" }
-                                        )
-                                    } else {
-                                        OwspHomeScreen(
-                                            currentDay = currentDay2,
-                                            studyDayManager = studyDayManager2,
-                                            onDayChanged = { day ->
-                                                currentDay2 = studyDayManager2.setManualStudyDay(day)
-                                            },
-                                            prefs = prefs,
-                                            onNavigateToJourney = { currentScreen = "journey" },
-                                            onNavigateToSettings = { currentScreen = "settings" },
-                                            onNavigateToSeeAllMeanings = { currentScreen = "see_all_meanings" }
-                                        )
-                                    }
-                                }
-                                "journey" -> {
-                                    if (selectedCourse == "general") {
-                                        JourneyScreen(
-                                            currentDay = currentDay1,
-                                            prefs = prefs,
-                                            onSelectDay = { day ->
-                                                currentDay1 = studyDayManager1.setManualStudyDay(day)
-                                                currentScreen = "today"
-                                            }
-                                        )
-                                    } else {
-                                        OwspJourneyScreen(
-                                            currentDay = currentDay2,
-                                            prefs = prefs,
-                                            onSelectDay = { day ->
-                                                currentDay2 = studyDayManager2.setManualStudyDay(day)
-                                                currentScreen = "today"
-                                            }
-                                        )
-                                    }
-                                }
-                                "favourites" -> FavouritesScreen(
-                                    prefs = prefs,
-                                    onNavigateToDay = { day ->
-                                        if (selectedCourse == "general") {
-                                            currentDay1 = studyDayManager1.setManualStudyDay(day)
-                                        } else {
-                                            currentDay2 = studyDayManager2.setManualStudyDay(day)
+                            // Full-width Course Dropdown Selector Bar directly below TopAppBar
+                            Box(
+                                modifier = Modifier
+                                    .fillMaxWidth()
+                                    .padding(horizontal = 16.dp, vertical = 8.dp)
+                            ) {
+                                OutlinedCard(
+                                    onClick = { showCourseDropdown = true },
+                                    shape = RoundedCornerShape(12.dp),
+                                    colors = CardDefaults.outlinedCardColors(containerColor = MaterialTheme.colorScheme.surface),
+                                    modifier = Modifier.fillMaxWidth()
+                                ) {
+                                    Row(
+                                        modifier = Modifier
+                                            .padding(horizontal = 16.dp, vertical = 10.dp)
+                                            .fillMaxWidth(),
+                                        horizontalArrangement = Arrangement.SpaceBetween,
+                                        verticalAlignment = Alignment.CenterVertically
+                                    ) {
+                                        Column(verticalArrangement = Arrangement.spacedBy(2.dp)) {
+                                            Text(
+                                                text = "Active Initiative",
+                                                style = MaterialTheme.typography.labelSmall,
+                                                color = MaterialTheme.colorScheme.onSurfaceVariant
+                                            )
+                                            Text(
+                                                text = if (selectedCourse == "general") "General Vocabulary — 30 Days, 210 Words" else "OWSP Workbook — 59 Days, One Word Substitution",
+                                                style = MaterialTheme.typography.titleSmall.copy(fontWeight = FontWeight.Bold),
+                                                color = MaterialTheme.colorScheme.primary
+                                            )
                                         }
-                                        currentScreen = "today"
+                                        Icon(
+                                            imageVector = Icons.Filled.ArrowDropDown,
+                                            contentDescription = "Select Course",
+                                            tint = MaterialTheme.colorScheme.primary
+                                        )
                                     }
-                                )
-                                "settings" -> SettingsScreen(
-                                    prefs = prefs,
-                                    studyDayManager = studyDayManager1,
-                                    owspStudyDayManager = studyDayManager2,
-                                    currentDay1 = currentDay1,
-                                    currentDay2 = currentDay2,
-                                    selectedCourse = selectedCourse,
-                                    currentThemeMode = themeMode,
-                                    onCourseChanged = { course ->
-                                        selectedCourse = course
-                                        prefs.setSelectedCourse(course)
-                                    },
-                                    onStudyDayChanged1 = { day ->
-                                        currentDay1 = studyDayManager1.setManualStudyDay(day)
-                                    },
-                                    onStudyDayChanged2 = { day ->
-                                        currentDay2 = studyDayManager2.setManualStudyDay(day)
-                                    },
-                                    onThemeChanged = { mode ->
-                                        themeMode = mode
-                                        prefs.setThemeMode(mode)
+                                }
+
+                                DropdownMenu(
+                                    expanded = showCourseDropdown,
+                                    onDismissRequest = { showCourseDropdown = false },
+                                    modifier = Modifier.fillMaxWidth(0.92f)
+                                ) {
+                                    DropdownMenuItem(
+                                        text = {
+                                            Column(verticalArrangement = Arrangement.spacedBy(2.dp)) {
+                                                Text(
+                                                    text = "General Vocabulary",
+                                                    style = MaterialTheme.typography.titleSmall.copy(fontWeight = FontWeight.Bold)
+                                                )
+                                                Text(
+                                                    text = "30 Days, 210 Words",
+                                                    style = MaterialTheme.typography.bodySmall,
+                                                    color = MaterialTheme.colorScheme.onSurfaceVariant
+                                                )
+                                            }
+                                        },
+                                        onClick = {
+                                            selectedCourse = "general"
+                                            prefs.setSelectedCourse("general")
+                                            showCourseDropdown = false
+                                        },
+                                        trailingIcon = {
+                                            if (selectedCourse == "general") {
+                                                Icon(
+                                                    imageVector = Icons.Filled.Check,
+                                                    contentDescription = "Selected",
+                                                    tint = MaterialTheme.colorScheme.primary
+                                                )
+                                            }
+                                        }
+                                    )
+                                    DropdownMenuItem(
+                                        text = {
+                                            Column(verticalArrangement = Arrangement.spacedBy(2.dp)) {
+                                                Text(
+                                                    text = "OWSP Workbook",
+                                                    style = MaterialTheme.typography.titleSmall.copy(fontWeight = FontWeight.Bold)
+                                                )
+                                                Text(
+                                                    text = "59 Days, One Word Substitution",
+                                                    style = MaterialTheme.typography.bodySmall,
+                                                    color = MaterialTheme.colorScheme.onSurfaceVariant
+                                                )
+                                            }
+                                        },
+                                        onClick = {
+                                            selectedCourse = "owsp"
+                                            prefs.setSelectedCourse("owsp")
+                                            showCourseDropdown = false
+                                        },
+                                        trailingIcon = {
+                                            if (selectedCourse == "owsp") {
+                                                Icon(
+                                                    imageVector = Icons.Filled.Check,
+                                                    contentDescription = "Selected",
+                                                    tint = MaterialTheme.colorScheme.primary
+                                                )
+                                            }
+                                        }
+                                    )
+                                }
+                            }
+
+                            Box(
+                                modifier = Modifier
+                                    .weight(1f)
+                                    .fillMaxWidth()
+                            ) {
+                                when (currentScreen) {
+                                    "today" -> {
+                                        if (selectedCourse == "general") {
+                                            HomeScreen(
+                                                currentDay = currentDay1,
+                                                studyDayManager = studyDayManager1,
+                                                onDayChanged = { day ->
+                                                    currentDay1 = studyDayManager1.setManualStudyDay(day)
+                                                },
+                                                prefs = prefs,
+                                                onNavigateToJourney = { currentScreen = "journey" },
+                                                onNavigateToSettings = { currentScreen = "settings" }
+                                            )
+                                        } else {
+                                            OwspHomeScreen(
+                                                currentDay = currentDay2,
+                                                studyDayManager = studyDayManager2,
+                                                onDayChanged = { day ->
+                                                    currentDay2 = studyDayManager2.setManualStudyDay(day)
+                                                },
+                                                prefs = prefs,
+                                                onNavigateToJourney = { currentScreen = "journey" },
+                                                onNavigateToSettings = { currentScreen = "settings" },
+                                                onNavigateToSeeAllMeanings = { currentScreen = "see_all_meanings" }
+                                            )
+                                        }
                                     }
-                                )
+                                    "journey" -> {
+                                        if (selectedCourse == "general") {
+                                            JourneyScreen(
+                                                currentDay = currentDay1,
+                                                prefs = prefs,
+                                                onSelectDay = { day ->
+                                                    currentDay1 = studyDayManager1.setManualStudyDay(day)
+                                                    currentScreen = "today"
+                                                }
+                                            )
+                                        } else {
+                                            OwspJourneyScreen(
+                                                currentDay = currentDay2,
+                                                prefs = prefs,
+                                                onSelectDay = { day ->
+                                                    currentDay2 = studyDayManager2.setManualStudyDay(day)
+                                                    currentScreen = "today"
+                                                }
+                                            )
+                                        }
+                                    }
+                                    "favourites" -> FavouritesScreen(
+                                        prefs = prefs,
+                                        onNavigateToDay = { day ->
+                                            if (selectedCourse == "general") {
+                                                currentDay1 = studyDayManager1.setManualStudyDay(day)
+                                            } else {
+                                                currentDay2 = studyDayManager2.setManualStudyDay(day)
+                                            }
+                                            currentScreen = "today"
+                                        }
+                                    )
+                                    "settings" -> SettingsScreen(
+                                        prefs = prefs,
+                                        studyDayManager = studyDayManager1,
+                                        owspStudyDayManager = studyDayManager2,
+                                        currentDay1 = currentDay1,
+                                        currentDay2 = currentDay2,
+                                        selectedCourse = selectedCourse,
+                                        currentThemeMode = themeMode,
+                                        onCourseChanged = { course ->
+                                            selectedCourse = course
+                                            prefs.setSelectedCourse(course)
+                                        },
+                                        onStudyDayChanged1 = { day ->
+                                            currentDay1 = studyDayManager1.setManualStudyDay(day)
+                                        },
+                                        onStudyDayChanged2 = { day ->
+                                            currentDay2 = studyDayManager2.setManualStudyDay(day)
+                                        },
+                                        onThemeChanged = { mode ->
+                                            themeMode = mode
+                                            prefs.setThemeMode(mode)
+                                        }
+                                    )
+                                }
                             }
                         }
                     }

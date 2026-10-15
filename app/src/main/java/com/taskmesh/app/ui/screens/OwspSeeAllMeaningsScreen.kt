@@ -24,12 +24,14 @@ import androidx.compose.ui.unit.dp
 import com.taskmesh.app.data.OwspAzEntry
 import com.taskmesh.app.data.OwspDatasetRepository
 import com.taskmesh.app.data.OwspVocabularyEntryWithContext
+import com.taskmesh.app.ui.components.TopBarAccountAction
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun OwspSeeAllMeaningsScreen(
     onBack: () -> Unit,
-    onNavigateToDay: (Int) -> Unit
+    onNavigateToDay: (Int) -> Unit,
+    onNavigateToProfile: () -> Unit = {}
 ) {
     val context = LocalContext.current
     var selectedTab by remember { mutableIntStateOf(0) } // 0 = 236 Options, 1 = 225 PDF A-Z Index
@@ -86,6 +88,9 @@ fun OwspSeeAllMeaningsScreen(
                     IconButton(onClick = onBack) {
                         Icon(Icons.Filled.ArrowBack, contentDescription = "Back")
                     }
+                },
+                actions = {
+                    TopBarAccountAction(onNavigateToProfile = onNavigateToProfile)
                 }
             )
         }

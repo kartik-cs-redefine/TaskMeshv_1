@@ -5,6 +5,7 @@ plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.kotlin.android)
     alias(libs.plugins.kotlin.compose)
+    alias(libs.plugins.google.services)
 }
 
 val keystorePropertiesFile = rootProject.file("keystore.properties")
@@ -76,6 +77,13 @@ dependencies {
     implementation(libs.androidx.material3)
     implementation(libs.androidx.material.icons.extended)
     implementation("androidx.work:work-runtime-ktx:2.10.0")
+
+    implementation(platform(libs.firebase.bom))
+    implementation(libs.firebase.auth)
+    implementation(libs.firebase.firestore)
+    implementation(libs.credentials)
+    implementation(libs.credentials.services)
+    implementation(libs.google.id)
 
     testImplementation("junit:junit:4.13.2")
     testImplementation("org.json:json:20231013")
