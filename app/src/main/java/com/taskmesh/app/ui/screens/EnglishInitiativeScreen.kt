@@ -20,6 +20,7 @@ import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import com.taskmesh.app.ui.components.TopBarAccountAction
+import com.taskmesh.app.ui.screens.sharework.ShareWorkEntryCard
 
 data class ModuleItem(
     val id: String,
@@ -34,6 +35,7 @@ data class ModuleItem(
 fun EnglishInitiativeScreen(
     onBackToHome: () -> Unit,
     onNavigateToVocabularyApp: () -> Unit,
+    onNavigateToShareWork: () -> Unit = {},
     onNavigateToProfile: () -> Unit = {}
 ) {
     val modules = listOf(
@@ -197,6 +199,12 @@ fun EnglishInitiativeScreen(
                         }
                     }
                 }
+            }
+
+            item {
+                Spacer(modifier = Modifier.height(8.dp))
+                ShareWorkEntryCard(onNavigateToShareWork = onNavigateToShareWork)
+                Spacer(modifier = Modifier.height(16.dp))
             }
         }
     }

@@ -33,8 +33,12 @@ import com.taskmesh.app.data.OwspStudyDayManager
 import com.taskmesh.app.data.PreferencesManager
 import com.taskmesh.app.data.StudyDayManager
 import com.taskmesh.app.data.UserRepository
+import com.taskmesh.app.data.sharework.WorksheetGroup
+import com.taskmesh.app.data.sharework.WorksheetItem
+import com.taskmesh.app.data.sharework.WorksheetQuestion
 import com.taskmesh.app.ui.components.TopBarAccountAction
 import com.taskmesh.app.ui.screens.*
+import com.taskmesh.app.ui.screens.sharework.*
 import com.taskmesh.app.ui.theme.TaskMeshTheme
 
 class MainActivity : ComponentActivity() {
@@ -50,7 +54,7 @@ class MainActivity : ComponentActivity() {
         setContent {
             var themeMode by remember { mutableStateOf(prefs.getThemeMode()) }
             var selectedCourse by remember { mutableStateOf(prefs.getSelectedCourse()) }
-            var mainDestination by remember { mutableStateOf("initiatives") } // "initiatives", "english_initiative", "vocabulary_app", "profile", "auth"
+            var mainDestination by remember { mutableStateOf("initiatives") } // "initiatives", "english_initiative", "vocabulary_app", "profile", "auth", "share_work_worksheets", "share_work_days", "share_work_recording", "share_work_library"
             var previousDestination by remember { mutableStateOf("initiatives") }
             var currentScreen by remember { mutableStateOf("today") } // "today", "journey", "favourites", "settings", "see_all_meanings"
 
@@ -58,6 +62,11 @@ class MainActivity : ComponentActivity() {
             var currentDay2 by remember { mutableIntStateOf(prefs.getOwspSelectedDay()) }
             var showSplash by remember { mutableStateOf(true) }
             var showCourseDropdown by remember { mutableStateOf(false) }
+
+            // Share Work Active Selection State
+            var activeWorksheet by remember { mutableStateOf<WorksheetItem?>(null) }
+            var activeGroups by remember { mutableStateOf<Set<WorksheetGroup>>(emptySet()) }
+            var activeQuestions by remember { mutableStateOf<List<WorksheetQuestion>>(emptyList()) }
 
             val lifecycleOwner = LocalLifecycleOwner.current
             DisposableEffect(lifecycleOwner) {
@@ -88,6 +97,12 @@ class MainActivity : ComponentActivity() {
                     currentScreen = "today"
                 } else if (mainDestination == "profile" || mainDestination == "auth") {
                     mainDestination = previousDestination
+                } else if (mainDestination == "share_work_recording") {
+                    mainDestination = "share_work_days"
+                } else if (mainDestination == "share_work_days") {
+                    mainDestination = "share_work_worksheets"
+                } else if (mainDestination == "share_work_worksheets" || mainDestination == "share_work_library") {
+                    mainDestination = "english_initiative"
                 } else if (mainDestination == "vocabulary_app") {
                     mainDestination = "english_initiative"
                 } else if (mainDestination == "english_initiative") {
@@ -112,6 +127,55 @@ class MainActivity : ComponentActivity() {
                         onBack = { mainDestination = previousDestination },
                         onAuthSuccess = { mainDestination = "profile" }
                     )
+                } else if (mainDestination == "share_work_worksheets") {
+                    WorksheetSelectionScreen(
+                        onBack = { mainDestination = "english_initiative" },
+                        onSelectWorksheet = { worksheet ->
+                            activeWorksheet = worksheet
+                            mainDestination = "share_work_days"
+                        },
+                        onOpenRecordingsLibrary = {
+                            mainDestination = "share_work_library"
+                        },
+                        onNavigateToProfile = { openProfileOrAuth() }
+                    )
+                } else if (mainDestination == "share_work_days") {
+                    val worksheet = activeWorksheet
+                    if (worksheet != null) {
+                        DaySelectionScreen(
+                            worksheetItem = worksheet,
+                            onBack = { mainDestination = "share_work_worksheets" },
+                            onStartRecording = { item, groups, questions ->
+                                activeWorksheet = item
+                                activeGroups = groups
+                                activeQuestions = questions
+                                mainDestination = "share_work_recording"
+                            },
+                            onNavigateToProfile = { openProfileOrAuth() }
+                        )
+                    } else {
+                        mainDestination = "share_work_worksheets"
+                    }
+                } else if (mainDestination == "share_work_recording") {
+                    val worksheet = activeWorksheet
+                    if (worksheet != null) {
+                        ShareWorkRecordingScreen(
+                            worksheetItem = worksheet,
+                            selectedGroups = activeGroups,
+                            orderedQuestions = activeQuestions,
+                            onBack = { mainDestination = "share_work_days" },
+                            onRecordingFinished = {
+                                mainDestination = "share_work_library"
+                            }
+                        )
+                    } else {
+                        mainDestination = "share_work_worksheets"
+                    }
+                } else if (mainDestination == "share_work_library") {
+                    SavedRecordingsScreen(
+                        onBack = { mainDestination = "share_work_worksheets" },
+                        onNavigateToProfile = { openProfileOrAuth() }
+                    )
                 } else if (mainDestination == "initiatives") {
                     InitiativeSelectionScreen(
                         onNavigateToEnglishInitiative = {
@@ -126,6 +190,9 @@ class MainActivity : ComponentActivity() {
                         },
                         onNavigateToVocabularyApp = {
                             mainDestination = "vocabulary_app"
+                        },
+                        onNavigateToShareWork = {
+                            mainDestination = "share_work_worksheets"
                         },
                         onNavigateToProfile = { openProfileOrAuth() }
                     )

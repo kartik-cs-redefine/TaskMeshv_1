@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<paths>
+    <external-files-path
+        name="share_work_recordings"
+        path="share_work_recordings" />
+    <files-path
+        name="share_work_recordings_internal"
+        path="share_work_recordings" />
+</paths>

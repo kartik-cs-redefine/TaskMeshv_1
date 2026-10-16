@@ -21,6 +21,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import com.taskmesh.app.data.AuthRepository
 import com.taskmesh.app.data.OwspDatasetRepository
@@ -125,18 +126,20 @@ fun ProfileScreen(
                 .navigationBarsPadding(),
             verticalArrangement = Arrangement.spacedBy(20.dp)
         ) {
-            // Profile Card (Spacious Reference 2 Style)
+            // Profile Card (Centred Reference Layout)
             Card(
                 shape = RoundedCornerShape(24.dp),
                 colors = CardDefaults.cardColors(containerColor = MaterialTheme.colorScheme.surfaceVariant.copy(alpha = 0.45f)),
                 modifier = Modifier.fillMaxWidth()
             ) {
                 Column(
-                    modifier = Modifier.padding(24.dp),
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .padding(24.dp),
                     horizontalAlignment = Alignment.CenterHorizontally,
                     verticalArrangement = Arrangement.spacedBy(12.dp)
                 ) {
-                    // Initials Avatar (Larger 84dp)
+                    // Initials Avatar
                     Surface(
                         shape = CircleShape,
                         color = MaterialTheme.colorScheme.primaryContainer,
@@ -155,13 +158,15 @@ fun ProfileScreen(
 
                     // Display Name & Edit Button
                     Row(
+                        modifier = Modifier.wrapContentWidth(),
                         verticalAlignment = Alignment.CenterVertically,
-                        horizontalArrangement = Arrangement.spacedBy(8.dp)
+                        horizontalArrangement = Arrangement.Center
                     ) {
                         Text(
                             text = userProfile?.displayName?.ifBlank { currentUser?.displayName ?: "TaskMesh Learner" } ?: "Guest Learner",
                             style = MaterialTheme.typography.titleLarge.copy(fontWeight = FontWeight.Bold),
-                            color = MaterialTheme.colorScheme.onSurface
+                            color = MaterialTheme.colorScheme.onSurface,
+                            textAlign = TextAlign.Center
                         )
                         if (currentUser != null) {
                             IconButton(
@@ -185,13 +190,15 @@ fun ProfileScreen(
                     Text(
                         text = currentUser?.email ?: "Offline / Guest Account",
                         style = MaterialTheme.typography.bodyLarge,
-                        color = MaterialTheme.colorScheme.onSurfaceVariant
+                        color = MaterialTheme.colorScheme.onSurfaceVariant,
+                        textAlign = TextAlign.Center
                     )
 
                     if (currentUser != null) {
                         Spacer(modifier = Modifier.height(4.dp))
                         Row(
-                            horizontalArrangement = Arrangement.spacedBy(10.dp),
+                            modifier = Modifier.wrapContentWidth(),
+                            horizontalArrangement = Arrangement.Center,
                             verticalAlignment = Alignment.CenterVertically
                         ) {
                             Surface(
@@ -217,6 +224,8 @@ fun ProfileScreen(
                                     )
                                 }
                             }
+
+                            Spacer(modifier = Modifier.width(10.dp))
 
                             val creationTime = currentUser.metadata?.creationTimestamp ?: 0L
                             if (creationTime > 0L) {
