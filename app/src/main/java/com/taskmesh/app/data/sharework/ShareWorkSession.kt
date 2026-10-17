@@ -90,6 +90,7 @@ object ShareWorkSession {
                 worksheetId = worksheet.id,
                 worksheetTitle = worksheet.title,
                 selectedGroupsLabel = groupsLabel,
+                selectedGroupIds = groups.sortedBy { it.groupNumber }.map { it.id },
                 recordingDate = System.currentTimeMillis(),
                 durationSeconds = duration,
                 filePath = file.absolutePath,

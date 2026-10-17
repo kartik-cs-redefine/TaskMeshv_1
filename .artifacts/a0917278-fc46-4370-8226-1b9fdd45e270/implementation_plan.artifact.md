@@ -1,27 +1,52 @@
-# TaskMesh Verification & Final UI Alignment Plan
+# TaskMesh — MeshyAiService JSON Parsing & Error Handling Fix Plan
 
-This plan details the technical verification steps for the full screen-by-screen audit, design system component validation, and build verification.
-
-## 1. Audit Verification Summary
-
-| Screen / Area | Visual Alignment Status | Touch Targets | Theme Contrast |
-| :--- | :--- | :--- | :--- |
-| **TaskMesh Home** (`InitiativeSelectionScreen.kt`) | Aligned with standard 16dp horizontal margins & Material 3 card borders | 48dp+ | WCAG AAA Pass |
-| **English Initiative** (`EnglishInitiativeScreen.kt`) | Standardized card container tokens & `TopBarAccountAction` | 48dp+ | WCAG AAA Pass |
-| **General Vocabulary Today** (`HomeScreen.kt`) | Refined word cards with 48dp min action buttons & 18dp padding | 48dp+ | WCAG AAA Pass |
-| **OWSP Workbook MCQ Quiz** (`OwspHomeScreen.kt`) | Clean option cards, feedback banners, and post-submission details | 48dp+ | WCAG AAA Pass |
-| **Course Dropdown Selector** (`MainActivity.kt`) | Full-width selector card with dropdown menu & checkmark indicators | 48dp+ | WCAG AAA Pass |
-| **Journey Screens** (`JourneyScreen.kt`, `OwspJourneyScreen.kt`) | Standardized day cards, progress badges, and 12dp grid spacing | 48dp+ | WCAG AAA Pass |
-| **Dictionary & Index** (`OwspSeeAllMeaningsScreen.kt`) | Replaced deprecated `Icons.Filled.ArrowBack` with `Icons.AutoMirrored.Filled.ArrowBack` | 48dp+ | WCAG AAA Pass |
-| **Favourites** (`FavouritesScreen.kt`) | Standardized bookmark list rows and empty state | 48dp+ | WCAG AAA Pass |
-| **Settings** (`SettingsScreen.kt`) | Grouped M3 cards, enlarged day picker touch targets | 48dp+ | WCAG AAA Pass |
-| **Profile & Dashboard** (`ProfileScreen.kt`) | Spacious Reference 2 layout match (84dp avatar, Google & Calendar badges, 54dp sign out button) | 48dp+ | WCAG AAA Pass |
-| **Auth Screen** (`AuthScreen.kt`) | Material 3 text fields, password toggle, Credential Manager Google Sign-In | 48dp+ | WCAG AAA Pass |
+This plan details the technical root cause fix for `org.json.JSONException: No value for totalScore` and the complete restoration and enhancement of `MeshyAiService.kt`.
 
 ---
 
-## 2. Automated Testing & Build Plan
+## 1. Root Cause & Response Flow Fix
 
-1. Execute `.\gradlew.bat testDebugUnitTest` to verify all 24 unit tests pass without regressions.
-2. Execute `.\gradlew.bat assembleDebug` to build the debug APK.
-3. Execute `.\gradlew.bat assembleRelease` to confirm release build compilation.
+### Problem Analysis
+- When the backend or Apps Script endpoint returns an error payload (e.g. `{"error": "Daily AI review limit reached"}` or `{"error": "Authentication failed"}`), `MeshyAiService` passed the JSON directly to `root.getInt("totalScore")`, throwing `org.json.JSONException: No value for totalScore`.
+- In addition, `MeshyAiService.kt` was truncated externally at line 96.
+
+### Fix Strategy
+1. **Safely Extract Backend Errors**:
+   Add `extractErrorMessage(jsonString: String)` to check `root.has("error")` or `root.has("message")` first before attempting to parse review fields.
+2. **Robust Validation (`parseAndValidateReviewResult`)**:
+   Verify `root.has("totalScore")` and `root.has("questionsFeedback")` exist before reading. Validate score bounds (`0 <= totalScore <= maxScore`). Return `null` safely on invalid JSON without throwing unhandled exceptions.
+3. **HTTP Response Handling (`reviewRecording`)**:
+   If the HTTP status code is non-200 or response body contains `{"error": "..."}`, extract and display the clear error message to the user instead of treating it as a successful review.
+
+---
+
+## 2. Proposed Changes
+
+### Component 1: Android Service Restoration & Enhancement
+
+#### [MODIFY] [MeshyAiService.kt](file:///C:/Users/kk824/Downloads/TaskMesh-Native-Android-Project/app/src/main/java/com/taskmesh/app/data/sharework/MeshyAiService.kt)
+- Restore and complete `parseAndValidateReviewResult` and `reviewRecording`.
+- Add error payload detection (`root.has("error")`).
+- Validate score bounds and response field types.
+- Format user-friendly error messages for rate limits (HTTP 429), auth failures (HTTP 401), and server errors.
+
+---
+
+### Component 2: Unit Testing
+
+#### [MODIFY] [MeshyAiAnswerKeyTest.kt](file:///C:/Users/kk824/Downloads/TaskMesh-Native-Android-Project/app/src/test/java/com/taskmesh/app/data/MeshyAiAnswerKeyTest.kt)
+- Add tests for:
+  - Valid review JSON parsing.
+  - Error JSON payload parsing (e.g., `{"error": "Daily limit reached"}`).
+  - Missing `totalScore` JSON.
+  - Invalid field types / malformed `questionsFeedback`.
+
+---
+
+## 3. Verification Plan
+
+### Automated Tests
+- Run `.\gradlew.bat testDebugUnitTest` to verify all 30+ unit tests pass.
+
+### Build Verification
+- Run `.\gradlew.bat assembleDebug` and `.\gradlew.bat assembleRelease`.

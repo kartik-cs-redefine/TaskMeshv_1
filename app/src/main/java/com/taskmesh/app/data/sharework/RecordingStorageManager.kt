@@ -50,6 +50,25 @@ class RecordingStorageManager(private val context: Context) {
         return targetFile
     }
 
+    fun deriveGroupIdsFromLabel(worksheetId: String, groupsLabel: String): List<String> {
+        val labels = groupsLabel.split(",").map { it.trim() }
+        val derived = mutableListOf<String>()
+        for (lbl in labels) {
+            val numMatch = Regex("\\d+").find(lbl)?.value
+            if (numMatch != null) {
+                val num = numMatch.toIntOrNull()
+                if (num != null) {
+                    if (worksheetId == "general_vocab_30d") {
+                        derived.add("day_$num")
+                    } else if (worksheetId == "owsp_workbook_59d") {
+                        derived.add("owsp_day_$num")
+                    }
+                }
+            }
+        }
+        return derived
+    }
+
     fun saveRecordingMetadata(recording: SavedRecording) {
         val allRecordings = getAllSavedRecordings().toMutableList()
         allRecordings.removeAll { it.id == recording.id }
@@ -62,11 +81,17 @@ class RecordingStorageManager(private val context: Context) {
                 put("worksheetId", item.worksheetId)
                 put("worksheetTitle", item.worksheetTitle)
                 put("selectedGroupsLabel", item.selectedGroupsLabel)
+                val groupIdsArr = JSONArray()
+                item.selectedGroupIds.forEach { groupIdsArr.put(it) }
+                put("selectedGroupIds", groupIdsArr)
                 put("recordingDate", item.recordingDate)
                 put("durationSeconds", item.durationSeconds)
                 put("filePath", item.filePath)
                 put("fileSizeBytes", item.fileSizeBytes)
                 put("isTemporary", item.isTemporary)
+                if (item.reviewResultJson != null) {
+                    put("reviewResultJson", item.reviewResultJson)
+                }
             }
             jsonArray.put(obj)
         }
@@ -94,17 +119,33 @@ class RecordingStorageManager(private val context: Context) {
 
                 // Only include if actual audio file exists and is not empty
                 if (audioFile.exists() && audioFile.length() > 0L) {
+                    val worksheetId = obj.getString("worksheetId")
+                    val label = obj.getString("selectedGroupsLabel")
+
+                    val groupIdsList = mutableListOf<String>()
+                    val jsonGroupIds = obj.optJSONArray("selectedGroupIds")
+                    if (jsonGroupIds != null && jsonGroupIds.length() > 0) {
+                        for (k in 0 until jsonGroupIds.length()) {
+                            groupIdsList.add(jsonGroupIds.getString(k))
+                        }
+                    } else {
+                        // Fallback derivation for legacy recordings
+                        groupIdsList.addAll(deriveGroupIdsFromLabel(worksheetId, label))
+                    }
+
                     list.add(
                         SavedRecording(
                             id = obj.getString("id"),
-                            worksheetId = obj.getString("worksheetId"),
+                            worksheetId = worksheetId,
                             worksheetTitle = obj.getString("worksheetTitle"),
-                            selectedGroupsLabel = obj.getString("selectedGroupsLabel"),
+                            selectedGroupsLabel = label,
+                            selectedGroupIds = groupIdsList,
                             recordingDate = obj.getLong("recordingDate"),
                             durationSeconds = obj.getInt("durationSeconds"),
                             filePath = path,
                             fileSizeBytes = audioFile.length(),
-                            isTemporary = obj.optBoolean("isTemporary", false)
+                            isTemporary = obj.optBoolean("isTemporary", false),
+                            reviewResultJson = if (obj.has("reviewResultJson")) obj.getString("reviewResultJson") else null
                         )
                     )
                 }
@@ -137,11 +178,17 @@ class RecordingStorageManager(private val context: Context) {
                 put("worksheetId", item.worksheetId)
                 put("worksheetTitle", item.worksheetTitle)
                 put("selectedGroupsLabel", item.selectedGroupsLabel)
+                val groupIdsArr = JSONArray()
+                item.selectedGroupIds.forEach { groupIdsArr.put(it) }
+                put("selectedGroupIds", groupIdsArr)
                 put("recordingDate", item.recordingDate)
                 put("durationSeconds", item.durationSeconds)
                 put("filePath", item.filePath)
                 put("fileSizeBytes", item.fileSizeBytes)
                 put("isTemporary", item.isTemporary)
+                if (item.reviewResultJson != null) {
+                    put("reviewResultJson", item.reviewResultJson)
+                }
             }
             jsonArray.put(obj)
         }

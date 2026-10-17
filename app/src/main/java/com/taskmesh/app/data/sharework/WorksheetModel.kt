@@ -36,9 +36,11 @@ data class SavedRecording(
     val worksheetId: String,
     val worksheetTitle: String,
     val selectedGroupsLabel: String,
+    val selectedGroupIds: List<String> = emptyList(),
     val recordingDate: Long,
     val durationSeconds: Int,
     val filePath: String,
     val fileSizeBytes: Long = 0L,
-    val isTemporary: Boolean = false
+    val isTemporary: Boolean = false,
+    val reviewResultJson: String? = null
 )

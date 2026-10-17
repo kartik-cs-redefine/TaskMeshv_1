@@ -10,6 +10,7 @@ import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.automirrored.filled.ArrowBack
+import androidx.compose.material.icons.filled.AutoAwesome
 import androidx.compose.material.icons.filled.Delete
 import androidx.compose.material.icons.filled.Pause
 import androidx.compose.material.icons.filled.PlayArrow
@@ -42,6 +43,7 @@ fun SavedRecordingsScreen(
     var activePlayingId by remember { mutableStateOf<String?>(null) }
     var mediaPlayer by remember { mutableStateOf<MediaPlayer?>(null) }
     var deleteCandidate by remember { mutableStateOf<SavedRecording?>(null) }
+    var activeReviewRecording by remember { mutableStateOf<SavedRecording?>(null) }
 
     DisposableEffect(Unit) {
         onDispose {
@@ -109,7 +111,7 @@ fun SavedRecordingsScreen(
                         )
                         Spacer(modifier = Modifier.height(4.dp))
                         Text(
-                            text = "Record answers for any worksheet to save, play, and share them on WhatsApp.",
+                            text = "Record answers for any worksheet to save, play, and check spoken performance with Meshy AI.",
                             style = MaterialTheme.typography.bodyMedium,
                             color = MaterialTheme.colorScheme.onSurfaceVariant
                         )
@@ -133,7 +135,10 @@ fun SavedRecordingsScreen(
                             colors = CardDefaults.cardColors(containerColor = MaterialTheme.colorScheme.surface),
                             modifier = Modifier.fillMaxWidth()
                         ) {
-                            Column(modifier = Modifier.padding(16.dp)) {
+                            Column(
+                                modifier = Modifier.padding(16.dp),
+                                verticalArrangement = Arrangement.spacedBy(10.dp)
+                            ) {
                                 Row(
                                     modifier = Modifier.fillMaxWidth(),
                                     horizontalArrangement = Arrangement.SpaceBetween,
@@ -167,11 +172,9 @@ fun SavedRecordingsScreen(
                                     }
                                 }
 
-                                Spacer(modifier = Modifier.height(12.dp))
-
                                 Row(
                                     modifier = Modifier.fillMaxWidth(),
-                                    horizontalArrangement = Arrangement.spacedBy(10.dp),
+                                    horizontalArrangement = Arrangement.spacedBy(8.dp),
                                     verticalAlignment = Alignment.CenterVertically
                                 ) {
                                     // Play / Pause Button
@@ -205,8 +208,8 @@ fun SavedRecordingsScreen(
                                             contentDescription = null,
                                             modifier = Modifier.size(18.dp)
                                         )
-                                        Spacer(modifier = Modifier.width(6.dp))
-                                        Text(if (isPlaying) "Pause" else "Play Audio")
+                                        Spacer(modifier = Modifier.width(4.dp))
+                                        Text(if (isPlaying) "Pause" else "Play")
                                     }
 
                                     // Share via WhatsApp / Sharesheet
@@ -231,8 +234,6 @@ fun SavedRecordingsScreen(
                                             contentDescription = "Share",
                                             modifier = Modifier.size(18.dp)
                                         )
-                                        Spacer(modifier = Modifier.width(4.dp))
-                                        Text("Share")
                                     }
 
                                     // Delete Recording Button
@@ -244,12 +245,44 @@ fun SavedRecordingsScreen(
                                         )
                                     }
                                 }
+
+                                // Check with Meshy AI Button
+                                Button(
+                                    onClick = { activeReviewRecording = item },
+                                    shape = RoundedCornerShape(20.dp),
+                                    colors = ButtonDefaults.buttonColors(
+                                        containerColor = MaterialTheme.colorScheme.primaryContainer,
+                                        contentColor = MaterialTheme.colorScheme.onPrimaryContainer
+                                    ),
+                                    modifier = Modifier.fillMaxWidth()
+                                ) {
+                                    Icon(
+                                        imageVector = Icons.Filled.AutoAwesome,
+                                        contentDescription = null,
+                                        modifier = Modifier.size(18.dp)
+                                    )
+                                    Spacer(modifier = Modifier.width(6.dp))
+                                    Text(
+                                        text = if (item.reviewResultJson != null) "View Meshy AI Review" else "Check with Meshy AI",
+                                        style = MaterialTheme.typography.labelLarge.copy(fontWeight = FontWeight.Bold)
+                                    )
+                                }
                             }
                         }
                     }
                 }
             }
         }
+    }
+
+    if (activeReviewRecording != null) {
+        MeshyAiReviewDialog(
+            recording = activeReviewRecording!!,
+            onDismiss = {
+                activeReviewRecording = null
+                recordingsList = storageManager.getAllSavedRecordings()
+            }
+        )
     }
 
     if (deleteCandidate != null) {
