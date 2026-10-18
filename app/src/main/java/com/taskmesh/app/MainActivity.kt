@@ -61,6 +61,7 @@ class MainActivity : ComponentActivity() {
             var currentDay1 by remember { mutableIntStateOf(prefs.getSelectedDay()) }
             var currentDay2 by remember { mutableIntStateOf(prefs.getOwspSelectedDay()) }
             var showSplash by remember { mutableStateOf(true) }
+            var showOnboarding by remember { mutableStateOf(!prefs.isOnboardingCompleted()) }
             var showCourseDropdown by remember { mutableStateOf(false) }
 
             // Share Work Active Selection State
@@ -92,7 +93,7 @@ class MainActivity : ComponentActivity() {
             }
 
             // System Back Handler logic for multi-level navigation with dynamic return history
-            BackHandler(enabled = !showSplash && (mainDestination != "initiatives" || currentScreen == "see_all_meanings")) {
+            BackHandler(enabled = !showSplash && !showOnboarding && (mainDestination != "initiatives" || currentScreen == "see_all_meanings")) {
                 if (currentScreen == "see_all_meanings") {
                     currentScreen = "today"
                 } else if (mainDestination == "profile" || mainDestination == "auth") {
@@ -113,6 +114,13 @@ class MainActivity : ComponentActivity() {
             TaskMeshTheme(themeMode = themeMode) {
                 if (showSplash) {
                     SplashScreen(onFinish = { showSplash = false })
+                } else if (showOnboarding) {
+                    OnboardingScreen(
+                        onFinishOnboarding = {
+                            prefs.setOnboardingCompleted(true)
+                            showOnboarding = false
+                        }
+                    )
                 } else if (mainDestination == "profile") {
                     ProfileScreen(
                         authRepository = authRepository,
@@ -178,8 +186,12 @@ class MainActivity : ComponentActivity() {
                     )
                 } else if (mainDestination == "initiatives") {
                     InitiativeSelectionScreen(
+                        prefs = prefs,
                         onNavigateToEnglishInitiative = {
                             mainDestination = "english_initiative"
+                        },
+                        onResumeLearning = {
+                            mainDestination = "vocabulary_app"
                         },
                         onNavigateToProfile = { openProfileOrAuth() }
                     )

@@ -10,6 +10,13 @@ open class PreferencesManager(context: Context) {
         null
     }
 
+    // --- First-Launch Onboarding ---
+    open fun isOnboardingCompleted(): Boolean = prefs?.getBoolean("onboarding_completed", false) ?: false
+
+    open fun setOnboardingCompleted(completed: Boolean) {
+        prefs?.edit()?.putBoolean("onboarding_completed", completed)?.apply()
+    }
+
     // --- Course Selection ---
     open fun getSelectedCourse(): String = prefs?.getString("selected_course", "general") ?: "general"
 

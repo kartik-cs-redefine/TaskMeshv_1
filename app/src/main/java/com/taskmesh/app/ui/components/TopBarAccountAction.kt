@@ -16,7 +16,7 @@ fun TopBarAccountAction(
 ) {
     IconButton(
         onClick = onNavigateToProfile,
-        modifier = Modifier.size(36.dp)
+        modifier = Modifier.size(48.dp)
     ) {
         Icon(
             imageVector = Icons.Filled.AccountCircle,

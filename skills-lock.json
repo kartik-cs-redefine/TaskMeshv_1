@@ -1,0 +1,17 @@
+{
+  "version": 1,
+  "skills": {
+    "compose-agent": {
+      "source": "hamen/compose_skill",
+      "sourceType": "github",
+      "skillPath": "skills/compose-agent/SKILL.md",
+      "computedHash": "b96705f50a1c946cc6752024bb0e6ccf52fe59eead26730d6e26731088ed41c6"
+    },
+    "jetpack-compose-audit": {
+      "source": "hamen/compose_skill",
+      "sourceType": "github",
+      "skillPath": "skills/jetpack-compose-audit/SKILL.md",
+      "computedHash": "32c91a5a10d0f635a255f55b88860ecd5df4a7995603b895c73f33c415ddc386"
+    }
+  }
+}
