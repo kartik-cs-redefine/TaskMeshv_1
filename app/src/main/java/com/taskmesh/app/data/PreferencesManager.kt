@@ -74,6 +74,36 @@ open class PreferencesManager(context: Context) {
         prefs?.edit()?.putLong("owsp_last_advancement_boundary", timestampMillis)?.apply()
     }
 
+    // --- Course 3 (Daily Speech Speaking Challenge 25 Days) ---
+    open fun getDailySpeechStartTimestamp(): Long {
+        val stored = prefs?.getLong("daily_speech_start_timestamp", 0L) ?: 0L
+        if (stored == 0L) {
+            val now = System.currentTimeMillis()
+            prefs?.edit()?.putLong("daily_speech_start_timestamp", now)?.apply()
+            return now
+        }
+        return stored
+    }
+
+    open fun getDailySpeechSuggestedDay(): Int {
+        val startMillis = getDailySpeechStartTimestamp()
+        val nowMillis = System.currentTimeMillis()
+        val daysElapsed = ((nowMillis - startMillis) / (1000 * 60 * 60 * 24)).toInt()
+        return (daysElapsed + 1).coerceIn(1, 25)
+    }
+
+    open fun getDailySpeechSelectedDay(): Int = prefs?.getInt("daily_speech_selected_day", getDailySpeechSuggestedDay())?.coerceIn(1, 25) ?: 1
+
+    open fun setDailySpeechSelectedDay(day: Int) {
+        prefs?.edit()?.putInt("daily_speech_selected_day", day.coerceIn(1, 25))?.apply()
+    }
+
+    open fun isDailySpeechDayCompleted(day: Int): Boolean = prefs?.getBoolean("daily_speech_completed_day_$day", false) ?: false
+
+    open fun setDailySpeechDayCompleted(day: Int, completed: Boolean) {
+        prefs?.edit()?.putBoolean("daily_speech_completed_day_$day", completed)?.apply()
+    }
+
     // --- TaskMesh Nudge Notifications ---
     open fun areNotificationsEnabled(): Boolean = prefs?.getBoolean("nudge_notifications_enabled", true) ?: true
 
@@ -104,13 +134,14 @@ open class PreferencesManager(context: Context) {
     open fun resetAllProgress() {
         val prefsObj = prefs ?: return
         val editor = prefsObj.edit()
-        prefsObj.all.keys.filter { it.startsWith("learned_") || it.startsWith("fav_") || it.startsWith("owsp_learned_") || it.startsWith("owsp_fav_") }.forEach {
+        prefsObj.all.keys.filter { it.startsWith("learned_") || it.startsWith("fav_") || it.startsWith("owsp_learned_") || it.startsWith("owsp_fav_") || it.startsWith("daily_speech_") }.forEach {
             editor.remove(it)
         }
         editor.putInt("selected_day", 1)
         editor.putLong("last_advancement_boundary", 0L)
         editor.putInt("owsp_selected_day", 1)
         editor.putLong("owsp_last_advancement_boundary", 0L)
+        editor.putInt("daily_speech_selected_day", 1)
         editor.apply()
     }
 }

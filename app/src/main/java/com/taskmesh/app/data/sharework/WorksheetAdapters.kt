@@ -1,6 +1,7 @@
 package com.taskmesh.app.data.sharework
 
 import android.content.Context
+import com.taskmesh.app.data.DailySpeechRepository
 import com.taskmesh.app.data.OwspDatasetRepository
 import com.taskmesh.app.data.VocabularyDataset
 
@@ -104,14 +105,61 @@ class OwspWorksheetAdapter : WorksheetAdapter {
     }
 }
 
+class DailySpeechWorksheetAdapter : WorksheetAdapter {
+    override fun getWorksheetItem(context: Context): WorksheetItem {
+        val dataset = DailySpeechRepository.loadDataset(context)
+        return WorksheetItem(
+            id = "daily_speech_25d",
+            title = "Daily Speech Challenge",
+            description = "25 Days · Technical Communication Speaking Drills",
+            type = WorksheetType.CUSTOM_WORKSHEET,
+            totalGroups = dataset.totalDays,
+            totalQuestions = dataset.totalDays
+        )
+    }
+
+    override fun getAvailableGroups(context: Context): List<WorksheetGroup> {
+        val dataset = DailySpeechRepository.loadDataset(context)
+        val groups = mutableListOf<WorksheetGroup>()
+
+        for (day in dataset.days) {
+            val q = WorksheetQuestion(
+                id = "ds_q_day_${day.dayNumber}",
+                groupId = "daily_speech_day_${day.dayNumber}",
+                groupLabel = "Day ${day.dayNumber}",
+                questionNumber = 1,
+                primaryText = day.title,
+                secondaryText = day.unit
+            )
+            groups.add(
+                WorksheetGroup(
+                    id = "daily_speech_day_${day.dayNumber}",
+                    groupNumber = day.dayNumber,
+                    groupLabel = "Day ${day.dayNumber}",
+                    questions = listOf(q)
+                )
+            )
+        }
+        return groups.sortedBy { it.groupNumber }
+    }
+
+    override fun getQuestionsForGroups(context: Context, selectedGroupIds: Set<String>): List<WorksheetQuestion> {
+        val allGroups = getAvailableGroups(context)
+        val selected = allGroups.filter { selectedGroupIds.contains(it.id) }.sortedBy { it.groupNumber }
+        return selected.flatMap { it.questions }
+    }
+}
+
 object WorksheetRegistry {
     private val adapters = mutableMapOf<String, WorksheetAdapter>()
 
     init {
         val genAdapter = GeneralVocabAdapter()
         val owspAdapter = OwspWorksheetAdapter()
+        val dsAdapter = DailySpeechWorksheetAdapter()
         adapters["general_vocab_30d"] = genAdapter
         adapters["owsp_workbook_59d"] = owspAdapter
+        adapters["daily_speech_25d"] = dsAdapter
     }
 
     fun registerAdapter(id: String, adapter: WorksheetAdapter) {

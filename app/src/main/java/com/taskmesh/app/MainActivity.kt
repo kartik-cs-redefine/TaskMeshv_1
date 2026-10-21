@@ -38,6 +38,7 @@ import com.taskmesh.app.data.sharework.WorksheetItem
 import com.taskmesh.app.data.sharework.WorksheetQuestion
 import com.taskmesh.app.ui.components.TopBarAccountAction
 import com.taskmesh.app.ui.screens.*
+import com.taskmesh.app.ui.screens.dailyspeech.*
 import com.taskmesh.app.ui.screens.sharework.*
 import com.taskmesh.app.ui.theme.TaskMeshTheme
 
@@ -54,12 +55,14 @@ class MainActivity : ComponentActivity() {
         setContent {
             var themeMode by remember { mutableStateOf(prefs.getThemeMode()) }
             var selectedCourse by remember { mutableStateOf(prefs.getSelectedCourse()) }
-            var mainDestination by remember { mutableStateOf("initiatives") } // "initiatives", "english_initiative", "vocabulary_app", "profile", "auth", "share_work_worksheets", "share_work_days", "share_work_recording", "share_work_library"
+            var mainDestination by remember { mutableStateOf("initiatives") } // "initiatives", "english_initiative", "vocabulary_app", "profile", "auth", "share_work_worksheets", "share_work_days", "share_work_recording", "share_work_library", "daily_speech_journey", "daily_speech_content"
             var previousDestination by remember { mutableStateOf("initiatives") }
             var currentScreen by remember { mutableStateOf("today") } // "today", "journey", "favourites", "settings", "see_all_meanings"
 
             var currentDay1 by remember { mutableIntStateOf(prefs.getSelectedDay()) }
             var currentDay2 by remember { mutableIntStateOf(prefs.getOwspSelectedDay()) }
+            var activeDailySpeechDay by remember { mutableIntStateOf(prefs.getDailySpeechSelectedDay()) }
+
             var showSplash by remember { mutableStateOf(true) }
             var showOnboarding by remember { mutableStateOf(!prefs.isOnboardingCompleted()) }
             var showCourseDropdown by remember { mutableStateOf(false) }
@@ -98,6 +101,10 @@ class MainActivity : ComponentActivity() {
                     currentScreen = "today"
                 } else if (mainDestination == "profile" || mainDestination == "auth") {
                     mainDestination = previousDestination
+                } else if (mainDestination == "daily_speech_content") {
+                    mainDestination = "daily_speech_journey"
+                } else if (mainDestination == "daily_speech_journey") {
+                    mainDestination = "english_initiative"
                 } else if (mainDestination == "share_work_recording") {
                     mainDestination = "share_work_days"
                 } else if (mainDestination == "share_work_days") {
@@ -135,6 +142,34 @@ class MainActivity : ComponentActivity() {
                         onBack = { mainDestination = previousDestination },
                         onAuthSuccess = { mainDestination = "profile" }
                     )
+                } else if (mainDestination == "daily_speech_journey") {
+                    DailySpeechJourneyScreen(
+                        prefs = prefs,
+                        onBack = { mainDestination = "english_initiative" },
+                        onSelectDay = { day ->
+                            activeDailySpeechDay = day
+                            prefs.setDailySpeechSelectedDay(day)
+                            mainDestination = "daily_speech_content"
+                        },
+                        onNavigateToProfile = { openProfileOrAuth() }
+                    )
+                } else if (mainDestination == "daily_speech_content") {
+                    DailySpeechContentScreen(
+                        currentDayNumber = activeDailySpeechDay,
+                        prefs = prefs,
+                        onBack = { mainDestination = "daily_speech_journey" },
+                        onNavigateToDay = { day ->
+                            activeDailySpeechDay = day
+                            prefs.setDailySpeechSelectedDay(day)
+                        },
+                        onStartRecordingForDay = { item, groups, questions ->
+                            activeWorksheet = item
+                            activeGroups = groups
+                            activeQuestions = questions
+                            mainDestination = "share_work_recording"
+                        },
+                        onNavigateToProfile = { openProfileOrAuth() }
+                    )
                 } else if (mainDestination == "share_work_worksheets") {
                     WorksheetSelectionScreen(
                         onBack = { mainDestination = "english_initiative" },
@@ -171,7 +206,13 @@ class MainActivity : ComponentActivity() {
                             worksheetItem = worksheet,
                             selectedGroups = activeGroups,
                             orderedQuestions = activeQuestions,
-                            onBack = { mainDestination = "share_work_days" },
+                            onBack = {
+                                if (worksheet.id == "daily_speech_25d") {
+                                    mainDestination = "daily_speech_content"
+                                } else {
+                                    mainDestination = "share_work_days"
+                                }
+                            },
                             onRecordingFinished = {
                                 mainDestination = "share_work_library"
                             }
@@ -181,7 +222,7 @@ class MainActivity : ComponentActivity() {
                     }
                 } else if (mainDestination == "share_work_library") {
                     SavedRecordingsScreen(
-                        onBack = { mainDestination = "share_work_worksheets" },
+                        onBack = { mainDestination = "english_initiative" },
                         onNavigateToProfile = { openProfileOrAuth() }
                     )
                 } else if (mainDestination == "initiatives") {
@@ -202,6 +243,10 @@ class MainActivity : ComponentActivity() {
                         },
                         onNavigateToVocabularyApp = {
                             mainDestination = "vocabulary_app"
+                        },
+                        onNavigateToDailySpeech = {
+                            activeDailySpeechDay = prefs.getDailySpeechSelectedDay()
+                            mainDestination = "daily_speech_journey"
                         },
                         onNavigateToShareWork = {
                             mainDestination = "share_work_worksheets"

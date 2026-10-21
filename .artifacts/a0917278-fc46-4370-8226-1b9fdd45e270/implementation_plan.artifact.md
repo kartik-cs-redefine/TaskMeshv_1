@@ -1,50 +1,61 @@
-# TaskMesh — Phase 3: Full Application UI/UX Audit & Polish Plan
+# TaskMesh — Daily Speech UX Improvements & Content Formatting Implementation Plan
 
-This plan details the screen-by-screen audit, design system component polish, and non-regression verification for Phase 3.
-
----
-
-## 1. Complete Screen Inventory & Audit Matrix
-
-| # | Screen / Area | Visual & Usability Enhancements | Severity | Implementation Details | Status |
-| :--- | :--- | :--- | :--- | :--- | :--- |
-| **1** | **Splash & Onboarding** ([`SplashScreen.kt`](file:///C:/Users/kk824/Downloads/TaskMesh-Native-Android-Project/app/src/main/java/com/taskmesh/app/ui/screens/SplashScreen.kt) & [`OnboardingScreen.kt`](file:///C:/Users/kk824/Downloads/TaskMesh-Native-Android-Project/app/src/main/java/com/taskmesh/app/ui/screens/OnboardingScreen.kt)) | Refine onboarding card illustrations, step indicator dot animations, and "Get Started" 52dp button. | Medium | Apply standard 24dp screen padding, 48dp+ touch targets, and clear typography scale. | Pending |
-| **2** | **Home Dashboard** ([`InitiativeSelectionScreen.kt`](file:///C:/Users/kk824/Downloads/TaskMesh-Native-Android-Project/app/src/main/java/com/taskmesh/app/ui/screens/InitiativeSelectionScreen.kt)) | Elevate "Continue Learning" hero card with 20dp padding, active streak badge, and 1-tap "Resume Study" button. | High | Standardize card shapes (`20.dp`), M3 surface container colors, and 16dp outer screen margins. | Pending |
-| **3** | **English Initiative** ([`EnglishInitiativeScreen.kt`](file:///C:/Users/kk824/Downloads/TaskMesh-Native-Android-Project/app/src/main/java/com/taskmesh/app/ui/screens/EnglishInitiativeScreen.kt)) | Module cards and `ShareWorkEntryCard` layout spacing. | Medium | Standardize vertical card spacing to 16dp and inner card padding to 20dp. | Pending |
-| **4** | **General Vocabulary** ([`HomeScreen.kt`](file:///C:/Users/kk824/Downloads/TaskMesh-Native-Android-Project/app/src/main/java/com/taskmesh/app/ui/screens/HomeScreen.kt)) | Daily progress header card and [`WordCardItem.kt`](file:///C:/Users/kk824/Downloads/TaskMesh-Native-Android-Project/app/src/main/java/com/taskmesh/app/ui/components/WordCardItem.kt) action button touch targets. | High | Enforce 20dp card padding, 48dp action button targets, and generous line heights for reading. | Pending |
-| **5** | **OWSP Workbook MCQ** ([`OwspHomeScreen.kt`](file:///C:/Users/kk824/Downloads/TaskMesh-Native-Android-Project/app/src/main/java/com/taskmesh/app/ui/screens/OwspHomeScreen.kt)) | MCQ option cards and post-submission explanation cards. | High | Refine MCQ option card states (Default, Selected, Correct, Incorrect), 48dp touch targets. | Pending |
-| **6** | **Course Dropdown Selector** ([`MainActivity.kt`](file:///C:/Users/kk824/Downloads/TaskMesh-Native-Android-Project/app/src/main/java/com/taskmesh/app/MainActivity.kt)) | Full-width selector card directly below TopAppBar. | Medium | Standardize card padding (`12.dp` / `16.dp`) and dropdown menu item vertical padding (`12.dp`). | Pending |
-| **7** | **General & OWSP Journey** ([`JourneyScreen.kt`](file:///C:/Users/kk824/Downloads/TaskMesh-Native-Android-Project/app/src/main/java/com/taskmesh/app/ui/screens/JourneyScreen.kt) & [`OwspJourneyScreen.kt`](file:///C:/Users/kk824/Downloads/TaskMesh-Native-Android-Project/app/src/main/java/com/taskmesh/app/ui/screens/OwspJourneyScreen.kt)) | 30-day and 59-day curriculum progress grids. | Medium | Standardize day progress badges (Current, Completed, Locked) and 12dp grid spacing. | Pending |
-| **8** | **Dictionary & Index** ([`OwspSeeAllMeaningsScreen.kt`](file:///C:/Users/kk824/Downloads/TaskMesh-Native-Android-Project/app/src/main/java/com/taskmesh/app/ui/screens/OwspSeeAllMeaningsScreen.kt)) | Search field, letter chips, and dictionary cards. | High | 52dp search bar, `Icons.AutoMirrored.Filled.ArrowBack`, expanded A-Z letter chip tap areas. | Pending |
-| **9** | **Favourites / Bookmarks** ([`FavouritesScreen.kt`](file:///C:/Users/kk824/Downloads/TaskMesh-Native-Android-Project/app/src/main/java/com/taskmesh/app/ui/screens/FavouritesScreen.kt)) | Bookmark cards and empty state card. | Medium | Standardize card padding to 20dp, 48dp min action buttons, and quick un-favourite toggle. | Pending |
-| **10** | **Settings Screen** ([`SettingsScreen.kt`](file:///C:/Users/kk824/Downloads/TaskMesh-Native-Android-Project/app/src/main/java/com/taskmesh/app/ui/screens/SettingsScreen.kt)) | Curriculum, Day Pickers, Nudge, and Theme selection cards. | High | Group settings into M3 cards, 16dp vertical spacing, Android 13+ notification settings card. | Pending |
-| **11** | **Profile & Dashboard** ([`ProfileScreen.kt`](file:///C:/Users/kk824/Downloads/TaskMesh-Native-Android-Project/app/src/main/java/com/taskmesh/app/ui/screens/ProfileScreen.kt)) | Reference 2 layout match (84dp avatar, Google & Calendar badges, chevrons, 54dp sign out button). | Low | Maintain 100% horizontal center alignment and spacious card padding. | Pending |
-| **12** | **Auth Screen** ([`AuthScreen.kt`](file:///C:/Users/kk824/Downloads/TaskMesh-Native-Android-Project/app/src/main/java/com/taskmesh/app/ui/screens/AuthScreen.kt)) | Login, Registration, Reset, and Google Sign-In. | Medium | Standardize text field heights, password visibility toggles, and Google Sign-In button. | Pending |
-| **13** | **Share Work Screens** (`sharework/` screens) | Worksheet Selection, Day Selection, Recording Sheet, Saved Recordings, and Meshy AI Review Sheet. | High | Standardize card shapes (`18.dp` / `20.dp`), system inset padding (`navigationBarsPadding()`), and 48dp action buttons. | Pending |
+This plan details the technical architecture and screen-by-screen changes required to implement the three Daily Speech UX and content formatting improvements.
 
 ---
 
-## 2. Proposed Changes & Implementation Steps
+## 1. Feature Specifications & Requirements
 
-### Phase 3.1: Design Tokens & Component Audit
-- Verify custom `Typography` scale and 4dp-grid spacing tokens in [`Theme.kt`](file:///C:/Users/kk824/Downloads/TaskMesh-Native-Android-Project/app/src/main/java/com/taskmesh/app/ui/theme/Theme.kt).
-- Verify 48dp minimum touch targets on [`WordCardItem.kt`](file:///C:/Users/kk824/Downloads/TaskMesh-Native-Android-Project/app/src/main/java/com/taskmesh/app/ui/components/WordCardItem.kt) and [`TopBarAccountAction.kt`](file:///C:/Users/kk824/Downloads/TaskMesh-Native-Android-Project/app/src/main/java/com/taskmesh/app/ui/components/TopBarAccountAction.kt).
+### Improvement 1: Conditional Meshy AI Button Visibility
+- **Current Behavior**: "Check with Meshy AI" button appears at the bottom of the content screen even when no audio recording exists.
+- **Proposed Behavior**:
+  - In `DailySpeechContentScreen.kt`, query `RecordingStorageManager(context).getAllSavedRecordings()`.
+  - Filter recordings matching `worksheetId == "daily_speech_25d"` AND (`selectedGroupIds.contains("daily_speech_day_$currentDayNumber")` OR `selectedGroupsLabel.contains("Day $currentDayNumber")`).
+  - Show "Check with Meshy AI" button **only** when `eligibleRecordings.isNotEmpty()`.
+  - If multiple recordings exist for that day, present a recording selector sheet before opening the UI placeholder dialog (*"Daily Speech AI Evaluation Coming Soon"*).
 
-### Phase 3.2: Screen-by-Screen Visual Polish
-- Standardize horizontal margins (`16.dp` / `20.dp`), card shapes (`18.dp` / `20.dp`), and system inset padding (`.navigationBarsPadding()`, `.statusBarsPadding()`).
-- Polish `OnboardingScreen.kt`, `InitiativeSelectionScreen.kt`, `EnglishInitiativeScreen.kt`, `HomeScreen.kt`, `OwspHomeScreen.kt`, `OwspSeeAllMeaningsScreen.kt`, `FavouritesScreen.kt`, `SettingsScreen.kt`, `ProfileScreen.kt`, `AuthScreen.kt`, and `sharework/` screens.
+### Improvement 2: Explicit "Set Today's Day" Manual Day Selection
+- **Current Behavior**: Suggested day based on start timestamp is displayed, but user lacks an explicit "Set Today's Day" action button on the Journey screen.
+- **Proposed Behavior**:
+  - In `DailySpeechJourneyScreen.kt`, add a "Set Active Day" button in the TopBar / Hero Banner.
+  - Opens `SetTodayDayDialog` allowing selection from Day 1 to Day 25.
+  - Displays badges: `[SUGGESTED TODAY]` vs `[ACTIVE TODAY]` vs `[COMPLETED]`.
+  - Persists selection via `prefs.setDailySpeechSelectedDay(day)` without resetting start date timestamp or completion progress.
+
+### Improvement 3: Structured Daily Speech Content Formatting
+- **Current Behavior**: Content is rendered as a single long block of plain text.
+- **Proposed Behavior**:
+  - Implement `FormattedSpeechContent(content: String)` in `DailySpeechContentScreen.kt`.
+  - Parses Q&A blocks, headers, answers, simple explanations, bullet points, and video tasks:
+    - **Questions (`Q1.`, `Q2.`, `VIDEO TASK:`)**: Rendered as high-emphasis bold text (`titleLarge.copy(fontWeight = FontWeight.Bold)`).
+    - **Answers ("Answer (from study material):")**: Formatted in a soft surface card with a primary accent `"ANSWER"` label and comfortable line height (`22.sp`).
+    - **Simple Explanations ("Simple Explanation (for understanding):")**: Formatted in a primary container card with a `"SIMPLE EXPLANATION"` label and readable line height (`24.sp`).
 
 ---
 
-## 3. Non-Regression Safeguards
-- 100% preserve all business logic, Firebase Auth, Firestore profile sync, General Vocabulary (30D), OWSP Workbook (59D), MCQ quiz scoring, Share Work audio recording engine, bookmarks, Nudge notifications, SharedPreferences, and release signing setup.
+## 2. File-by-File Modification Plan
+
+#### [MODIFY] [DailySpeechContentScreen.kt](file:///C:/Users/kk824/Downloads/TaskMesh-Native-Android-Project/app/src/main/java/com/taskmesh/app/ui/screens/dailyspeech/DailySpeechContentScreen.kt)
+- Add recording query for active day using `RecordingStorageManager`.
+- Conditionally render "Check with Meshy AI" button only when `dayRecordings.isNotEmpty()`.
+- Add `FormattedSpeechContent(content)` parser rendering questions, answers, and explanations in styled cards.
+
+#### [MODIFY] [DailySpeechJourneyScreen.kt](file:///C:/Users/kk824/Downloads/TaskMesh-Native-Android-Project/app/src/main/java/com/taskmesh/app/ui/screens/dailyspeech/DailySpeechJourneyScreen.kt)
+- Add "Set Today's Day" action button in TopBar / Hero banner.
+- Implement `SetTodayDayDialog` allowing manual day selection (1..25) with clear `[SUGGESTED]` vs `[ACTIVE TODAY]` vs `[COMPLETED]` badges.
+
+#### [MODIFY] [DailySpeechTest.kt](file:///C:/Users/kk824/Downloads/TaskMesh-Native-Android-Project/app/src/test/java/com/taskmesh/app/data/DailySpeechTest.kt)
+- Add test cases verifying:
+  - Day-specific recording filter for Meshy AI button eligibility.
+  - Manual day selection persistence vs suggested day calculation.
+  - Content parsing logic.
 
 ---
 
-## 4. Verification Plan
+## 3. Verification Plan
 
 ### Automated Tests
-- Execute `.\gradlew.bat testDebugUnitTest` to verify all 33 unit tests pass.
+- Run `.\gradlew.bat testDebugUnitTest` to execute all 35+ unit tests.
 
 ### Build Verification
-- Execute `.\gradlew.bat assembleDebug` and `.\gradlew.bat assembleRelease`.
+- Run `.\gradlew.bat assembleDebug` and `.\gradlew.bat assembleRelease`.

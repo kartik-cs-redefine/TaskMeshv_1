@@ -35,6 +35,7 @@ data class ModuleItem(
 fun EnglishInitiativeScreen(
     onBackToHome: () -> Unit,
     onNavigateToVocabularyApp: () -> Unit,
+    onNavigateToDailySpeech: () -> Unit = {},
     onNavigateToShareWork: () -> Unit = {},
     onNavigateToProfile: () -> Unit = {}
 ) {
@@ -49,9 +50,9 @@ fun EnglishInitiativeScreen(
         ModuleItem(
             id = "speech",
             title = "Daily Speech",
-            description = "Pronunciation practice, fluency drills & daily speech feedback",
+            description = "25-Day Technical Communication speaking drills & practice prompts",
             icon = Icons.Filled.Mic,
-            status = AvailabilityStatus.COMING_SOON
+            status = AvailabilityStatus.AVAILABLE
         ),
         ModuleItem(
             id = "analysis",
@@ -127,6 +128,8 @@ fun EnglishInitiativeScreen(
                         .clickable(enabled = isAvailable) {
                             if (module.id == "vocabulary") {
                                 onNavigateToVocabularyApp()
+                            } else if (module.id == "speech") {
+                                onNavigateToDailySpeech()
                             }
                         }
                 ) {
