@@ -43,6 +43,7 @@ import com.taskmesh.app.ui.screens.sharework.*
 import com.taskmesh.app.ui.theme.TaskMeshTheme
 
 class MainActivity : ComponentActivity() {
+    @OptIn(ExperimentalMaterial3Api::class)
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
@@ -55,7 +56,7 @@ class MainActivity : ComponentActivity() {
         setContent {
             var themeMode by remember { mutableStateOf(prefs.getThemeMode()) }
             var selectedCourse by remember { mutableStateOf(prefs.getSelectedCourse()) }
-            var mainDestination by remember { mutableStateOf("initiatives") } // "initiatives", "english_initiative", "vocabulary_app", "profile", "auth", "share_work_worksheets", "share_work_days", "share_work_recording", "share_work_library", "daily_speech_journey", "daily_speech_content"
+            var mainDestination by remember { mutableStateOf("initiatives") } // "initiatives", "english_initiative", "vocabulary_app", "profile", "auth", "settings", "share_work_worksheets", "share_work_days", "share_work_recording", "share_work_library", "daily_speech_journey", "daily_speech_content"
             var previousDestination by remember { mutableStateOf("initiatives") }
             var currentScreen by remember { mutableStateOf("today") } // "today", "journey", "favourites", "settings", "see_all_meanings"
 
@@ -95,11 +96,20 @@ class MainActivity : ComponentActivity() {
                 }
             }
 
+            fun navigateProtected(targetDestination: String) {
+                if (authRepository.isLoggedIn()) {
+                    mainDestination = targetDestination
+                } else {
+                    previousDestination = targetDestination
+                    mainDestination = "auth"
+                }
+            }
+
             // System Back Handler logic for multi-level navigation with dynamic return history
             BackHandler(enabled = !showSplash && !showOnboarding && (mainDestination != "initiatives" || currentScreen == "see_all_meanings")) {
                 if (currentScreen == "see_all_meanings") {
                     currentScreen = "today"
-                } else if (mainDestination == "profile" || mainDestination == "auth") {
+                } else if (mainDestination == "profile" || mainDestination == "auth" || mainDestination == "settings") {
                     mainDestination = previousDestination
                 } else if (mainDestination == "daily_speech_content") {
                     mainDestination = "daily_speech_journey"
@@ -134,13 +144,73 @@ class MainActivity : ComponentActivity() {
                         userRepository = userRepository,
                         prefs = prefs,
                         onBack = { mainDestination = previousDestination },
-                        onSignOut = { mainDestination = "initiatives" }
+                        onSignOut = {
+                            authRepository.signOut()
+                            activeWorksheet = null
+                            activeGroups = emptySet()
+                            activeQuestions = emptyList()
+                            mainDestination = "initiatives"
+                        },
+                        onNavigateToSettings = { navigateProtected("settings") }
                     )
+                } else if (mainDestination == "settings") {
+                    Scaffold(
+                        topBar = {
+                            TopAppBar(
+                                title = {
+                                    Text(
+                                        text = "Settings",
+                                        style = MaterialTheme.typography.titleLarge.copy(fontWeight = FontWeight.Bold)
+                                    )
+                                },
+                                navigationIcon = {
+                                    IconButton(onClick = { mainDestination = previousDestination }) {
+                                        Icon(
+                                            imageVector = Icons.AutoMirrored.Filled.ArrowBack,
+                                            contentDescription = "Back"
+                                        )
+                                    }
+                                },
+                                actions = {
+                                    TopBarAccountAction(onNavigateToProfile = { openProfileOrAuth() })
+                                }
+                            )
+                        }
+                    ) { innerPadding ->
+                        Box(modifier = Modifier.padding(innerPadding)) {
+                            SettingsScreen(
+                                prefs = prefs,
+                                studyDayManager = studyDayManager1,
+                                owspStudyDayManager = studyDayManager2,
+                                currentDay1 = currentDay1,
+                                currentDay2 = currentDay2,
+                                selectedCourse = selectedCourse,
+                                currentThemeMode = themeMode,
+                                onCourseChanged = { course ->
+                                    selectedCourse = course
+                                    prefs.setSelectedCourse(course)
+                                },
+                                onStudyDayChanged1 = { day ->
+                                    currentDay1 = studyDayManager1.setManualStudyDay(day)
+                                },
+                                onStudyDayChanged2 = { day ->
+                                    currentDay2 = studyDayManager2.setManualStudyDay(day)
+                                },
+                                onThemeChanged = { mode ->
+                                    themeMode = mode
+                                    prefs.setThemeMode(mode)
+                                }
+                            )
+                        }
+                    }
                 } else if (mainDestination == "auth") {
                     AuthScreen(
                         authRepository = authRepository,
                         onBack = { mainDestination = previousDestination },
-                        onAuthSuccess = { mainDestination = "profile" }
+                        onAuthSuccess = {
+                            val target = if (previousDestination != "auth" && previousDestination != "initiatives") previousDestination else "profile"
+                            mainDestination = target
+                        }
                     )
                 } else if (mainDestination == "daily_speech_journey") {
                     DailySpeechJourneyScreen(
@@ -149,7 +219,7 @@ class MainActivity : ComponentActivity() {
                         onSelectDay = { day ->
                             activeDailySpeechDay = day
                             prefs.setDailySpeechSelectedDay(day)
-                            mainDestination = "daily_speech_content"
+                            navigateProtected("daily_speech_content")
                         },
                         onNavigateToProfile = { openProfileOrAuth() }
                     )
@@ -166,7 +236,7 @@ class MainActivity : ComponentActivity() {
                             activeWorksheet = item
                             activeGroups = groups
                             activeQuestions = questions
-                            mainDestination = "share_work_recording"
+                            navigateProtected("share_work_recording")
                         },
                         onNavigateToProfile = { openProfileOrAuth() }
                     )
@@ -178,7 +248,7 @@ class MainActivity : ComponentActivity() {
                             mainDestination = "share_work_days"
                         },
                         onOpenRecordingsLibrary = {
-                            mainDestination = "share_work_library"
+                            navigateProtected("share_work_library")
                         },
                         onNavigateToProfile = { openProfileOrAuth() }
                     )
@@ -192,7 +262,7 @@ class MainActivity : ComponentActivity() {
                                 activeWorksheet = item
                                 activeGroups = groups
                                 activeQuestions = questions
-                                mainDestination = "share_work_recording"
+                                navigateProtected("share_work_recording")
                             },
                             onNavigateToProfile = { openProfileOrAuth() }
                         )
@@ -214,7 +284,7 @@ class MainActivity : ComponentActivity() {
                                 }
                             },
                             onRecordingFinished = {
-                                mainDestination = "share_work_library"
+                                navigateProtected("share_work_library")
                             }
                         )
                     } else {
@@ -232,7 +302,7 @@ class MainActivity : ComponentActivity() {
                             mainDestination = "english_initiative"
                         },
                         onResumeLearning = {
-                            mainDestination = "vocabulary_app"
+                            navigateProtected("vocabulary_app")
                         },
                         onNavigateToProfile = { openProfileOrAuth() }
                     )
@@ -242,14 +312,14 @@ class MainActivity : ComponentActivity() {
                             mainDestination = "initiatives"
                         },
                         onNavigateToVocabularyApp = {
-                            mainDestination = "vocabulary_app"
+                            navigateProtected("vocabulary_app")
                         },
                         onNavigateToDailySpeech = {
                             activeDailySpeechDay = prefs.getDailySpeechSelectedDay()
-                            mainDestination = "daily_speech_journey"
+                            navigateProtected("daily_speech_journey")
                         },
                         onNavigateToShareWork = {
-                            mainDestination = "share_work_worksheets"
+                            navigateProtected("share_work_worksheets")
                         },
                         onNavigateToProfile = { openProfileOrAuth() }
                     )

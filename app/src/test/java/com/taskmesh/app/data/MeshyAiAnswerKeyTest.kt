@@ -144,6 +144,52 @@ class MeshyAiAnswerKeyTest {
     }
 
     @Test
+    fun `test valid AI usage data parsing`() {
+        val json = """
+            {
+                "dailyLimit": 20,
+                "usedCount": 3,
+                "remainingCount": 17,
+                "resetTime": "00:00 UTC",
+                "resetTimezone": "UTC"
+            }
+        """.trimIndent()
+
+        val parsed = MeshyAiService.parseAndValidateAIUsageData(json)
+        assertNotNull(parsed)
+        assertEquals(20, parsed?.dailyLimit)
+        assertEquals(3, parsed?.usedCount)
+        assertEquals(17, parsed?.remainingCount)
+        assertEquals("00:00 UTC", parsed?.resetTime)
+        assertEquals("UTC", parsed?.resetTimezone)
+    }
+
+    @Test
+    fun `test missing dailyLimit or usedCount returns null`() {
+        val jsonMissingLimit = """{"usedCount": 3, "remainingCount": 17}"""
+        val jsonMissingUsed = """{"dailyLimit": 20, "remainingCount": 17}"""
+
+        assertNull(MeshyAiService.parseAndValidateAIUsageData(jsonMissingLimit))
+        assertNull(MeshyAiService.parseAndValidateAIUsageData(jsonMissingUsed))
+    }
+
+    @Test
+    fun `test invalid dailyLimit or negative usage returns null`() {
+        val jsonZeroLimit = """{"dailyLimit": 0, "usedCount": 0, "remainingCount": 0}"""
+        val jsonNegativeUsed = """{"dailyLimit": 20, "usedCount": -1, "remainingCount": 21}"""
+
+        assertNull(MeshyAiService.parseAndValidateAIUsageData(jsonZeroLimit))
+        assertNull(MeshyAiService.parseAndValidateAIUsageData(jsonNegativeUsed))
+    }
+
+    @Test
+    fun `test inconsistent remainingCount returns null`() {
+        val jsonInconsistent = """{"dailyLimit": 20, "usedCount": 5, "remainingCount": 10}"""
+
+        assertNull(MeshyAiService.parseAndValidateAIUsageData(jsonInconsistent))
+    }
+
+    @Test
     fun `test backend error json returns null and extracts message`() {
         val errorJson = """{"error": "Daily AI review limit reached (10 reviews/day). Try again tomorrow!"}"""
         

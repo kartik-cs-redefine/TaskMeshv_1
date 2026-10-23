@@ -4,11 +4,13 @@
  * Production-ready server endpoint for Meshy AI Audio Review on Firebase Spark (Free) Plan.
  * Evaluates audio using Gemini Flash API (API Keys & Model ID in Script Properties).
  * Includes Secure TaskMesh Admin Error Visibility & Diagnostic Notification System.
+ * Enforces Mandatory Firebase Authentication & Server-Verified Token Gating.
  *
- * Supports three actions:
+ * Supports four actions:
  * 1. default (Share Work): Audio evaluation against a specific answer key.
  * 2. transcribe: Verbatim audio-to-text conversion.
  * 3. evaluateDailySpeech: 100-point rubric evaluation against Day content.
+ * 4. getAIUsage: Protected retrieval of authenticated user's real daily AI usage and quota stats.
  */
 
 var FIREBASE_PROJECT_ID = "taskmesh-6242d";
@@ -29,7 +31,7 @@ function doPost(e) {
 
     var requestData = JSON.parse(e.postData.contents);
 
-    // 1. Verify Authorization Header / Firebase ID Token
+    // 1. Mandatory Firebase ID Token Authentication Enforcement
     var authHeader = e.parameter.auth || (e.postData.type === "application/json" ? requestData.idToken : null);
     if (!authHeader && e.parameter.Authorization) {
       authHeader = e.parameter.Authorization;
@@ -40,40 +42,64 @@ function doPost(e) {
       idToken = authHeader.replace(/^Bearer\s+/i, "").trim();
     }
 
-    var uid = "anonymous_guest";
-    var userEmail = "";
-    if (idToken) {
-      var verifiedAuth = verifyFirebaseIdToken(idToken);
-      if (!verifiedAuth.valid) {
-        var errObj = sanitizeUserError("AUTH_CONFIG_FAILURE", 401);
-        notifyAdminOfBackendError({
-          action: requestData.action || "auth",
-          httpStatus: 401,
-          category: "AUTH_CONFIG_FAILURE",
-          errorDetails: verifiedAuth.error,
-          uid: "anonymous_guest",
-          userEmail: "",
-          modelId: DEFAULT_GEMINI_MODEL_ID
-        });
-        return createJsonResponse(errObj, 401);
-      }
-      uid = verifiedAuth.uid;
-      userEmail = verifiedAuth.email || "";
+    if (!idToken) {
+      var errObj = sanitizeUserError("AUTH_CONFIG_FAILURE", 401);
+      return createJsonResponse(errObj, 401);
     }
 
-    // 2. Enforce Concurrency-Safe Daily Rate Limiting
+    var verifiedAuth = verifyFirebaseIdToken(idToken);
+    if (!verifiedAuth.valid) {
+      var errObj = sanitizeUserError("AUTH_CONFIG_FAILURE", 401);
+      notifyAdminOfBackendError({
+        action: requestData.action || "auth",
+        httpStatus: 401,
+        category: "AUTH_CONFIG_FAILURE",
+        errorDetails: verifiedAuth.error,
+        uid: "unauthenticated_user",
+        userEmail: "",
+        modelId: DEFAULT_GEMINI_MODEL_ID
+      });
+      return createJsonResponse(errObj, 401);
+    }
+
+    var uid = verifiedAuth.uid;
+    var userEmail = verifiedAuth.email || "";
+
+    var action = requestData.action || "default";
+
+    // 2. Action: getAIUsage (Does NOT consume AI quota or call Gemini)
+    if (action === "getAIUsage") {
+      var scriptProps = PropertiesService.getScriptProperties();
+      var todayStr = Utilities.formatDate(new Date(), "UTC", "yyyy-MM-dd");
+      var rateKey = "ratelimit_" + uid + "_" + todayStr;
+      var currentCount = parseInt(scriptProps.getProperty(rateKey) || "0", 10);
+      var dailyLimit = MAX_DAILY_REVIEWS_PER_USER;
+      var remaining = Math.max(0, dailyLimit - currentCount);
+
+      var usageData = {
+        dailyLimit: dailyLimit,
+        usedCount: currentCount,
+        remainingCount: remaining,
+        resetTime: "00:00 UTC",
+        resetTimezone: "UTC"
+      };
+
+      return createJsonResponse(usageData, 200);
+    }
+
+    // 3. Enforce Concurrency-Safe Daily Rate Limiting per Verified UID
     var rateLimitCheck = enforceUserRateLimit(uid);
     if (!rateLimitCheck.allowed) {
       var errObj = sanitizeUserError("DAILY_LIMIT_REACHED", 429);
       return createJsonResponse(errObj, 429);
     }
 
-    // 3. Retrieve Gemini API Key & Model ID from Script Properties
+    // 4. Retrieve Gemini API Key & Model ID from Script Properties
     var apiKey = PropertiesService.getScriptProperties().getProperty("GEMINI_API_KEY");
     if (!apiKey) {
       var errObj = sanitizeUserError("AUTH_CONFIG_FAILURE", 500);
       notifyAdminOfBackendError({
-        action: requestData.action || "config",
+        action: action,
         httpStatus: 500,
         category: "AUTH_CONFIG_FAILURE",
         errorDetails: "GEMINI_API_KEY property is missing in Script Properties",
@@ -85,9 +111,8 @@ function doPost(e) {
     }
 
     var modelId = PropertiesService.getScriptProperties().getProperty("GEMINI_MODEL_ID") || DEFAULT_GEMINI_MODEL_ID;
-    var action = requestData.action || "default";
 
-    // 4. Dispatch based on Action
+    // 5. Dispatch based on Action
     if (action === "transcribe") {
       if (!requestData.audioBase64) {
         var errObj = sanitizeUserError("INVALID_AUDIO", 400);

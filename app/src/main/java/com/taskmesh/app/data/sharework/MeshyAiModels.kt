@@ -32,3 +32,11 @@ data class MeshyReviewResult(
     val overallSummary: String,
     val questionsFeedback: List<MeshyQuestionFeedback>
 )
+
+data class AIUsageData(
+    val dailyLimit: Int,
+    val usedCount: Int,
+    val remainingCount: Int,
+    val resetTime: String = "00:00 UTC",
+    val resetTimezone: String = "UTC"
+)

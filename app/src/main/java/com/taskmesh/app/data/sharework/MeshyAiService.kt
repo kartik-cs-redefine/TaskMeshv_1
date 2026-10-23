@@ -182,6 +182,153 @@ object MeshyAiService {
         }
     }
 
+    fun parseAndValidateAIUsageData(jsonString: String): AIUsageData? {
+        if (jsonString.isBlank()) return null
+        return try {
+            val root = JSONObject(jsonString)
+
+            if (root.has("error") || root.has("message")) {
+                logW("MeshyAiService", "Usage JSON is an error object: ${root.optString("error")}")
+                return null
+            }
+
+            if (!root.has("dailyLimit") || !root.has("usedCount") || root.isNull("dailyLimit") || root.isNull("usedCount")) {
+                logE("MeshyAiService", "Missing dailyLimit or usedCount in usage JSON")
+                return null
+            }
+
+            val limit = root.optInt("dailyLimit", -1)
+            val used = root.optInt("usedCount", -1)
+            val expectedRemaining = (limit - used).coerceAtLeast(0)
+
+            val serverRemaining = if (root.has("remainingCount") && !root.isNull("remainingCount")) {
+                root.optInt("remainingCount", -1)
+            } else {
+                expectedRemaining
+            }
+
+            if (limit <= 0 || used < 0 || serverRemaining < 0 || serverRemaining != expectedRemaining) {
+                logE("MeshyAiService", "Invalid or inconsistent usage limits: limit=$limit, used=$used, remaining=$serverRemaining")
+                return null
+            }
+
+            val resetTime = root.optString("resetTime", "00:00 UTC").ifBlank { "00:00 UTC" }
+            val timezone = root.optString("resetTimezone", "UTC").ifBlank { "UTC" }
+
+            AIUsageData(
+                dailyLimit = limit,
+                usedCount = used,
+                remainingCount = serverRemaining,
+                resetTime = resetTime,
+                resetTimezone = timezone
+            )
+        } catch (e: Throwable) {
+            logE("MeshyAiService", "Usage JSON parsing exception", e)
+            null
+        }
+    }
+
+    suspend fun getAIUsage(
+        context: Context,
+        onResult: (Boolean, AIUsageData?, String?) -> Unit
+    ) {
+        withContext(Dispatchers.IO) {
+            if (ENDPOINT_URL.isBlank()) {
+                withContext(Dispatchers.Main) {
+                    onResult(
+                        false,
+                        null,
+                        "Meshy AI backend endpoint is not configured. Please set a secure server proxy URL in MeshyAiService.ENDPOINT_URL."
+                    )
+                }
+                return@withContext
+            }
+
+            var idToken: String? = null
+            val currentUser = FirebaseAuth.getInstance().currentUser
+            if (currentUser == null) {
+                withContext(Dispatchers.Main) {
+                    onResult(false, null, "Authentication required to view AI usage & limits. Please sign in.")
+                }
+                return@withContext
+            }
+
+            try {
+                val tokenTask = currentUser.getIdToken(true)
+                val result = Tasks.await(tokenTask, 10, TimeUnit.SECONDS)
+                idToken = result.token
+            } catch (e: Exception) {
+                logW("MeshyAiService", "Failed to fetch Firebase ID token: ${e.localizedMessage}")
+            }
+
+            if (idToken.isNullOrBlank()) {
+                withContext(Dispatchers.Main) {
+                    onResult(false, null, "Authentication token expired. Please sign in again.")
+                }
+                return@withContext
+            }
+
+            val payload = JSONObject().apply {
+                put("action", "getAIUsage")
+                put("idToken", idToken)
+            }
+
+            var lastError = "Network request failed."
+            val maxRetries = 1
+
+            for (attempt in 0..maxRetries) {
+                try {
+                    val url = URL(ENDPOINT_URL)
+                    val conn = (url.openConnection() as HttpURLConnection).apply {
+                        requestMethod = "POST"
+                        connectTimeout = 15000
+                        readTimeout = 20000
+                        doOutput = true
+                        setRequestProperty("Content-Type", "application/json; charset=UTF-8")
+                        setRequestProperty("Accept", "application/json")
+                        setRequestProperty("Authorization", "Bearer $idToken")
+                    }
+
+                    OutputStreamWriter(conn.outputStream, "UTF-8").use { writer ->
+                        writer.write(payload.toString())
+                        writer.flush()
+                    }
+
+                    val responseCode = conn.responseCode
+                    val responseText = if (responseCode in 200..299) {
+                        conn.inputStream.bufferedReader().use { it.readText() }
+                    } else {
+                        conn.errorStream?.bufferedReader()?.use { it.readText() } ?: ""
+                    }
+
+                    if (responseCode in 200..299) {
+                        val usageData = parseAndValidateAIUsageData(responseText)
+                        if (usageData != null) {
+                            withContext(Dispatchers.Main) {
+                                onResult(true, usageData, null)
+                            }
+                            return@withContext
+                        } else {
+                            val errMsg = extractErrorMessage(responseText, "Invalid usage JSON or inconsistent limits returned by server.")
+                            lastError = errMsg
+                        }
+                    } else {
+                        val errMsg = extractErrorMessage(responseText, "Server returned HTTP $responseCode")
+                        lastError = errMsg
+                    }
+                } catch (e: SocketTimeoutException) {
+                    lastError = "Unable to connect to Meshy AI right now. Please check your connection and try again."
+                } catch (e: Exception) {
+                    lastError = e.localizedMessage ?: "Connection failed."
+                }
+            }
+
+            withContext(Dispatchers.Main) {
+                onResult(false, null, lastError)
+            }
+        }
+    }
+
     suspend fun reviewRecording(
         context: Context,
         recording: SavedRecording,

@@ -1,5 +1,6 @@
 package com.taskmesh.app.ui.screens
 
+import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.shape.CircleShape
@@ -9,10 +10,10 @@ import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.automirrored.filled.ArrowBack
 import androidx.compose.material.icons.automirrored.filled.Logout
 import androidx.compose.material.icons.filled.Bookmark
-import androidx.compose.material.icons.filled.CalendarToday
 import androidx.compose.material.icons.filled.ChevronRight
 import androidx.compose.material.icons.filled.Edit
 import androidx.compose.material.icons.filled.School
+import androidx.compose.material.icons.filled.Settings
 import androidx.compose.material.icons.filled.VerifiedUser
 import androidx.compose.material.icons.filled.WorkspacePremium
 import androidx.compose.material3.*
@@ -40,7 +41,8 @@ fun ProfileScreen(
     userRepository: UserRepository = remember { UserRepository() },
     prefs: PreferencesManager,
     onBack: () -> Unit,
-    onSignOut: () -> Unit
+    onSignOut: () -> Unit,
+    onNavigateToSettings: () -> Unit = {}
 ) {
     val context = LocalContext.current
     val currentUser = authRepository.getCurrentUser()
@@ -113,6 +115,14 @@ fun ProfileScreen(
                             contentDescription = "Back"
                         )
                     }
+                },
+                actions = {
+                    IconButton(onClick = onNavigateToSettings) {
+                        Icon(
+                            imageVector = Icons.Filled.Settings,
+                            contentDescription = "Settings"
+                        )
+                    }
                 }
             )
         }
@@ -122,59 +132,69 @@ fun ProfileScreen(
                 .padding(innerPadding)
                 .fillMaxSize()
                 .verticalScroll(rememberScrollState())
-                .padding(horizontal = 20.dp, vertical = 16.dp)
+                .padding(horizontal = 16.dp, vertical = 12.dp)
                 .navigationBarsPadding(),
-            verticalArrangement = Arrangement.spacedBy(20.dp)
+            verticalArrangement = Arrangement.spacedBy(16.dp)
         ) {
-            // Profile Card (Centred Reference Layout)
+            if (statusMessage != null) {
+                Surface(
+                    color = MaterialTheme.colorScheme.primaryContainer,
+                    shape = RoundedCornerShape(12.dp),
+                    modifier = Modifier.fillMaxWidth()
+                ) {
+                    Text(
+                        text = statusMessage ?: "",
+                        style = MaterialTheme.typography.bodyMedium,
+                        color = MaterialTheme.colorScheme.onPrimaryContainer,
+                        modifier = Modifier.padding(12.dp)
+                    )
+                }
+            }
+
+            // User Identity & Header Card
             Card(
-                shape = RoundedCornerShape(24.dp),
+                shape = RoundedCornerShape(20.dp),
                 colors = CardDefaults.cardColors(containerColor = MaterialTheme.colorScheme.surfaceVariant.copy(alpha = 0.45f)),
                 modifier = Modifier.fillMaxWidth()
             ) {
-                Column(
-                    modifier = Modifier
-                        .fillMaxWidth()
-                        .padding(24.dp),
-                    horizontalAlignment = Alignment.CenterHorizontally,
-                    verticalArrangement = Arrangement.spacedBy(12.dp)
+                Row(
+                    modifier = Modifier.padding(20.dp),
+                    verticalAlignment = Alignment.CenterVertically,
+                    horizontalArrangement = Arrangement.spacedBy(16.dp)
                 ) {
-                    // Initials Avatar
                     Surface(
                         shape = CircleShape,
-                        color = MaterialTheme.colorScheme.primaryContainer,
-                        modifier = Modifier.size(84.dp)
+                        color = MaterialTheme.colorScheme.primary,
+                        modifier = Modifier.size(64.dp)
                     ) {
                         Box(contentAlignment = Alignment.Center) {
                             Text(
                                 text = initials,
                                 style = MaterialTheme.typography.headlineMedium.copy(fontWeight = FontWeight.Bold),
-                                color = MaterialTheme.colorScheme.onPrimaryContainer
+                                color = MaterialTheme.colorScheme.onPrimary
                             )
                         }
                     }
 
-                    Spacer(modifier = Modifier.height(2.dp))
-
-                    // Display Name & Edit Button
-                    Row(
-                        modifier = Modifier.wrapContentWidth(),
-                        verticalAlignment = Alignment.CenterVertically,
-                        horizontalArrangement = Arrangement.Center
+                    Column(
+                        modifier = Modifier.weight(1f),
+                        verticalArrangement = Arrangement.spacedBy(4.dp)
                     ) {
-                        Text(
-                            text = userProfile?.displayName?.ifBlank { currentUser?.displayName ?: "TaskMesh Learner" } ?: "Guest Learner",
-                            style = MaterialTheme.typography.titleLarge.copy(fontWeight = FontWeight.Bold),
-                            color = MaterialTheme.colorScheme.onSurface,
-                            textAlign = TextAlign.Center
-                        )
-                        if (currentUser != null) {
+                        Row(
+                            verticalAlignment = Alignment.CenterVertically,
+                            horizontalArrangement = Arrangement.spacedBy(8.dp)
+                        ) {
+                            Text(
+                                text = userProfile?.displayName?.ifBlank { currentUser?.displayName } ?: currentUser?.email?.substringBefore("@") ?: "Learner",
+                                style = MaterialTheme.typography.titleLarge.copy(fontWeight = FontWeight.Bold),
+                                color = MaterialTheme.colorScheme.onSurface
+                            )
                             IconButton(
                                 onClick = {
-                                    editNameInput = userProfile?.displayName ?: currentUser.displayName ?: ""
+                                    editNameInput = userProfile?.displayName ?: currentUser?.displayName ?: ""
                                     showEditNameDialog = true
                                 },
-                                modifier = Modifier.size(32.dp)
+                                modifier = Modifier.size(24.dp)
                             ) {
                                 Icon(
                                     imageVector = Icons.Filled.Edit,
@@ -184,73 +204,39 @@ fun ProfileScreen(
                                 )
                             }
                         }
-                    }
 
-                    // Email & Account Info
-                    Text(
-                        text = currentUser?.email ?: "Offline / Guest Account",
-                        style = MaterialTheme.typography.bodyLarge,
-                        color = MaterialTheme.colorScheme.onSurfaceVariant,
-                        textAlign = TextAlign.Center
-                    )
+                        Text(
+                            text = currentUser?.email ?: "Offline / Guest Account",
+                            style = MaterialTheme.typography.bodyMedium,
+                            color = MaterialTheme.colorScheme.onSurfaceVariant
+                        )
 
-                    if (currentUser != null) {
-                        Spacer(modifier = Modifier.height(4.dp))
                         Row(
-                            modifier = Modifier.wrapContentWidth(),
-                            horizontalArrangement = Arrangement.Center,
-                            verticalAlignment = Alignment.CenterVertically
+                            verticalAlignment = Alignment.CenterVertically,
+                            horizontalArrangement = Arrangement.spacedBy(6.dp),
+                            modifier = Modifier.padding(top = 2.dp)
                         ) {
                             Surface(
                                 shape = CircleShape,
                                 color = MaterialTheme.colorScheme.primaryContainer
                             ) {
                                 Row(
-                                    modifier = Modifier.padding(horizontal = 12.dp, vertical = 6.dp),
+                                    modifier = Modifier.padding(horizontal = 8.dp, vertical = 2.dp),
                                     verticalAlignment = Alignment.CenterVertically,
-                                    horizontalArrangement = Arrangement.spacedBy(6.dp)
+                                    horizontalArrangement = Arrangement.spacedBy(4.dp)
                                 ) {
                                     Icon(
                                         imageVector = Icons.Filled.VerifiedUser,
                                         contentDescription = null,
                                         tint = MaterialTheme.colorScheme.primary,
-                                        modifier = Modifier.size(16.dp)
+                                        modifier = Modifier.size(12.dp)
                                     )
-                                    val providerName = if (userProfile?.providerId?.contains("google") == true || currentUser.providerData.any { it.providerId.contains("google") }) "Google Sign-In" else "Email Account"
+                                    val providerName = if (userProfile?.providerId?.contains("google") == true || currentUser?.providerData?.any { it.providerId.contains("google") } == true) "Google Sign-In" else "Email Account"
                                     Text(
                                         text = providerName,
-                                        style = MaterialTheme.typography.labelMedium.copy(fontWeight = FontWeight.Bold),
+                                        style = MaterialTheme.typography.labelSmall.copy(fontWeight = FontWeight.Bold),
                                         color = MaterialTheme.colorScheme.onPrimaryContainer
                                     )
-                                }
-                            }
-
-                            Spacer(modifier = Modifier.width(10.dp))
-
-                            val creationTime = currentUser.metadata?.creationTimestamp ?: 0L
-                            if (creationTime > 0L) {
-                                val dateStr = SimpleDateFormat("MMM yyyy", Locale.getDefault()).format(Date(creationTime))
-                                Surface(
-                                    shape = CircleShape,
-                                    color = MaterialTheme.colorScheme.surfaceVariant
-                                ) {
-                                    Row(
-                                        modifier = Modifier.padding(horizontal = 12.dp, vertical = 6.dp),
-                                        verticalAlignment = Alignment.CenterVertically,
-                                        horizontalArrangement = Arrangement.spacedBy(6.dp)
-                                    ) {
-                                        Icon(
-                                            imageVector = Icons.Filled.CalendarToday,
-                                            contentDescription = null,
-                                            tint = MaterialTheme.colorScheme.onSurfaceVariant,
-                                            modifier = Modifier.size(14.dp)
-                                        )
-                                        Text(
-                                            text = "Joined $dateStr",
-                                            style = MaterialTheme.typography.labelMedium,
-                                            color = MaterialTheme.colorScheme.onSurfaceVariant
-                                        )
-                                    }
                                 }
                             }
                         }
@@ -258,39 +244,23 @@ fun ProfileScreen(
                 }
             }
 
-            if (statusMessage != null) {
-                Surface(
-                    color = MaterialTheme.colorScheme.primaryContainer,
-                    shape = RoundedCornerShape(14.dp),
-                    modifier = Modifier.fillMaxWidth()
-                ) {
-                    Text(
-                        text = statusMessage ?: "",
-                        style = MaterialTheme.typography.bodyMedium,
-                        color = MaterialTheme.colorScheme.onPrimaryContainer,
-                        modifier = Modifier.padding(14.dp)
-                    )
-                }
-            }
-
-            // Learning Dashboard Section Header
-            Spacer(modifier = Modifier.height(4.dp))
+            // Learning Analytics & Progress Dashboard
             Text(
-                text = "Learning Dashboard",
-                style = MaterialTheme.typography.headlineSmall.copy(fontWeight = FontWeight.Bold),
+                text = "Learning Statistics & History",
+                style = MaterialTheme.typography.titleMedium.copy(fontWeight = FontWeight.Bold),
                 color = MaterialTheme.colorScheme.onBackground
             )
 
-            // Course 1: General Vocabulary
+            // General Vocab Card
             Card(
-                shape = RoundedCornerShape(20.dp),
+                shape = RoundedCornerShape(18.dp),
+                border = BorderStroke(1.dp, MaterialTheme.colorScheme.outline.copy(alpha = 0.3f)),
                 colors = CardDefaults.cardColors(containerColor = MaterialTheme.colorScheme.surface),
-                border = CardDefaults.outlinedCardBorder(),
                 modifier = Modifier.fillMaxWidth()
             ) {
                 Column(
-                    modifier = Modifier.padding(20.dp),
-                    verticalArrangement = Arrangement.spacedBy(14.dp)
+                    modifier = Modifier.padding(18.dp),
+                    verticalArrangement = Arrangement.spacedBy(10.dp)
                 ) {
                     Row(
                         modifier = Modifier.fillMaxWidth(),
@@ -299,54 +269,38 @@ fun ProfileScreen(
                     ) {
                         Row(
                             verticalAlignment = Alignment.CenterVertically,
-                            horizontalArrangement = Arrangement.spacedBy(12.dp)
+                            horizontalArrangement = Arrangement.spacedBy(10.dp)
                         ) {
-                            Surface(
-                                shape = CircleShape,
-                                color = MaterialTheme.colorScheme.primaryContainer,
-                                modifier = Modifier.size(44.dp)
-                            ) {
-                                Box(contentAlignment = Alignment.Center) {
-                                    Icon(
-                                        imageVector = Icons.Filled.School,
-                                        contentDescription = null,
-                                        tint = MaterialTheme.colorScheme.primary,
-                                        modifier = Modifier.size(22.dp)
-                                    )
-                                }
-                            }
+                            Icon(
+                                imageVector = Icons.Filled.School,
+                                contentDescription = null,
+                                tint = MaterialTheme.colorScheme.primary
+                            )
                             Text(
                                 text = "General Vocabulary (30D)",
                                 style = MaterialTheme.typography.titleMedium.copy(fontWeight = FontWeight.Bold)
                             )
                         }
 
-                        Row(
-                            verticalAlignment = Alignment.CenterVertically,
-                            horizontalArrangement = Arrangement.spacedBy(4.dp)
+                        Surface(
+                            shape = CircleShape,
+                            color = MaterialTheme.colorScheme.primaryContainer
                         ) {
                             Text(
                                 text = "Day $generalCurrentDay / 30",
-                                style = MaterialTheme.typography.titleSmall.copy(fontWeight = FontWeight.Bold),
-                                color = MaterialTheme.colorScheme.primary
-                            )
-                            Icon(
-                                imageVector = Icons.Filled.ChevronRight,
-                                contentDescription = null,
-                                tint = MaterialTheme.colorScheme.primary,
-                                modifier = Modifier.size(20.dp)
+                                style = MaterialTheme.typography.labelSmall.copy(fontWeight = FontWeight.Bold),
+                                color = MaterialTheme.colorScheme.onPrimaryContainer,
+                                modifier = Modifier.padding(horizontal = 10.dp, vertical = 4.dp)
                             )
                         }
                     }
 
-                    val generalProgress = generalLearnedCount.toFloat() / 210f
+                    val generalProgress = (generalLearnedCount.toFloat() / generalDataset.size.toFloat()).coerceIn(0f, 1f)
                     LinearProgressIndicator(
                         progress = { generalProgress },
-                        modifier = Modifier
-                            .fillMaxWidth()
-                            .height(10.dp),
+                        modifier = Modifier.fillMaxWidth().height(8.dp),
                         color = MaterialTheme.colorScheme.primary,
-                        trackColor = MaterialTheme.colorScheme.surfaceVariant
+                        trackColor = MaterialTheme.colorScheme.surfaceVariant,
                     )
 
                     Row(
@@ -354,29 +308,29 @@ fun ProfileScreen(
                         horizontalArrangement = Arrangement.SpaceBetween
                     ) {
                         Text(
-                            text = "$generalLearnedCount / 210 words learned",
+                            text = "$generalLearnedCount / ${generalDataset.size} words learned",
                             style = MaterialTheme.typography.bodyMedium,
                             color = MaterialTheme.colorScheme.onSurfaceVariant
                         )
                         Text(
-                            text = "${(generalProgress * 100).toInt()}% completed",
-                            style = MaterialTheme.typography.bodyMedium.copy(fontWeight = FontWeight.Bold),
-                            color = MaterialTheme.colorScheme.onSurface
+                            text = "${(generalProgress * 100).toInt()}%",
+                            style = MaterialTheme.typography.titleSmall.copy(fontWeight = FontWeight.Bold),
+                            color = MaterialTheme.colorScheme.primary
                         )
                     }
                 }
             }
 
-            // Course 2: One Word Substitution
+            // OWSP Card
             Card(
-                shape = RoundedCornerShape(20.dp),
+                shape = RoundedCornerShape(18.dp),
+                border = BorderStroke(1.dp, MaterialTheme.colorScheme.outline.copy(alpha = 0.3f)),
                 colors = CardDefaults.cardColors(containerColor = MaterialTheme.colorScheme.surface),
-                border = CardDefaults.outlinedCardBorder(),
                 modifier = Modifier.fillMaxWidth()
             ) {
                 Column(
-                    modifier = Modifier.padding(20.dp),
-                    verticalArrangement = Arrangement.spacedBy(14.dp)
+                    modifier = Modifier.padding(18.dp),
+                    verticalArrangement = Arrangement.spacedBy(10.dp)
                 ) {
                     Row(
                         modifier = Modifier.fillMaxWidth(),
@@ -385,54 +339,38 @@ fun ProfileScreen(
                     ) {
                         Row(
                             verticalAlignment = Alignment.CenterVertically,
-                            horizontalArrangement = Arrangement.spacedBy(12.dp)
+                            horizontalArrangement = Arrangement.spacedBy(10.dp)
                         ) {
-                            Surface(
-                                shape = CircleShape,
-                                color = MaterialTheme.colorScheme.primaryContainer,
-                                modifier = Modifier.size(44.dp)
-                            ) {
-                                Box(contentAlignment = Alignment.Center) {
-                                    Icon(
-                                        imageVector = Icons.Filled.WorkspacePremium,
-                                        contentDescription = null,
-                                        tint = MaterialTheme.colorScheme.primary,
-                                        modifier = Modifier.size(22.dp)
-                                    )
-                                }
-                            }
+                            Icon(
+                                imageVector = Icons.Filled.WorkspacePremium,
+                                contentDescription = null,
+                                tint = MaterialTheme.colorScheme.primary
+                            )
                             Text(
                                 text = "OWSP Workbook (59D)",
                                 style = MaterialTheme.typography.titleMedium.copy(fontWeight = FontWeight.Bold)
                             )
                         }
 
-                        Row(
-                            verticalAlignment = Alignment.CenterVertically,
-                            horizontalArrangement = Arrangement.spacedBy(4.dp)
+                        Surface(
+                            shape = CircleShape,
+                            color = MaterialTheme.colorScheme.primaryContainer
                         ) {
                             Text(
                                 text = "Day $owspCurrentDay / 59",
-                                style = MaterialTheme.typography.titleSmall.copy(fontWeight = FontWeight.Bold),
-                                color = MaterialTheme.colorScheme.primary
-                            )
-                            Icon(
-                                imageVector = Icons.Filled.ChevronRight,
-                                contentDescription = null,
-                                tint = MaterialTheme.colorScheme.primary,
-                                modifier = Modifier.size(20.dp)
+                                style = MaterialTheme.typography.labelSmall.copy(fontWeight = FontWeight.Bold),
+                                color = MaterialTheme.colorScheme.onPrimaryContainer,
+                                modifier = Modifier.padding(horizontal = 10.dp, vertical = 4.dp)
                             )
                         }
                     }
 
-                    val owspProgress = owspLearnedCount.toFloat() / owspTotalItems.coerceAtLeast(1).toFloat()
+                    val owspProgress = if (owspTotalItems > 0) (owspLearnedCount.toFloat() / owspTotalItems.toFloat()).coerceIn(0f, 1f) else 0f
                     LinearProgressIndicator(
                         progress = { owspProgress },
-                        modifier = Modifier
-                            .fillMaxWidth()
-                            .height(10.dp),
+                        modifier = Modifier.fillMaxWidth().height(8.dp),
                         color = MaterialTheme.colorScheme.primary,
-                        trackColor = MaterialTheme.colorScheme.surfaceVariant
+                        trackColor = MaterialTheme.colorScheme.surfaceVariant,
                     )
 
                     Row(
@@ -440,139 +378,132 @@ fun ProfileScreen(
                         horizontalArrangement = Arrangement.SpaceBetween
                     ) {
                         Text(
-                            text = "$owspLearnedCount / $owspTotalItems options learned",
+                            text = "$owspLearnedCount / $owspTotalItems terms mastered",
                             style = MaterialTheme.typography.bodyMedium,
                             color = MaterialTheme.colorScheme.onSurfaceVariant
                         )
                         Text(
-                            text = "${(owspProgress * 100).toInt()}% completed",
-                            style = MaterialTheme.typography.bodyMedium.copy(fontWeight = FontWeight.Bold),
-                            color = MaterialTheme.colorScheme.onSurface
+                            text = "${(owspProgress * 100).toInt()}%",
+                            style = MaterialTheme.typography.titleSmall.copy(fontWeight = FontWeight.Bold),
+                            color = MaterialTheme.colorScheme.primary
                         )
                     }
                 }
             }
 
-            // Saved Bookmarks
+            // Bookmarks / Favourites Summary Card
             Card(
-                shape = RoundedCornerShape(20.dp),
+                shape = RoundedCornerShape(18.dp),
+                border = BorderStroke(1.dp, MaterialTheme.colorScheme.outline.copy(alpha = 0.3f)),
                 colors = CardDefaults.cardColors(containerColor = MaterialTheme.colorScheme.surface),
-                border = CardDefaults.outlinedCardBorder(),
                 modifier = Modifier.fillMaxWidth()
             ) {
                 Row(
-                    modifier = Modifier
-                        .padding(20.dp)
-                        .fillMaxWidth(),
+                    modifier = Modifier.padding(18.dp),
                     verticalAlignment = Alignment.CenterVertically,
-                    horizontalArrangement = Arrangement.SpaceBetween
+                    horizontalArrangement = Arrangement.spacedBy(14.dp)
                 ) {
-                    Row(
-                        verticalAlignment = Alignment.CenterVertically,
-                        horizontalArrangement = Arrangement.spacedBy(14.dp)
+                    Surface(
+                        shape = CircleShape,
+                        color = MaterialTheme.colorScheme.primaryContainer,
+                        modifier = Modifier.size(44.dp)
                     ) {
-                        Surface(
-                            shape = CircleShape,
-                            color = MaterialTheme.colorScheme.primaryContainer,
-                            modifier = Modifier.size(44.dp)
-                        ) {
-                            Box(contentAlignment = Alignment.Center) {
-                                Icon(
-                                    imageVector = Icons.Filled.Bookmark,
-                                    contentDescription = null,
-                                    tint = MaterialTheme.colorScheme.primary,
-                                    modifier = Modifier.size(22.dp)
-                                )
-                            }
-                        }
-                        Column(
-                            horizontalAlignment = Alignment.Start,
-                            verticalArrangement = Arrangement.spacedBy(2.dp)
-                        ) {
-                            Text(
-                                text = "$totalBookmarks Favourites Saved",
-                                style = MaterialTheme.typography.titleMedium.copy(fontWeight = FontWeight.Bold)
-                            )
-                            Text(
-                                text = "General: $generalFavCount · OWSP Workbook: $owspFavCount",
-                                style = MaterialTheme.typography.bodyMedium,
-                                color = MaterialTheme.colorScheme.onSurfaceVariant
+                        Box(contentAlignment = Alignment.Center) {
+                            Icon(
+                                imageVector = Icons.Filled.Bookmark,
+                                contentDescription = null,
+                                tint = MaterialTheme.colorScheme.primary,
+                                modifier = Modifier.size(22.dp)
                             )
                         }
                     }
 
-                    Icon(
-                        imageVector = Icons.Filled.ChevronRight,
-                        contentDescription = null,
-                        tint = MaterialTheme.colorScheme.primary,
-                        modifier = Modifier.size(20.dp)
-                    )
+                    Column(
+                        modifier = Modifier.weight(1f),
+                        verticalArrangement = Arrangement.spacedBy(2.dp)
+                    ) {
+                        Text(
+                            text = "Bookmarked Vocabulary Items",
+                            style = MaterialTheme.typography.titleSmall.copy(fontWeight = FontWeight.Bold)
+                        )
+                        Text(
+                            text = "$totalBookmarks saved items ($generalFavCount General, $owspFavCount OWSP)",
+                            style = MaterialTheme.typography.bodySmall,
+                            color = MaterialTheme.colorScheme.onSurfaceVariant
+                        )
+                    }
                 }
             }
 
-            // Sign Out / Auth Actions
-            if (currentUser != null) {
-                Spacer(modifier = Modifier.height(4.dp))
-                OutlinedButton(
-                    onClick = {
-                        authRepository.signOut()
-                        onSignOut()
-                    },
-                    colors = ButtonDefaults.outlinedButtonColors(contentColor = MaterialTheme.colorScheme.error),
-                    border = ButtonDefaults.outlinedButtonBorder(enabled = true).copy(brush = androidx.compose.ui.graphics.SolidColor(MaterialTheme.colorScheme.error)),
-                    modifier = Modifier
-                        .fillMaxWidth()
-                        .height(54.dp)
-                ) {
-                    Icon(
-                        imageVector = Icons.AutoMirrored.Filled.Logout,
-                        contentDescription = "Sign Out",
-                        modifier = Modifier.size(20.dp)
-                    )
-                    Spacer(modifier = Modifier.width(8.dp))
-                    Text(
-                        text = "Sign Out of TaskMesh",
-                        style = MaterialTheme.typography.titleMedium.copy(fontWeight = FontWeight.Bold)
-                    )
-                }
-                Spacer(modifier = Modifier.height(12.dp))
+            Spacer(modifier = Modifier.height(8.dp))
+
+            // Sign Out Button
+            Button(
+                onClick = onSignOut,
+                colors = ButtonDefaults.buttonColors(
+                    containerColor = MaterialTheme.colorScheme.errorContainer,
+                    contentColor = MaterialTheme.colorScheme.onErrorContainer
+                ),
+                shape = RoundedCornerShape(24.dp),
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .height(50.dp)
+            ) {
+                Icon(
+                    imageVector = Icons.AutoMirrored.Filled.Logout,
+                    contentDescription = null,
+                    modifier = Modifier.size(20.dp)
+                )
+                Spacer(modifier = Modifier.width(8.dp))
+                Text(
+                    text = "Sign Out",
+                    style = MaterialTheme.typography.titleMedium.copy(fontWeight = FontWeight.Bold)
+                )
             }
         }
     }
 
-    if (showEditNameDialog && currentUser != null) {
+    if (showEditNameDialog) {
         AlertDialog(
             onDismissRequest = { showEditNameDialog = false },
             title = { Text("Edit Display Name") },
             text = {
-                OutlinedTextField(
-                    value = editNameInput,
-                    onValueChange = { editNameInput = it },
-                    label = { Text("Display Name") },
-                    singleLine = true,
-                    modifier = Modifier.fillMaxWidth()
-                )
+                Column(verticalArrangement = Arrangement.spacedBy(8.dp)) {
+                    Text(
+                        text = "Enter your preferred display name for your TaskMesh learning profile:",
+                        style = MaterialTheme.typography.bodySmall,
+                        color = MaterialTheme.colorScheme.onSurfaceVariant
+                    )
+                    OutlinedTextField(
+                        value = editNameInput,
+                        onValueChange = { editNameInput = it },
+                        label = { Text("Display Name") },
+                        singleLine = true,
+                        modifier = Modifier.fillMaxWidth()
+                    )
+                }
             },
             confirmButton = {
                 TextButton(
                     onClick = {
-                        if (editNameInput.isNotBlank()) {
+                        val uid = currentUser?.uid
+                        if (uid != null && editNameInput.isNotBlank()) {
                             isSavingName = true
-                            userRepository.updateDisplayName(currentUser.uid, editNameInput) { success, msg ->
+                            userRepository.updateDisplayName(uid, editNameInput.trim()) { success, err ->
                                 isSavingName = false
                                 showEditNameDialog = false
                                 if (success) {
+                                    statusMessage = "Display name updated successfully!"
                                     userProfile = userProfile?.copy(displayName = editNameInput.trim())
-                                    statusMessage = "Profile updated successfully."
                                 } else {
-                                    statusMessage = msg ?: "Failed to update profile."
+                                    statusMessage = err ?: "Failed to update display name."
                                 }
                             }
                         }
                     },
-                    enabled = !isSavingName
+                    enabled = editNameInput.isNotBlank() && !isSavingName
                 ) {
-                    Text("Save Changes")
+                    Text(if (isSavingName) "Saving..." else "Save")
                 }
             },
             dismissButton = {

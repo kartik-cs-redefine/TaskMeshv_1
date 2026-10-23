@@ -11,8 +11,10 @@ import androidx.activity.result.contract.ActivityResultContracts
 import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
+import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.AutoAwesome
 import androidx.compose.material.icons.filled.CalendarToday
 import androidx.compose.material.icons.filled.Check
 import androidx.compose.material.icons.filled.Notifications
@@ -34,6 +36,9 @@ import com.taskmesh.app.data.PreferencesManager
 import com.taskmesh.app.data.StudyDayManager
 import com.taskmesh.app.data.ThemeMode
 import com.taskmesh.app.data.VocabularyDataset
+import com.taskmesh.app.data.sharework.AIUsageData
+import com.taskmesh.app.data.sharework.MeshyAiService
+import kotlinx.coroutines.launch
 import java.time.format.DateTimeFormatter
 
 @OptIn(ExperimentalMaterial3Api::class)
@@ -52,6 +57,7 @@ fun SettingsScreen(
     onThemeChanged: (ThemeMode) -> Unit
 ) {
     val context = LocalContext.current
+    val scope = rememberCoroutineScope()
 
     var selectedCourseState by remember { mutableStateOf(selectedCourse) }
     var day1Input by remember { mutableStateOf(currentDay1.toString()) }
@@ -89,7 +95,7 @@ fun SettingsScreen(
                 color = MaterialTheme.colorScheme.onBackground
             )
             Text(
-                text = "Preferences, curriculum controls, and notification settings",
+                text = "Preferences, curriculum controls, AI limits, and notification settings",
                 style = MaterialTheme.typography.bodyMedium,
                 color = MaterialTheme.colorScheme.onSurfaceVariant
             )
@@ -108,6 +114,181 @@ fun SettingsScreen(
                         color = MaterialTheme.colorScheme.onPrimaryContainer,
                         modifier = Modifier.padding(12.dp)
                     )
+                }
+            }
+        }
+
+        // AI Usage & Limits Card
+        item {
+            var isFetchingUsage by remember { mutableStateOf(false) }
+            var usageData by remember { mutableStateOf<AIUsageData?>(null) }
+            var usageErrorMessage by remember { mutableStateOf<String?>(null) }
+
+            fun fetchUsage() {
+                if (isFetchingUsage) return
+                isFetchingUsage = true
+                usageErrorMessage = null
+                scope.launch {
+                    MeshyAiService.getAIUsage(context) { success, data, err ->
+                        isFetchingUsage = false
+                        if (success && data != null) {
+                            usageData = data
+                        } else {
+                            usageErrorMessage = err ?: "Unable to fetch AI usage statistics."
+                        }
+                    }
+                }
+            }
+
+            LaunchedEffect(Unit) {
+                fetchUsage()
+            }
+
+            Card(
+                shape = RoundedCornerShape(20.dp),
+                border = BorderStroke(1.dp, MaterialTheme.colorScheme.outline.copy(alpha = 0.4f)),
+                colors = CardDefaults.cardColors(containerColor = MaterialTheme.colorScheme.surface),
+                modifier = Modifier.fillMaxWidth()
+            ) {
+                Column(
+                    modifier = Modifier.padding(18.dp),
+                    verticalArrangement = Arrangement.spacedBy(12.dp)
+                ) {
+                    Row(
+                        modifier = Modifier.fillMaxWidth(),
+                        horizontalArrangement = Arrangement.SpaceBetween,
+                        verticalAlignment = Alignment.CenterVertically
+                    ) {
+                        Row(
+                            verticalAlignment = Alignment.CenterVertically,
+                            horizontalArrangement = Arrangement.spacedBy(8.dp)
+                        ) {
+                            Icon(
+                                imageVector = Icons.Filled.AutoAwesome,
+                                contentDescription = null,
+                                tint = MaterialTheme.colorScheme.primary
+                            )
+                            Text(
+                                text = "AI Usage & Limits",
+                                style = MaterialTheme.typography.titleMedium.copy(fontWeight = FontWeight.Bold)
+                            )
+                        }
+
+                        IconButton(
+                            onClick = { fetchUsage() },
+                            enabled = !isFetchingUsage
+                        ) {
+                            Icon(
+                                imageVector = Icons.Filled.Refresh,
+                                contentDescription = "Refresh Usage",
+                                tint = MaterialTheme.colorScheme.primary,
+                                modifier = Modifier.size(20.dp)
+                            )
+                        }
+                    }
+
+                    if (isFetchingUsage) {
+                        Row(
+                            verticalAlignment = Alignment.CenterVertically,
+                            horizontalArrangement = Arrangement.spacedBy(12.dp),
+                            modifier = Modifier.padding(vertical = 12.dp)
+                        ) {
+                            CircularProgressIndicator(
+                                modifier = Modifier.size(20.dp),
+                                color = MaterialTheme.colorScheme.primary,
+                                strokeWidth = 2.dp
+                            )
+                            Text(
+                                text = "Fetching AI quota and usage statistics...",
+                                style = MaterialTheme.typography.bodySmall,
+                                color = MaterialTheme.colorScheme.onSurfaceVariant
+                            )
+                        }
+                    } else if (usageErrorMessage != null) {
+                        Surface(
+                            shape = RoundedCornerShape(12.dp),
+                            color = MaterialTheme.colorScheme.errorContainer,
+                            modifier = Modifier.fillMaxWidth()
+                        ) {
+                            Row(
+                                modifier = Modifier.padding(12.dp),
+                                horizontalArrangement = Arrangement.SpaceBetween,
+                                verticalAlignment = Alignment.CenterVertically
+                            ) {
+                                Text(
+                                    text = usageErrorMessage ?: "",
+                                    style = MaterialTheme.typography.bodySmall,
+                                    color = MaterialTheme.colorScheme.onErrorContainer,
+                                    modifier = Modifier.weight(1f)
+                                )
+                                TextButton(onClick = { fetchUsage() }) {
+                                    Text("Retry")
+                                }
+                            }
+                        }
+                    } else if (usageData != null) {
+                        val usage = usageData!!
+                        val progress = if (usage.dailyLimit > 0) (usage.usedCount.toFloat() / usage.dailyLimit.toFloat()).coerceIn(0f, 1f) else 0f
+                        val isExhausted = usage.remainingCount == 0 || usage.usedCount >= usage.dailyLimit
+
+                        LinearProgressIndicator(
+                            progress = { progress },
+                            modifier = Modifier.fillMaxWidth().height(8.dp),
+                            color = if (isExhausted) MaterialTheme.colorScheme.error else MaterialTheme.colorScheme.primary,
+                            trackColor = MaterialTheme.colorScheme.surfaceVariant,
+                        )
+
+                        Row(
+                            modifier = Modifier.fillMaxWidth(),
+                            horizontalArrangement = Arrangement.SpaceBetween
+                        ) {
+                            Column(verticalArrangement = Arrangement.spacedBy(2.dp)) {
+                                Text(
+                                    text = "${usage.usedCount} of ${usage.dailyLimit} requests used today",
+                                    style = MaterialTheme.typography.bodyMedium.copy(fontWeight = FontWeight.Bold),
+                                    color = MaterialTheme.colorScheme.onSurface
+                                )
+                                Text(
+                                    text = "${usage.remainingCount} remaining today",
+                                    style = MaterialTheme.typography.bodySmall,
+                                    color = if (isExhausted) MaterialTheme.colorScheme.error else MaterialTheme.colorScheme.onSurfaceVariant
+                                )
+                            }
+
+                            Surface(
+                                shape = CircleShape,
+                                color = if (isExhausted) MaterialTheme.colorScheme.errorContainer else MaterialTheme.colorScheme.primaryContainer
+                            ) {
+                                Text(
+                                    text = if (isExhausted) "Limit Reached" else "Active Quota",
+                                    style = MaterialTheme.typography.labelSmall.copy(fontWeight = FontWeight.Bold),
+                                    color = if (isExhausted) MaterialTheme.colorScheme.onErrorContainer else MaterialTheme.colorScheme.onPrimaryContainer,
+                                    modifier = Modifier.padding(horizontal = 10.dp, vertical = 4.dp)
+                                )
+                            }
+                        }
+
+                        if (isExhausted) {
+                            Surface(
+                                shape = RoundedCornerShape(10.dp),
+                                color = MaterialTheme.colorScheme.errorContainer.copy(alpha = 0.5f),
+                                modifier = Modifier.fillMaxWidth()
+                            ) {
+                                Text(
+                                    text = "You've reached today's AI review limit. Quota resets daily at ${usage.resetTime}.",
+                                    style = MaterialTheme.typography.labelSmall,
+                                    color = MaterialTheme.colorScheme.error,
+                                    modifier = Modifier.padding(10.dp)
+                                )
+                            }
+                        }
+
+                        Text(
+                            text = "Next quota reset: ${usage.resetTime} (${usage.resetTimezone})",
+                            style = MaterialTheme.typography.labelSmall,
+                            color = MaterialTheme.colorScheme.onSurfaceVariant
+                        )
+                    }
                 }
             }
         }
@@ -249,7 +430,7 @@ fun SettingsScreen(
                             tint = MaterialTheme.colorScheme.primary
                         )
                         Text(
-                            text = "Manual Day Overrides",
+                            text = "Curriculum Study Days",
                             style = MaterialTheme.typography.titleMedium.copy(fontWeight = FontWeight.Bold)
                         )
                     }
@@ -260,13 +441,13 @@ fun SettingsScreen(
                         horizontalArrangement = Arrangement.SpaceBetween,
                         verticalAlignment = Alignment.CenterVertically
                     ) {
-                        Column(modifier = Modifier.weight(1f)) {
+                        Column {
                             Text(
-                                text = "General Vocabulary Day",
-                                style = MaterialTheme.typography.titleSmall.copy(fontWeight = FontWeight.Bold)
+                                text = "General Vocab Study Day",
+                                style = MaterialTheme.typography.bodyMedium.copy(fontWeight = FontWeight.Bold)
                             )
                             Text(
-                                text = "Current Day: $currentDay1 of 30",
+                                text = "Currently set to Day $day1Input of 30",
                                 style = MaterialTheme.typography.bodySmall,
                                 color = MaterialTheme.colorScheme.onSurfaceVariant
                             )
@@ -276,16 +457,18 @@ fun SettingsScreen(
                             value = day1Input,
                             onValueChange = { input ->
                                 day1Input = input
-                                val num = input.toIntOrNull()
-                                if (num != null && num in 1..30) {
-                                    onStudyDayChanged1(num)
-                                    statusMessage = "Set General Vocab study day to $num"
+                                val dayVal = input.toIntOrNull()
+                                if (dayVal != null && dayVal in 1..30) {
+                                    onStudyDayChanged1(dayVal)
+                                    statusMessage = "General Vocab day set to Day $dayVal"
                                 }
                             },
                             singleLine = true,
-                            modifier = Modifier.width(90.dp)
+                            modifier = Modifier.width(80.dp)
                         )
                     }
+
+                    HorizontalDivider(color = MaterialTheme.colorScheme.outlineVariant.copy(alpha = 0.5f))
 
                     // OWSP Day
                     Row(
@@ -293,13 +476,13 @@ fun SettingsScreen(
                         horizontalArrangement = Arrangement.SpaceBetween,
                         verticalAlignment = Alignment.CenterVertically
                     ) {
-                        Column(modifier = Modifier.weight(1f)) {
+                        Column {
                             Text(
-                                text = "OWSP Workbook Day",
-                                style = MaterialTheme.typography.titleSmall.copy(fontWeight = FontWeight.Bold)
+                                text = "OWSP Workbook Study Day",
+                                style = MaterialTheme.typography.bodyMedium.copy(fontWeight = FontWeight.Bold)
                             )
                             Text(
-                                text = "Current Day: $currentDay2 of 59",
+                                text = "Currently set to Day $day2Input of 59",
                                 style = MaterialTheme.typography.bodySmall,
                                 color = MaterialTheme.colorScheme.onSurfaceVariant
                             )
@@ -309,65 +492,32 @@ fun SettingsScreen(
                             value = day2Input,
                             onValueChange = { input ->
                                 day2Input = input
-                                val num = input.toIntOrNull()
-                                if (num != null && num in 1..59) {
-                                    onStudyDayChanged2(num)
-                                    statusMessage = "Set OWSP Workbook study day to $num"
+                                val dayVal = input.toIntOrNull()
+                                if (dayVal != null && dayVal in 1..59) {
+                                    onStudyDayChanged2(dayVal)
+                                    statusMessage = "OWSP Workbook day set to Day $dayVal"
                                 }
                             },
                             singleLine = true,
-                            modifier = Modifier.width(90.dp)
+                            modifier = Modifier.width(80.dp)
                         )
-                    }
-
-                    val nextTime1 = studyDayManager.getNextAdvancementBoundary()
-                    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
-                        val formatter = DateTimeFormatter.ofPattern("EEE, dd MMM yyyy, hh:mm a")
-                        val formattedNextTime1 = nextTime1.format(formatter)
-                        Surface(
-                            color = MaterialTheme.colorScheme.surfaceVariant.copy(alpha = 0.5f),
-                            shape = RoundedCornerShape(12.dp),
-                            modifier = Modifier.fillMaxWidth()
-                        ) {
-                            Column(modifier = Modifier.padding(12.dp)) {
-                                Text(
-                                    text = "5:30 AM Auto Advancement",
-                                    style = MaterialTheme.typography.labelSmall.copy(fontWeight = FontWeight.Bold),
-                                    color = MaterialTheme.colorScheme.primary
-                                )
-                                Spacer(modifier = Modifier.height(2.dp))
-                                Text(
-                                    text = "Courses advance automatically at 5:30 AM local time each morning.",
-                                    style = MaterialTheme.typography.bodySmall,
-                                    color = MaterialTheme.colorScheme.onSurfaceVariant
-                                )
-                                Spacer(modifier = Modifier.height(4.dp))
-                                Text(
-                                    text = "Next boundary: $formattedNextTime1",
-                                    style = MaterialTheme.typography.labelSmall.copy(fontWeight = FontWeight.SemiBold),
-                                    color = MaterialTheme.colorScheme.onSurfaceVariant
-                                )
-                            }
-                        }
                     }
                 }
             }
         }
 
-        // Daily Nudge Reminders Card
+        // Nudge Notifications Control Card
         item {
-            val isPermissionDeniedOnTiramisu = remember(notificationsEnabled) {
-                Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU &&
-                        ContextCompat.checkSelfPermission(context, Manifest.permission.POST_NOTIFICATIONS) != PackageManager.PERMISSION_GRANTED
-            }
-
             Card(
                 shape = RoundedCornerShape(20.dp),
                 border = BorderStroke(1.dp, MaterialTheme.colorScheme.outline.copy(alpha = 0.4f)),
                 colors = CardDefaults.cardColors(containerColor = MaterialTheme.colorScheme.surface),
                 modifier = Modifier.fillMaxWidth()
             ) {
-                Column(modifier = Modifier.padding(18.dp)) {
+                Column(
+                    modifier = Modifier.padding(18.dp),
+                    verticalArrangement = Arrangement.spacedBy(10.dp)
+                ) {
                     Row(
                         modifier = Modifier.fillMaxWidth(),
                         horizontalArrangement = Arrangement.SpaceBetween,
@@ -375,31 +525,23 @@ fun SettingsScreen(
                     ) {
                         Row(
                             verticalAlignment = Alignment.CenterVertically,
-                            horizontalArrangement = Arrangement.spacedBy(8.dp),
-                            modifier = Modifier.weight(1f)
+                            horizontalArrangement = Arrangement.spacedBy(8.dp)
                         ) {
                             Icon(
                                 imageVector = Icons.Filled.Notifications,
                                 contentDescription = null,
                                 tint = MaterialTheme.colorScheme.primary
                             )
-                            Column {
-                                Text(
-                                    text = "TaskMesh Nudge — Padh Le Bhai!",
-                                    style = MaterialTheme.typography.titleMedium.copy(fontWeight = FontWeight.Bold)
-                                )
-                                Text(
-                                    text = if (notificationsEnabled && !isPermissionDeniedOnTiramisu) "Scheduled offline reminders (~6 hrs)" else if (isPermissionDeniedOnTiramisu) "Blocked by Android permission" else "Notifications disabled",
-                                    style = MaterialTheme.typography.bodySmall,
-                                    color = if (isPermissionDeniedOnTiramisu) MaterialTheme.colorScheme.error else MaterialTheme.colorScheme.onSurfaceVariant
-                                )
-                            }
+                            Text(
+                                text = "TaskMesh Nudge Reminders",
+                                style = MaterialTheme.typography.titleMedium.copy(fontWeight = FontWeight.Bold)
+                            )
                         }
 
                         Switch(
                             checked = notificationsEnabled,
-                            onCheckedChange = { enabled ->
-                                if (enabled) {
+                            onCheckedChange = { checked ->
+                                if (checked) {
                                     if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU &&
                                         ContextCompat.checkSelfPermission(context, Manifest.permission.POST_NOTIFICATIONS) != PackageManager.PERMISSION_GRANTED
                                     ) {
@@ -408,7 +550,7 @@ fun SettingsScreen(
                                         notificationsEnabled = true
                                         prefs.setNotificationsEnabled(true)
                                         NudgeScheduler.scheduleNudgeWorker(context)
-                                        statusMessage = "TaskMesh Nudge notifications scheduled!"
+                                        statusMessage = "TaskMesh Nudge notifications enabled!"
                                     }
                                 } else {
                                     notificationsEnabled = false
@@ -420,50 +562,23 @@ fun SettingsScreen(
                         )
                     }
 
-                    Spacer(modifier = Modifier.height(8.dp))
-
                     Text(
-                        text = "Randomized offline Hinglish study reminders every ~6 hours. Battery-friendly and respects device Doze mode.",
+                        text = "Receive daily motivational nudges to stay consistent with your vocabulary learning goals.",
                         style = MaterialTheme.typography.bodySmall,
                         color = MaterialTheme.colorScheme.onSurfaceVariant
                     )
 
-                    if (notificationsEnabled && isPermissionDeniedOnTiramisu) {
-                        Spacer(modifier = Modifier.height(10.dp))
-                        Surface(
-                            color = MaterialTheme.colorScheme.errorContainer,
-                            shape = RoundedCornerShape(12.dp),
+                    if (!notificationsEnabled && Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
+                        OutlinedButton(
+                            onClick = {
+                                val intent = Intent(Settings.ACTION_APPLICATION_DETAILS_SETTINGS).apply {
+                                    data = Uri.fromParts("package", context.packageName, null)
+                                }
+                                context.startActivity(intent)
+                            },
                             modifier = Modifier.fillMaxWidth()
                         ) {
-                            Column(
-                                modifier = Modifier.padding(12.dp),
-                                verticalArrangement = Arrangement.spacedBy(8.dp)
-                            ) {
-                                Text(
-                                    text = "Notifications are blocked by Android system settings. Enable notification permission for TaskMesh to receive study reminders.",
-                                    style = MaterialTheme.typography.bodySmall,
-                                    color = MaterialTheme.colorScheme.onErrorContainer
-                                )
-                                OutlinedButton(
-                                    onClick = {
-                                        val intent = Intent(Settings.ACTION_APP_NOTIFICATION_SETTINGS).apply {
-                                            putExtra(Settings.EXTRA_APP_PACKAGE, context.packageName)
-                                        }
-                                        try {
-                                            context.startActivity(intent)
-                                        } catch (e: Exception) {
-                                            val generalIntent = Intent(Settings.ACTION_APPLICATION_DETAILS_SETTINGS).apply {
-                                                data = Uri.fromParts("package", context.packageName, null)
-                                            }
-                                            context.startActivity(generalIntent)
-                                        }
-                                    },
-                                    shape = RoundedCornerShape(18.dp),
-                                    colors = ButtonDefaults.outlinedButtonColors(contentColor = MaterialTheme.colorScheme.onErrorContainer)
-                                ) {
-                                    Text("Open App Notification Settings")
-                                }
-                            }
+                            Text("Open System Notification Settings")
                         }
                     }
                 }
@@ -474,7 +589,7 @@ fun SettingsScreen(
         item {
             Card(
                 shape = RoundedCornerShape(20.dp),
-                border = BorderStroke(1.dp, MaterialTheme.colorScheme.outline.copy(alpha = 0.4f)),
+                border = BorderStroke(1.dp, MaterialTheme.colorScheme.error.copy(alpha = 0.5f)),
                 colors = CardDefaults.cardColors(containerColor = MaterialTheme.colorScheme.surface),
                 modifier = Modifier.fillMaxWidth()
             ) {
@@ -492,31 +607,24 @@ fun SettingsScreen(
                             tint = MaterialTheme.colorScheme.error
                         )
                         Text(
-                            text = "Reset Progress",
+                            text = "Reset All Learning Data",
                             style = MaterialTheme.typography.titleMedium.copy(fontWeight = FontWeight.Bold),
                             color = MaterialTheme.colorScheme.error
                         )
                     }
 
                     Text(
-                        text = "Clears all learned word statuses and saved favourites. Day settings will reset to Day 1.",
+                        text = "Resets all learned words, bookmarks, and study day history across both courses.",
                         style = MaterialTheme.typography.bodySmall,
                         color = MaterialTheme.colorScheme.onSurfaceVariant
                     )
 
-                    OutlinedButton(
+                    Button(
                         onClick = { showResetDialog = true },
                         colors = ButtonDefaults.outlinedButtonColors(contentColor = MaterialTheme.colorScheme.error),
-                        border = BorderStroke(1.dp, MaterialTheme.colorScheme.error),
-                        shape = RoundedCornerShape(24.dp),
-                        modifier = Modifier
-                            .fillMaxWidth()
-                            .height(48.dp)
+                        modifier = Modifier.fillMaxWidth()
                     ) {
-                        Text(
-                            text = "Reset All Progress",
-                            style = MaterialTheme.typography.labelLarge.copy(fontWeight = FontWeight.Bold)
-                        )
+                        Text("Reset All Learning Progress")
                     }
                 }
             }
@@ -526,16 +634,18 @@ fun SettingsScreen(
     if (showResetDialog) {
         AlertDialog(
             onDismissRequest = { showResetDialog = false },
-            title = { Text("Reset All Progress?") },
-            text = { Text("Are you sure you want to clear all learned words, saved bookmarks, and reset days to Day 1? This action cannot be undone.") },
+            title = { Text("Confirm Data Reset") },
+            text = { Text("Are you sure you want to reset all learned words, bookmarks, and study days? This action cannot be undone.") },
             confirmButton = {
                 TextButton(
                     onClick = {
                         prefs.resetAllProgress()
-                        onStudyDayChanged1(1)
-                        onStudyDayChanged2(1)
+                        studyDayManager.setManualStudyDay(1)
+                        owspStudyDayManager.setManualStudyDay(1)
                         day1Input = "1"
                         day2Input = "1"
+                        onStudyDayChanged1(1)
+                        onStudyDayChanged2(1)
                         showResetDialog = false
                         statusMessage = "All learning progress has been reset."
                     }
