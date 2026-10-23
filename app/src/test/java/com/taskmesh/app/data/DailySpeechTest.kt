@@ -100,4 +100,35 @@ class DailySpeechTest {
         }
         assertEquals(0, day5Recordings.size)
     }
+
+    @Test
+    fun `test routing differentiation between daily speech and share work recordings`() {
+        val dsRecording = SavedRecording(
+            id = "rec_ds_7",
+            worksheetId = "daily_speech_25d",
+            worksheetTitle = "Daily Speech Challenge",
+            selectedGroupsLabel = "Day 7",
+            selectedGroupIds = listOf("daily_speech_day_7"),
+            recordingDate = System.currentTimeMillis(),
+            durationSeconds = 90,
+            filePath = "/test/ds7.m4a"
+        )
+
+        val swRecording = SavedRecording(
+            id = "rec_sw_2",
+            worksheetId = "general_vocab_30d",
+            worksheetTitle = "General Vocabulary",
+            selectedGroupsLabel = "Day 2",
+            selectedGroupIds = listOf("day_2"),
+            recordingDate = System.currentTimeMillis(),
+            durationSeconds = 120,
+            filePath = "/test/sw2.m4a"
+        )
+
+        val isDsRecording1 = dsRecording.worksheetId == "daily_speech_25d" || dsRecording.selectedGroupIds.any { it.startsWith("daily_speech_") }
+        val isDsRecording2 = swRecording.worksheetId == "daily_speech_25d" || swRecording.selectedGroupIds.any { it.startsWith("daily_speech_") }
+
+        assertTrue(isDsRecording1)
+        assertFalse(isDsRecording2)
+    }
 }

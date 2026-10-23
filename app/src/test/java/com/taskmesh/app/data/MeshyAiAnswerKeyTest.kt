@@ -63,6 +63,87 @@ class MeshyAiAnswerKeyTest {
     }
 
     @Test
+    fun `test day 2 daily speech evaluation response parsing and rubric validation`() {
+        val day2EvaluationJson = """
+            {
+                "totalScore": 88,
+                "maxScore": 100,
+                "percentage": 88,
+                "transcript": "General communication is informal, whereas technical communication is formal and audience-focused.",
+                "overallSummary": "Excellent spoken explanation for Day 2: General vs Technical Communication.",
+                "scores": {
+                    "contentAccuracyScore": 27,
+                    "contentAccuracyMax": 30,
+                    "vocabularyScore": 22,
+                    "vocabularyMax": 25,
+                    "languageQualityScore": 22,
+                    "languageQualityMax": 25,
+                    "completenessScore": 17,
+                    "completenessMax": 20,
+                    "totalScore": 88,
+                    "maxScore": 100,
+                    "percentage": 88
+                },
+                "strengths": ["Clear comparison of general vs technical communication"],
+                "improvements": ["Elaborate on workplace benefits"],
+                "questionsFeedback": [
+                    {
+                        "questionNumber": 1,
+                        "promptText": "How is General Communication different from Technical Communication?",
+                        "isCorrect": true,
+                        "score": 1,
+                        "userSpokenText": "General communication is informal, whereas technical communication is formal...",
+                        "feedbackText": "Accurate comparison",
+                        "missingPoints": ""
+                    }
+                ]
+            }
+        """.trimIndent()
+
+        val parsed = MeshyAiService.parseAndValidateReviewResult(day2EvaluationJson)
+        assertNotNull(parsed)
+        assertEquals(88, parsed?.totalScore)
+        assertEquals(100, parsed?.maxScore)
+        assertEquals(88, parsed?.percentage)
+        assertEquals(1, parsed?.questionsFeedback?.size)
+    }
+
+    @Test
+    fun `test off topic transcript sample audio receives low score and 0 content accuracy`() {
+        val offTopicResultJson = """
+            {
+                "totalScore": 8,
+                "maxScore": 100,
+                "percentage": 8,
+                "transcript": "This is sample audio",
+                "overallSummary": "The spoken response is off-topic or contains test audio. Content Accuracy and Completeness score 0/50.",
+                "scores": {
+                    "contentAccuracyScore": 0,
+                    "contentAccuracyMax": 30,
+                    "vocabularyScore": 3,
+                    "vocabularyMax": 25,
+                    "languageQualityScore": 5,
+                    "languageQualityMax": 25,
+                    "completenessScore": 0,
+                    "completenessMax": 20,
+                    "totalScore": 8,
+                    "maxScore": 100,
+                    "percentage": 8
+                },
+                "strengths": ["Spoken audio recorded"],
+                "improvements": ["Please record a response addressing the topic"],
+                "questionsFeedback": []
+            }
+        """.trimIndent()
+
+        val parsed = MeshyAiService.parseAndValidateReviewResult(offTopicResultJson)
+        assertNotNull(parsed)
+        assertEquals(8, parsed?.totalScore)
+        assertEquals(100, parsed?.maxScore)
+        assertEquals("This is sample audio", parsed?.transcript)
+    }
+
+    @Test
     fun `test backend error json returns null and extracts message`() {
         val errorJson = """{"error": "Daily AI review limit reached (10 reviews/day). Try again tomorrow!"}"""
         

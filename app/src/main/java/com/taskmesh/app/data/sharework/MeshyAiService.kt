@@ -5,6 +5,7 @@ import android.util.Base64
 import android.util.Log
 import com.google.android.gms.tasks.Tasks
 import com.google.firebase.auth.FirebaseAuth
+import com.taskmesh.app.data.DailySpeechDay
 import com.taskmesh.app.data.OwspDatasetRepository
 import com.taskmesh.app.data.VocabularyDataset
 import kotlinx.coroutines.Dispatchers
@@ -14,6 +15,7 @@ import org.json.JSONObject
 import java.io.File
 import java.io.OutputStreamWriter
 import java.net.HttpURLConnection
+import java.net.SocketTimeoutException
 import java.net.URL
 import java.util.concurrent.TimeUnit
 
@@ -268,6 +270,7 @@ object MeshyAiService {
             val audioBase64 = Base64.encodeToString(audioBytes, Base64.NO_WRAP)
 
             val payload = JSONObject().apply {
+                put("action", "evaluateShareWork") // Share Work existing flow
                 put("recordingId", recording.id)
                 put("mimeType", "audio/m4a")
                 put("audioBase64", audioBase64)
@@ -277,17 +280,17 @@ object MeshyAiService {
                 }
             }
 
-            // 7. Perform HTTP Request with bounded retries
+            // 7. Perform HTTP Request with bounded retries and 60s read timeout
             var lastError = "Network request failed."
-            val maxRetries = 2
+            val maxRetries = 1
 
             for (attempt in 0..maxRetries) {
                 try {
                     val url = URL(ENDPOINT_URL)
                     val conn = (url.openConnection() as HttpURLConnection).apply {
                         requestMethod = "POST"
-                        connectTimeout = 15000
-                        readTimeout = 30000
+                        connectTimeout = 20000
+                        readTimeout = 60000
                         doOutput = true
                         setRequestProperty("Content-Type", "application/json; charset=UTF-8")
                         setRequestProperty("Accept", "application/json")
@@ -327,6 +330,243 @@ object MeshyAiService {
                         val errMsg = extractErrorMessage(responseText, "Server returned HTTP $responseCode")
                         lastError = errMsg
                     }
+                } catch (e: SocketTimeoutException) {
+                    lastError = "Request timed out while evaluating audio with AI. Please tap Retry."
+                } catch (e: Exception) {
+                    lastError = e.localizedMessage ?: "Connection failed."
+                }
+            }
+
+            withContext(Dispatchers.Main) {
+                onResult(false, null, lastError)
+            }
+        }
+    }
+
+    suspend fun transcribeSpeechAudio(
+        context: Context,
+        recording: SavedRecording,
+        onResult: (Boolean, String?, String?) -> Unit
+    ) {
+        withContext(Dispatchers.IO) {
+            val audioFile = File(recording.filePath)
+            if (!audioFile.exists() || audioFile.length() == 0L) {
+                withContext(Dispatchers.Main) {
+                    onResult(false, null, "Audio file does not exist or is empty.")
+                }
+                return@withContext
+            }
+
+            if (audioFile.length() > MAX_AUDIO_FILE_SIZE_BYTES) {
+                withContext(Dispatchers.Main) {
+                    onResult(false, null, "Audio file exceeds maximum allowed size (15 MB).")
+                }
+                return@withContext
+            }
+
+            if (ENDPOINT_URL.isBlank()) {
+                withContext(Dispatchers.Main) {
+                    onResult(
+                        false,
+                        null,
+                        "Meshy AI backend endpoint is not configured. Please set a valid URL in MeshyAiService.ENDPOINT_URL."
+                    )
+                }
+                return@withContext
+            }
+
+            var idToken: String? = null
+            val currentUser = FirebaseAuth.getInstance().currentUser
+            if (currentUser != null) {
+                try {
+                    val tokenTask = currentUser.getIdToken(true)
+                    val result = Tasks.await(tokenTask, 10, TimeUnit.SECONDS)
+                    idToken = result.token
+                } catch (e: Exception) {
+                    logW("MeshyAiService", "Failed to fetch Firebase ID token: ${e.localizedMessage}")
+                }
+            }
+
+            val audioBytes = audioFile.readBytes()
+            val audioBase64 = Base64.encodeToString(audioBytes, Base64.NO_WRAP)
+
+            val payload = JSONObject().apply {
+                put("action", "transcribe")
+                put("recordingId", recording.id)
+                put("mimeType", "audio/m4a")
+                put("audioBase64", audioBase64)
+                if (!idToken.isNullOrBlank()) {
+                    put("idToken", idToken)
+                }
+            }
+
+            var lastError = "Network request failed."
+            val maxRetries = 1
+
+            for (attempt in 0..maxRetries) {
+                try {
+                    val url = URL(ENDPOINT_URL)
+                    val conn = (url.openConnection() as HttpURLConnection).apply {
+                        requestMethod = "POST"
+                        connectTimeout = 20000
+                        readTimeout = 60000
+                        doOutput = true
+                        setRequestProperty("Content-Type", "application/json; charset=UTF-8")
+                        setRequestProperty("Accept", "application/json")
+                        if (!idToken.isNullOrBlank()) {
+                            setRequestProperty("Authorization", "Bearer $idToken")
+                        }
+                    }
+
+                    OutputStreamWriter(conn.outputStream, "UTF-8").use { writer ->
+                        writer.write(payload.toString())
+                        writer.flush()
+                    }
+
+                    val responseCode = conn.responseCode
+                    val responseText = if (responseCode in 200..299) {
+                        conn.inputStream.bufferedReader().use { it.readText() }
+                    } else {
+                        conn.errorStream?.bufferedReader()?.use { it.readText() } ?: ""
+                    }
+
+                    if (responseCode in 200..299) {
+                        val root = JSONObject(responseText)
+                        if (root.has("transcript")) {
+                            val transcriptText = root.getString("transcript")
+                            withContext(Dispatchers.Main) {
+                                onResult(true, transcriptText, null)
+                            }
+                            return@withContext
+                        } else {
+                            val errMsg = extractErrorMessage(responseText, "Invalid transcription response schema from server.")
+                            lastError = errMsg
+                        }
+                    } else {
+                        val errMsg = extractErrorMessage(responseText, "Server returned HTTP $responseCode")
+                        lastError = errMsg
+                    }
+                } catch (e: SocketTimeoutException) {
+                    lastError = "Request timed out while transcribing audio. Please tap Retry."
+                } catch (e: Exception) {
+                    lastError = e.localizedMessage ?: "Connection failed."
+                }
+            }
+
+            withContext(Dispatchers.Main) {
+                onResult(false, null, lastError)
+            }
+        }
+    }
+
+    suspend fun evaluateDailySpeechTranscript(
+        context: Context,
+        recording: SavedRecording,
+        confirmedTranscript: String,
+        dayData: DailySpeechDay,
+        onResult: (Boolean, MeshyReviewResult?, String?) -> Unit
+    ) {
+        withContext(Dispatchers.IO) {
+            if (confirmedTranscript.isBlank()) {
+                withContext(Dispatchers.Main) {
+                    onResult(false, null, "Transcript cannot be empty for evaluation.")
+                }
+                return@withContext
+            }
+
+            if (ENDPOINT_URL.isBlank()) {
+                withContext(Dispatchers.Main) {
+                    onResult(
+                        false,
+                        null,
+                        "Meshy AI backend endpoint is not configured. Please set a valid URL in MeshyAiService.ENDPOINT_URL."
+                    )
+                }
+                return@withContext
+            }
+
+            var idToken: String? = null
+            val currentUser = FirebaseAuth.getInstance().currentUser
+            if (currentUser != null) {
+                try {
+                    val tokenTask = currentUser.getIdToken(true)
+                    val result = Tasks.await(tokenTask, 10, TimeUnit.SECONDS)
+                    idToken = result.token
+                } catch (e: Exception) {
+                    logW("MeshyAiService", "Failed to fetch Firebase ID token: ${e.localizedMessage}")
+                }
+            }
+
+            val studyContentObj = JSONObject().apply {
+                put("dayNumber", dayData.dayNumber)
+                put("title", dayData.title)
+                put("unit", dayData.unit)
+                put("summary", dayData.summary)
+                put("content", dayData.content)
+            }
+
+            val payload = JSONObject().apply {
+                put("action", "evaluateDailySpeech")
+                put("recordingId", recording.id)
+                put("dayNumber", dayData.dayNumber)
+                put("topicTitle", dayData.title)
+                put("confirmedTranscript", confirmedTranscript)
+                put("authoritativeStudyContent", studyContentObj)
+                if (!idToken.isNullOrBlank()) {
+                    put("idToken", idToken)
+                }
+            }
+
+            var lastError = "Network request failed."
+            val maxRetries = 1
+
+            for (attempt in 0..maxRetries) {
+                try {
+                    val url = URL(ENDPOINT_URL)
+                    val conn = (url.openConnection() as HttpURLConnection).apply {
+                        requestMethod = "POST"
+                        connectTimeout = 20000
+                        readTimeout = 60000
+                        doOutput = true
+                        setRequestProperty("Content-Type", "application/json; charset=UTF-8")
+                        setRequestProperty("Accept", "application/json")
+                        if (!idToken.isNullOrBlank()) {
+                            setRequestProperty("Authorization", "Bearer $idToken")
+                        }
+                    }
+
+                    OutputStreamWriter(conn.outputStream, "UTF-8").use { writer ->
+                        writer.write(payload.toString())
+                        writer.flush()
+                    }
+
+                    val responseCode = conn.responseCode
+                    val responseText = if (responseCode in 200..299) {
+                        conn.inputStream.bufferedReader().use { it.readText() }
+                    } else {
+                        conn.errorStream?.bufferedReader()?.use { it.readText() } ?: ""
+                    }
+
+                    if (responseCode in 200..299) {
+                        val reviewResult = parseAndValidateReviewResult(responseText)
+                        if (reviewResult != null) {
+                            val updatedRecording = recording.copy(reviewResultJson = responseText)
+                            RecordingStorageManager(context).saveRecordingMetadata(updatedRecording)
+
+                            withContext(Dispatchers.Main) {
+                                onResult(true, reviewResult, null)
+                            }
+                            return@withContext
+                        } else {
+                            val errMsg = extractErrorMessage(responseText, "Invalid evaluation JSON schema returned by server.")
+                            lastError = errMsg
+                        }
+                    } else {
+                        val errMsg = extractErrorMessage(responseText, "Server returned HTTP $responseCode")
+                        lastError = errMsg
+                    }
+                } catch (e: SocketTimeoutException) {
+                    lastError = "Request timed out while evaluating audio with AI. Please tap Retry."
                 } catch (e: Exception) {
                     lastError = e.localizedMessage ?: "Connection failed."
                 }

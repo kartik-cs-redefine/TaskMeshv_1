@@ -68,8 +68,8 @@ fun DailySpeechContentScreen(
         )
     }
 
-    var showAiComingSoonDialog by remember { mutableStateOf(false) }
     var showRecordingSelectorDialog by remember { mutableStateOf(false) }
+    var selectedRecordingForReview by remember { mutableStateOf<SavedRecording?>(null) }
 
     DisposableEffect(currentDayNumber) {
         onDispose {
@@ -263,7 +263,7 @@ fun DailySpeechContentScreen(
                                 if (savedRecordingsForDay.size > 1) {
                                     showRecordingSelectorDialog = true
                                 } else {
-                                    showAiComingSoonDialog = true
+                                    selectedRecordingForReview = savedRecordingsForDay.first()
                                 }
                             },
                             shape = RoundedCornerShape(24.dp),
@@ -345,7 +345,7 @@ fun DailySpeechContentScreen(
                                 .fillMaxWidth()
                                 .clickable {
                                     showRecordingSelectorDialog = false
-                                    showAiComingSoonDialog = true
+                                    selectedRecordingForReview = rec
                                 }
                         ) {
                             Row(
@@ -378,14 +378,16 @@ fun DailySpeechContentScreen(
         )
     }
 
-    if (showAiComingSoonDialog) {
-        AlertDialog(
-            onDismissRequest = { showAiComingSoonDialog = false },
-            title = { Text("Daily Speech AI Evaluation Coming Soon") },
-            text = { Text("Meshy AI evaluation for Daily Speech open-ended speaking practice is under active development. Your audio recording for Day $currentDayNumber is safely saved locally.") },
-            confirmButton = {
-                TextButton(onClick = { showAiComingSoonDialog = false }) {
-                    Text("Got It")
+    if (selectedRecordingForReview != null) {
+        DailySpeechAiReviewSheet(
+            recording = selectedRecordingForReview!!,
+            dayData = dayData!!,
+            onDismiss = {
+                selectedRecordingForReview = null
+                savedRecordingsForDay = storageManager.getAllSavedRecordings().filter { rec ->
+                    rec.worksheetId == "daily_speech_25d" &&
+                            (rec.selectedGroupIds.contains("daily_speech_day_$currentDayNumber") ||
+                                    rec.selectedGroupsLabel.contains("Day $currentDayNumber"))
                 }
             }
         )
